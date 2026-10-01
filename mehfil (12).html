@@ -1,0 +1,2045 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Mehfil | Hire Mumbai's college musicians</title>
+<meta name="theme-color" content="#0d0c10">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ---------- Design tokens (Mehfil dark system) ---------- */
+:root{
+  --bg:#0d0c10; --bg-2:#131217; --surface:#18171d; --surface-2:#1f1e26; --surface-3:#2a2933;
+  --line:rgba(239,234,224,.09); --line-2:rgba(239,234,224,.17);
+  --text:#efeae0; --muted:#a9a4b3; --dim:#7d7887;
+  --lamp:#D18A32; --on-lamp:#1a1208; --lamp-hover:#DE9A45; --lamp-soft:rgba(209,138,50,.14);   /* muted amber: the one brand accent */
+  --ok:#4fd6a0; --bad:#ff7b80;
+  --r-ctl:12px; --r-card:16px; --r-lg:22px;
+  --f-display:'Bricolage Grotesque','Avenir Next','Segoe UI',system-ui,sans-serif;
+  --f-body:'Instrument Sans','Segoe UI',system-ui,-apple-system,sans-serif;
+  color-scheme:dark;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 84px);scroll-behavior:smooth}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--text);font-family:var(--f-body);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body.lock{overflow:hidden}
+a{color:inherit}
+button{font-family:inherit}
+img,svg{max-width:100%}
+.ic{flex:none;vertical-align:middle}
+:focus-visible{outline:2px solid var(--lamp);outline-offset:3px;border-radius:6px}
+[hidden]{display:none!important}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* ---------- Grain (shared on all art) ---------- */
+.grain{position:relative}
+.grain::before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;opacity:.16;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .6 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+svg.art{display:block;width:100%;height:100%}
+
+/* ---------- Buttons, chips, fields ---------- */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:12px 20px;border-radius:var(--r-ctl);border:1px solid transparent;background:var(--lamp);color:var(--on-lamp);font:700 .95rem var(--f-body);cursor:pointer;text-decoration:none;transition:transform .15s,background .2s,border-color .2s;white-space:nowrap}
+.btn:hover{background:var(--lamp-hover)}
+.btn:active{transform:translateY(1px)}
+.btn.ghost{background:transparent;color:var(--text);border-color:var(--line-2)}
+.btn.ghost:hover{background:var(--surface-2)}
+.btn.sm{padding:9px 14px;font-size:.86rem}
+.btn.lg{padding:16px 26px;font-size:1.05rem}
+.btn.block{width:100%}
+.btn[disabled]{opacity:.5;cursor:not-allowed}
+.chip{display:inline-flex;align-items:center;gap:6px;padding:8px 14px;border-radius:999px;border:1px solid var(--line-2);background:transparent;color:var(--muted);font:500 .9rem var(--f-body);cursor:pointer;transition:background .2s,color .2s,border-color .2s}
+.chip:hover{color:var(--text);border-color:var(--muted)}
+.chip.on{background:var(--text);color:#141216;border-color:var(--text)}
+.tag{display:inline-flex;padding:5px 12px;border-radius:999px;background:var(--surface-2);border:1px solid var(--line);color:var(--muted);font-size:.85rem}
+.icon-btn{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;background:rgba(13,12,16,.62);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid var(--line-2);color:var(--text);cursor:pointer;text-decoration:none}
+.icon-btn:hover{background:rgba(13,12,16,.85)}
+.field{display:block;margin-bottom:16px}
+.field>span.lbl{display:block;font-weight:600;font-size:.88rem;margin-bottom:6px}
+.field>span.lbl em{font-style:normal;color:var(--lamp)}
+.field>span.lbl small{font-weight:400;color:var(--dim);margin-left:6px}
+.input,select.input,textarea.input{width:100%;background:var(--bg-2);border:1px solid var(--line-2);border-radius:var(--r-ctl);padding:12px 14px;color:var(--text);font:400 .96rem var(--f-body);transition:border-color .2s}
+.input::placeholder{color:var(--dim)}
+.input:focus{outline:none;border-color:var(--lamp)}
+textarea.input{min-height:110px;resize:vertical}
+select.input{appearance:none;background-image:url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none' stroke='%23a9a4b3' stroke-width='2'%3E%3Cpath d='m1 1 5 5 5-5'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:38px}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.err-msg{color:var(--bad);font-size:.83rem;margin-top:6px}
+.err-msg:empty{display:none}
+.field.has-err .input{border-color:var(--bad)}
+.hint{font-size:.83rem;color:var(--dim);margin-top:6px}
+.hint.ok{color:var(--ok)} .hint.bad{color:var(--bad)}
+input[type=range]{width:100%;accent-color:var(--lamp)}
+.check{display:flex;gap:10px;align-items:flex-start;font-size:.92rem;color:var(--muted);cursor:pointer;margin-bottom:14px}
+.check input{margin-top:4px;accent-color:var(--lamp)}
+
+/* ---------- Nav ---------- */
+#nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:60;background:rgba(13,12,16,.78);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
+.nav-in{max-width:1280px;margin:0 auto;height:68px;padding:0 24px;display:flex;align-items:center;gap:20px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font:800 1.4rem var(--f-display);letter-spacing:-.03em}
+.nav-links{display:flex;gap:4px;margin-left:10px}
+.nav-links a{position:relative;padding:8px 13px;border-radius:10px;color:var(--muted);text-decoration:none;font-weight:500;font-size:.95rem}
+.nav-links a:hover{color:var(--text);background:var(--surface)}
+.dot-badge{display:inline-grid;place-items:center;min-width:18px;height:18px;padding:0 5px;margin-left:6px;border-radius:9px;background:var(--lamp);color:var(--on-lamp);font:700 .7rem var(--f-body)}
+.nav-right{margin-left:auto;display:flex;gap:10px;align-items:center}
+.me-chip{display:flex;align-items:center;gap:8px;font-weight:600;font-size:.92rem}
+.me-chip i{width:32px;height:32px;border-radius:50%;background:var(--lamp);color:var(--on-lamp);display:grid;place-items:center;font:700 .9rem var(--f-body);font-style:normal}
+
+/* ---------- Layout ---------- */
+.wrap{max-width:1280px;margin:0 auto;padding:0 24px}
+.sec{padding:76px 0 0}
+h1,h2,h3,h4{font-family:var(--f-display);margin:0;letter-spacing:-.03em}
+h2.title{font-size:clamp(1.9rem,3.6vw,2.9rem);line-height:1.05;font-weight:700}
+.lead{color:var(--muted);font-size:1.12rem;max-width:56ch}
+
+/* ---------- Hero + lineup ---------- */
+.hero{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:48px;align-items:center;padding-top:56px}
+.hero h1{font-size:clamp(2.7rem,5.6vw,5rem);line-height:.98;font-weight:800;letter-spacing:-.045em;margin-bottom:22px}
+.hero .lead{margin:0 0 30px}
+.hero-cta{display:flex;gap:12px;flex-wrap:wrap}
+.trust{display:flex;gap:26px;flex-wrap:wrap;margin-top:34px;color:var(--muted);font-size:.92rem}
+.trust span{display:flex;align-items:center;gap:8px}
+.trust .ic{color:var(--ok)}
+.lineup{display:flex;gap:8px;height:clamp(360px,44vw,520px)}
+.slat{position:relative;flex:1;min-width:0;border-radius:var(--r-card);overflow:hidden;background:var(--surface);transition:flex .55s cubic-bezier(.2,.8,.2,1);display:block;text-decoration:none;isolation:isolate}
+.slat.on{flex:5.2}
+.slat svg.art{position:absolute;top:0;left:50%;height:100%;width:auto;aspect-ratio:1200/500;transform:translateX(-50%);max-width:none}
+.slat::after{content:"";position:absolute;inset:0;z-index:2;background:linear-gradient(180deg,rgba(13,12,16,0) 40%,rgba(13,12,16,.92));transition:opacity .4s}
+.slat .vname{position:absolute;z-index:3;left:0;right:0;bottom:16px;text-align:center;writing-mode:vertical-rl;transform:rotate(180deg);margin:auto;font:700 1.05rem var(--f-display);letter-spacing:.01em;height:60%;display:flex;align-items:center;justify-content:flex-start;transition:opacity .3s}
+.slat.on .vname{opacity:0}
+.slat .info{position:absolute;z-index:3;left:22px;right:22px;bottom:20px;opacity:0;transform:translateY(8px);transition:opacity .35s .12s,transform .35s .12s;pointer-events:none}
+.slat.on .info{opacity:1;transform:none}
+.info h3{font-size:1.7rem;font-weight:700;margin-bottom:2px}
+.info p{margin:0;color:var(--text);opacity:.85;font-size:.95rem}
+.info .acc{display:inline-block;width:34px;height:3px;border-radius:2px;margin-bottom:10px}
+.marquee{margin-top:56px;overflow:hidden;border-block:1px solid var(--line);padding:18px 0;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.marquee-track{display:flex;gap:0;width:max-content;animation:marq 46s linear infinite}
+.marquee-track span{font:600 1.15rem var(--f-display);color:var(--dim);padding:0 30px;border-right:1px solid var(--line-2);white-space:nowrap}
+@keyframes marq{to{transform:translateX(-50%)}}
+
+/* ---------- Discover ---------- */
+.sec-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:26px}
+.filters{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:26px}
+.filters .search{position:relative;flex:1 1 220px;max-width:340px;margin-left:auto}
+.filters .search .ic{position:absolute;left:13px;top:50%;transform:translateY(-50%);color:var(--dim)}
+.filters .search input{padding-left:40px}
+.filters select{width:auto;min-width:170px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(258px,1fr));gap:20px}
+.card{position:relative;border-radius:var(--r-card);overflow:hidden;background:var(--surface);aspect-ratio:4/5;cursor:pointer;isolation:isolate;border:1px solid var(--line);transition:border-color .25s}
+.card:hover{border-color:var(--accent)}
+.card .art-box{position:absolute;inset:0}
+.card .art-box svg{transition:transform .7s cubic-bezier(.2,.8,.2,1)}
+.card:hover .art-box svg{transform:scale(1.07)}
+.card::after{content:"";position:absolute;inset:0;z-index:2;background:linear-gradient(180deg,rgba(13,12,16,0) 38%,rgba(13,12,16,.94) 84%)}
+.card .top{position:absolute;z-index:3;top:12px;left:12px;right:12px;display:flex;justify-content:space-between;gap:8px}
+.pill{display:inline-flex;align-items:center;gap:6px;padding:5px 10px;border-radius:999px;background:rgba(13,12,16,.66);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid var(--line-2);font-size:.76rem;font-weight:600}
+.pill.ok{color:var(--ok)}
+.card .body{position:absolute;z-index:3;left:18px;right:18px;bottom:16px}
+.card h3{font-size:1.55rem;font-weight:700;line-height:1.1}
+.card h3 a{text-decoration:none}
+.card h3 a::after{content:"";position:absolute;inset:0;z-index:4}
+.card .talent{margin:4px 0 0;font-weight:600;color:var(--accent);font-size:.95rem}
+.card .meta{display:flex;flex-wrap:wrap;gap:4px 14px;margin-top:8px;color:var(--muted);font-size:.85rem}
+.card .meta span{display:inline-flex;align-items:center;gap:5px}
+.card .actions{position:relative;z-index:5;display:flex;gap:8px;margin-top:14px}
+.card .actions .btn{flex:1}
+.empty{grid-column:1/-1;text-align:center;padding:60px 20px;border:1px dashed var(--line-2);border-radius:var(--r-card);color:var(--muted)}
+
+/* ---------- How it works + trust ---------- */
+.how{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--line-2)}
+.how>div{padding:28px 28px 8px 0;border-right:1px solid var(--line);margin-right:28px}
+.how>div:last-child{border:0;margin:0}
+.how b{font:700 3.4rem var(--f-display);color:var(--lamp);letter-spacing:-.05em;line-height:1}
+.how h3{font-size:1.35rem;margin:14px 0 8px}
+.how p{color:var(--muted);margin:0;max-width:36ch}
+.why{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+.why ul{list-style:none;margin:0;padding:0;display:grid;gap:26px}
+.why li{display:grid;grid-template-columns:44px 1fr;gap:16px}
+.why li .ib{width:44px;height:44px;border-radius:12px;background:var(--surface-2);border:1px solid var(--line-2);display:grid;place-items:center;color:var(--lamp)}
+.why li h4{font-size:1.12rem;margin-bottom:4px;font-family:var(--f-body);letter-spacing:-.01em;font-weight:700}
+.why li p{margin:0;color:var(--muted)}
+.split-cta{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.split-cta>div{padding:34px;border-radius:var(--r-lg);background:var(--surface);border:1px solid var(--line);display:flex;flex-direction:column;align-items:flex-start;gap:14px}
+.split-cta>div:last-child{background:var(--surface);color:var(--text);border-color:var(--line)}
+.split-cta h3{font-size:1.8rem;font-weight:700}
+.split-cta p{margin:0 0 6px;opacity:.82;max-width:40ch}
+.split-cta .btn.dark{background:var(--lamp);color:var(--on-lamp)}.split-cta .btn.dark:hover{background:var(--lamp-hover)}
+.admin-tabs{display:flex;gap:8px;flex-wrap:wrap;margin:22px 0}
+.admin-panel{display:grid;gap:22px}
+.admin-list{display:grid;gap:10px}
+.arow{display:flex;align-items:center;gap:14px;padding:14px 16px;border:1px solid var(--line);border-radius:14px;background:var(--surface);flex-wrap:wrap}
+.arow-detail{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.arow-detail .tag{text-decoration:none;color:var(--muted);cursor:pointer;transition:color .2s,border-color .2s}
+.arow-detail a.tag:hover{color:var(--text);border-color:var(--line-2)}
+.arow .ai{flex:1;min-width:180px}
+.arow .ai b{display:block;font-size:.98rem}
+.arow .ai small{color:var(--muted);font-size:.85rem}
+.arow-actions{display:flex;gap:8px;flex-wrap:wrap;margin-left:auto}
+.stpill{display:inline-flex;padding:4px 10px;border-radius:999px;font-size:.78rem;font-weight:700;border:1px solid;flex:none}
+.admin-add{margin-top:6px;padding:20px;border:1px dashed var(--line-2);border-radius:16px;background:var(--bg-2)}
+.foot{margin-top:90px;border-top:1px solid var(--line);padding:34px 0 46px;color:var(--dim);font-size:.9rem}
+.foot .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:center}
+
+/* ---------- Profile ---------- */
+.cover{position:relative;height:clamp(280px,40vw,470px);overflow:hidden;background:var(--surface)}
+.cover svg.art{position:absolute;inset:0}
+.cover::after{content:"";position:absolute;inset:0;z-index:2;background:linear-gradient(180deg,rgba(13,12,16,.45),rgba(13,12,16,0) 30%,rgba(13,12,16,0) 55%,var(--bg))}
+.cover-actions{position:absolute;z-index:4;top:18px;left:0;right:0}
+.cover-actions .wrap{display:flex;justify-content:space-between}
+.cover-cap{position:absolute;z-index:4;right:24px;bottom:104px;max-width:260px;text-align:right;font-size:.8rem;color:var(--muted);text-shadow:0 1px 8px #000}
+.pgrid{display:grid;grid-template-columns:minmax(0,1fr) 370px;gap:44px;margin-top:-104px;position:relative;z-index:5;padding-bottom:110px}
+.phead{display:flex;gap:22px;align-items:flex-end;flex-wrap:wrap}
+.avatar{flex:none;display:grid;place-items:center;border-radius:28px;background-color:var(--accent);background-image:linear-gradient(140deg,rgba(255,255,255,.38),rgba(0,0,0,.18));color:#160f0a;font:800 2.6rem var(--f-display);letter-spacing:-.04em;width:124px;height:124px;border:4px solid var(--bg)}
+.avatar.sm{width:44px;height:44px;border-radius:14px;font-size:1.05rem;border-width:0}
+.avatar.xs{width:38px;height:38px;border-radius:12px;font-size:.95rem;border-width:0}
+.phead h1{font-size:clamp(2.1rem,4.4vw,3.4rem);font-weight:800;line-height:1;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.vbadge{display:inline-flex;align-items:center;gap:6px;font:600 .8rem var(--f-body);letter-spacing:0;color:var(--ok);background:rgba(79,214,160,.1);border:1px solid rgba(79,214,160,.3);padding:5px 10px;border-radius:999px}
+.phead .talent{font:600 1.15rem var(--f-body);color:var(--accent);margin:6px 0 0}
+.facts{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 0}
+.facts .tag{align-items:center;gap:7px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);margin-top:28px;border-block:1px solid var(--line-2)}
+.stat{padding:18px 0 18px 20px;border-left:1px solid var(--line)}
+.stat:first-child{border:0;padding-left:0}
+.stat b{display:block;font:700 1.6rem var(--f-display);letter-spacing:-.03em}
+.stat span{color:var(--muted);font-size:.86rem}
+.blk{margin-top:46px}
+.blk h2{font-size:1.55rem;font-weight:700;margin-bottom:16px}
+.blk h2 small{font:500 .95rem var(--f-body);color:var(--dim);margin-left:8px;letter-spacing:0}
+.blk p{color:#cfc9d6;max-width:64ch;margin:0 0 14px}
+.tags{display:flex;flex-wrap:wrap;gap:8px}
+.vids{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px}
+.vid{position:relative;border-radius:14px;overflow:hidden;aspect-ratio:16/10;cursor:pointer;border:1px solid var(--line);padding:0;background:var(--surface);text-align:left;color:var(--text);display:block;width:100%}
+.vid svg.art{position:absolute;inset:0;transition:transform .6s}
+.vid:hover svg.art{transform:scale(1.06)}
+.vid::after{content:"";position:absolute;inset:0;z-index:2;background:linear-gradient(180deg,rgba(13,12,16,.1),rgba(13,12,16,.85))}
+.vid .pc{position:absolute;z-index:3;top:50%;left:50%;transform:translate(-50%,-60%);width:54px;height:54px;border-radius:50%;display:grid;place-items:center;background:rgba(239,234,224,.16);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid rgba(239,234,224,.4)}
+.vid .cap{position:absolute;z-index:3;left:14px;right:14px;bottom:12px;font-weight:600;font-size:.95rem;display:flex;justify-content:space-between;gap:10px}
+.vid .cap span:last-child{color:var(--muted);font-weight:500}
+.tracks{display:grid;gap:4px}
+.track{display:grid;grid-template-columns:44px minmax(0,1fr) auto;gap:14px;align-items:center;padding:12px 14px;border-radius:14px;border:1px solid transparent;transition:background .2s}
+.track:hover,.track.playing{background:var(--surface);border-color:var(--line)}
+.pbtn{width:44px;height:44px;border-radius:50%;border:0;background:var(--text);color:#141216;display:grid;place-items:center;cursor:pointer;transition:transform .15s,background .2s}
+.pbtn:hover{transform:scale(1.06)}
+.track.playing .pbtn{background:var(--accent)}
+.ttitle{font-weight:600;margin-bottom:6px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.wave{display:flex;align-items:center;gap:2px;height:32px}
+.wave i{flex:1;min-width:2px;background:var(--surface-3);border-radius:2px}
+.wave i.on{background:var(--accent)}
+.tdur{color:var(--muted);font-size:.88rem;text-align:right;min-width:74px;font-variant-numeric:tabular-nums}
+.tdur .tcur:not(:empty)::after{content:" / "}
+.shots{display:grid;grid-template-columns:2fr 1fr 1fr;gap:12px}
+.shot{position:relative;border-radius:14px;overflow:hidden;aspect-ratio:1/1;border:1px solid var(--line);background:var(--surface)}
+.shot:first-child{aspect-ratio:auto;grid-row:span 1}
+.shot svg.art{position:absolute;inset:0}
+.shot::after{content:"";position:absolute;inset:0;z-index:2;background:linear-gradient(180deg,transparent 55%,rgba(13,12,16,.9))}
+.shot small{position:absolute;z-index:3;left:12px;right:12px;bottom:10px;font-size:.8rem;color:var(--text)}
+.reviews{display:grid;gap:14px}
+.review{padding:20px 22px;border-left:3px solid var(--accent);background:var(--surface);border-radius:0 var(--r-card) var(--r-card) 0}
+.review p{margin:0 0 10px;color:var(--text)}
+.review small{color:var(--muted)}
+.aside{position:sticky;top:92px;align-self:start;margin-top:72px}
+.book{background:var(--surface);border:1px solid var(--line-2);border-radius:var(--r-lg);padding:26px;box-shadow:0 30px 60px -30px rgba(0,0,0,.9)}
+.book .price{display:flex;align-items:baseline;gap:8px;margin-bottom:4px}
+.book .price b{font:800 2.3rem var(--f-display);letter-spacing:-.04em}
+.book .price span{color:var(--muted);font-size:.92rem}
+.book ul{list-style:none;margin:18px 0 22px;padding:0;display:grid;gap:12px;font-size:.93rem;color:var(--muted)}
+.book li{display:flex;gap:10px;align-items:center}
+.book li .ic{color:var(--accent)}
+.book .fine{margin:14px 0 0;text-align:center;font-size:.82rem;color:var(--dim)}
+.hirebar{display:none}
+
+/* ---------- Modals ---------- */
+.modal-back{position:fixed;inset:0;z-index:100;background:rgba(6,5,8,.76);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);display:grid;place-items:center;padding:16px;animation:fade .2s}
+.modal{position:relative;width:min(660px,100%);max-height:calc(100dvh - 32px);overflow:auto;background:var(--surface);border:1px solid var(--line-2);border-radius:var(--r-lg);animation:pop .28s cubic-bezier(.2,.8,.2,1)}
+.modal-head{display:flex;gap:14px;align-items:center;padding:22px 26px 18px;border-bottom:1px solid var(--line)}
+.modal-head h3{font-size:1.4rem;font-weight:700}
+.modal-head p{margin:0;color:var(--muted);font-size:.9rem}
+.modal-head .icon-btn{margin-left:auto;background:var(--surface-2)}
+.modal-body{padding:22px 26px 26px}
+.modal-body .guest{margin:0 0 18px;padding:10px 14px;border-radius:var(--r-ctl);background:var(--surface-2);color:var(--muted);font-size:.88rem}
+.modal-body .guest a{color:var(--lamp)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.budget-val{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px}
+.budget-val b{font:800 1.9rem var(--f-display);letter-spacing:-.03em}
+.budget-note{font-size:.86rem;color:var(--muted);margin-top:8px}
+.vmodal{width:min(860px,100%)}
+.vmodal .icon-btn{position:absolute;top:14px;right:14px;z-index:6}
+.vstage{position:relative;aspect-ratio:16/9;background:#000;overflow:hidden}
+.vstage svg.art{position:absolute;inset:0}
+.vstage::after{content:"";position:absolute;inset:0;z-index:2;background:rgba(13,12,16,.28)}
+.bigplay{position:absolute;z-index:4;top:50%;left:50%;transform:translate(-50%,-50%);width:76px;height:76px;border-radius:50%;border:1px solid rgba(239,234,224,.5);background:rgba(239,234,224,.16);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);color:var(--text);display:grid;place-items:center;cursor:pointer;transition:opacity .25s}
+.playing-v .bigplay{opacity:0}
+.playing-v:hover .bigplay{opacity:1}
+.eq{position:absolute;z-index:4;left:20px;bottom:18px;display:flex;align-items:flex-end;gap:4px;height:30px}
+.eq i{width:5px;height:30%;border-radius:2px;background:var(--accent)}
+.playing-v .eq i{animation:eq 0.9s ease-in-out infinite}
+.eq i:nth-child(2){animation-delay:-.3s!important}.eq i:nth-child(3){animation-delay:-.6s!important}.eq i:nth-child(4){animation-delay:-.15s!important}.eq i:nth-child(5){animation-delay:-.45s!important}
+@keyframes eq{0%,100%{height:20%}50%{height:100%}}
+.vbar{display:flex;align-items:center;gap:14px;padding:16px 22px}
+.prog{flex:1;height:5px;border-radius:3px;background:var(--surface-3);overflow:hidden}
+.prog i{display:block;height:100%;width:0;background:var(--accent)}
+.vtime{font-variant-numeric:tabular-nums;color:var(--muted);font-size:.88rem}
+.vinfo{padding:0 22px 22px}
+.vinfo h3{font-size:1.25rem;font-weight:700}
+.vinfo p{margin:2px 0 8px;color:var(--muted)}
+.vinfo small{color:var(--dim)}
+@keyframes fade{from{opacity:0}}
+@keyframes pop{from{opacity:0;transform:translateY(16px) scale(.98)}}
+
+/* ---------- Chat ---------- */
+.chatpage{max-width:1400px;margin:0 auto;height:calc(100vh - 68px);height:calc(100dvh - 68px - env(safe-area-inset-top,0px) - env(safe-area-inset-bottom,0px));min-height:520px;display:grid;grid-template-columns:320px minmax(0,1fr) 330px;border-inline:1px solid var(--line);position:relative}
+.threads{border-right:1px solid var(--line);display:flex;flex-direction:column;min-height:0;background:var(--bg-2)}
+.threads h2{font-size:1.4rem;padding:22px 22px 14px;font-weight:700}
+.tlist{overflow:auto;flex:1}
+.titem{display:flex;gap:12px;padding:14px 22px;text-decoration:none;border-left:3px solid transparent;align-items:center}
+.titem:hover{background:var(--surface)}
+.titem.on{background:var(--surface);border-left-color:var(--lamp)}
+.titem .tt{min-width:0;flex:1}
+.titem b{display:flex;justify-content:space-between;gap:8px;font-size:.96rem}
+.titem b small{font-weight:500;color:var(--dim);font-size:.75rem}
+.titem p{margin:2px 0 0;color:var(--muted);font-size:.86rem;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.udot{width:9px;height:9px;border-radius:50%;background:var(--lamp);flex:none}
+.conv{display:flex;flex-direction:column;min-height:0;min-width:0}
+.chead{display:flex;align-items:center;gap:12px;padding:14px 20px;border-bottom:1px solid var(--line)}
+.chead .who{min-width:0}
+.chead .who b{display:block;font-size:1.02rem}
+.chead .who small{color:var(--muted)}
+.chead .who small.live{color:var(--ok)}
+.chead .right{margin-left:auto;display:flex;gap:8px}
+.chead .back,.chead .sumbtn{display:none}
+.msgs{flex:1;overflow:auto;padding:22px;display:flex;flex-direction:column;gap:8px;min-height:0}
+.bub{max-width:min(72%,520px);padding:10px 14px;border-radius:16px;font-size:.96rem;line-height:1.45;word-wrap:break-word;overflow-wrap:anywhere}
+.bub small{display:block;margin-top:3px;font-size:.7rem;opacity:.6}
+.bub.me{align-self:flex-end;background:var(--lamp);color:var(--on-lamp);border-bottom-right-radius:5px}
+.bub.them{align-self:flex-start;background:var(--surface-2);border-bottom-left-radius:5px}
+.sys{align-self:center;font-size:.82rem;color:var(--muted);background:var(--surface);padding:6px 14px;border-radius:999px;border:1px solid var(--line);margin:8px 0}
+.bk-msg{align-self:flex-end;width:min(380px,92%);border:1px solid var(--line-2);background:var(--surface);border-radius:var(--r-card);padding:16px 18px;margin:6px 0}
+.bk-msg h4{font-family:var(--f-body);font-size:.95rem;letter-spacing:-.01em;margin-bottom:10px;display:flex;justify-content:space-between;gap:10px;align-items:center}
+.bk-msg dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:6px 14px;font-size:.88rem}
+.bk-msg dt{color:var(--dim)} .bk-msg dd{margin:0}
+.bk-msg p{margin:10px 0 0;padding-top:10px;border-top:1px solid var(--line);color:var(--muted);font-size:.88rem}
+.typing{align-self:flex-start;display:flex;gap:4px;padding:14px 16px;background:var(--surface-2);border-radius:16px;border-bottom-left-radius:5px}
+.typing i{width:7px;height:7px;border-radius:50%;background:var(--muted);animation:blink 1.1s infinite}
+.typing i:nth-child(2){animation-delay:.18s}.typing i:nth-child(3){animation-delay:.36s}
+@keyframes blink{0%,60%,100%{opacity:.3;transform:none}30%{opacity:1;transform:translateY(-3px)}}
+.quick{display:flex;gap:8px;padding:10px 20px 0;overflow-x:auto;scrollbar-width:none}
+.quick::-webkit-scrollbar{display:none}
+.quick .chip{white-space:nowrap;font-size:.84rem;padding:7px 12px}
+.composer{display:flex;gap:10px;align-items:center;padding:12px 20px 16px}
+.composer .input{border-radius:999px;padding:12px 18px}
+.composer .icon-btn{background:var(--surface-2);flex:none}
+.composer .send{width:44px;height:44px;border-radius:50%;border:0;background:var(--lamp);color:var(--on-lamp);display:grid;place-items:center;cursor:pointer;flex:none}
+.summary{border-left:1px solid var(--line);padding:22px;overflow:auto;background:var(--bg-2);min-height:0}
+.summary h3{font-size:1.15rem;margin-bottom:14px;font-weight:700}
+.summary dl{margin:0 0 20px;display:grid;gap:12px}
+.summary dt{color:var(--dim);font-size:.8rem}
+.summary dd{margin:0;font-weight:500}
+.summary .big{font:800 1.9rem var(--f-display);letter-spacing:-.03em}
+.steps{list-style:none;margin:0 0 22px;padding:0;position:relative}
+.steps li{position:relative;padding:0 0 18px 30px;color:var(--dim);font-size:.92rem}
+.steps li::before{content:"";position:absolute;left:5px;top:20px;bottom:-2px;width:2px;background:var(--line-2)}
+.steps li:last-child::before{display:none}
+.steps li i{position:absolute;left:0;top:4px;width:12px;height:12px;border-radius:50%;border:2px solid var(--line-2);background:var(--bg-2)}
+.steps li.done{color:var(--text)}
+.steps li.done i{background:var(--ok);border-color:var(--ok)}
+.steps li.now i{border-color:var(--lamp);background:var(--lamp)}
+.steps li.now{color:var(--text);font-weight:600}
+.safe{display:flex;gap:10px;font-size:.82rem;color:var(--dim);margin-top:18px}
+.safe .ic{color:var(--ok);margin-top:2px}
+.chat-empty{display:grid;place-items:center;text-align:center;padding:30px;color:var(--muted);height:100%}
+.chat-empty h3{font-size:1.5rem;color:var(--text);margin-bottom:8px}
+
+/* ---------- Auth ---------- */
+.auth{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);margin:34px auto 0;max-width:1180px;border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden;background:var(--surface)}
+.auth-art{position:relative;min-height:560px;overflow:hidden;background:#000}
+.auth-art svg.art{position:absolute;top:0;left:50%;height:100%;width:auto;aspect-ratio:1200/500;transform:translateX(-50%);max-width:none}
+.auth-art::after{content:"";position:absolute;inset:0;z-index:2;background:linear-gradient(180deg,rgba(13,12,16,.15),rgba(13,12,16,.92) 82%)}
+.auth-art .copy{position:absolute;z-index:3;left:32px;right:32px;bottom:32px}
+.auth-art h2{font-size:2rem;font-weight:700;line-height:1.08;margin-bottom:14px}
+.auth-art ul{list-style:none;margin:0;padding:0;display:grid;gap:8px;color:var(--muted);font-size:.93rem}
+.auth-art li{display:flex;gap:9px;align-items:flex-start}
+.auth-art li .ic{color:var(--ok);margin-top:3px}
+.auth-form{padding:38px 42px 44px}
+.auth-form h1{font-size:2rem;font-weight:700;margin-bottom:6px}
+.auth-form .sub{color:var(--muted);margin:0 0 22px}
+.seg{display:grid;grid-template-columns:1fr 1fr;background:var(--bg-2);border:1px solid var(--line);border-radius:14px;padding:4px;margin-bottom:24px}
+.seg a,.seg label{display:block;text-align:center;padding:10px;border-radius:10px;color:var(--muted);text-decoration:none;font-weight:600;font-size:.93rem;cursor:pointer}
+.seg a.on,.seg label.on{background:var(--surface-3);color:var(--text)}
+.seg input{position:absolute;opacity:0;pointer-events:none}
+.seg.small{margin-bottom:16px}
+.drop{position:relative;display:flex;gap:14px;align-items:center;padding:16px;border:1.5px dashed var(--line-2);border-radius:14px;background:var(--bg-2);transition:border-color .2s}
+.drop:hover{border-color:var(--lamp)}
+.drop input{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:pointer}
+.drop .di{width:44px;height:44px;border-radius:12px;background:var(--surface-2);display:grid;place-items:center;color:var(--lamp);flex:none}
+.drop b{display:block;font-size:.93rem}
+.drop small{color:var(--dim)}
+.drop.has{border-style:solid;border-color:var(--ok)}
+.drop.has .di{color:var(--ok)}
+.field.has-err .drop{border-color:var(--bad)}
+.sw{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-top:18px;font-size:.92rem;color:var(--muted)}
+.sw a{color:var(--lamp);font-weight:600}
+.done-box{text-align:left}
+.done-box .okc{width:56px;height:56px;border-radius:50%;background:rgba(79,214,160,.14);color:var(--ok);display:grid;place-items:center;margin-bottom:18px}
+.toast{position:fixed;left:50%;bottom:calc(26px + env(safe-area-inset-bottom,0px));transform:translate(-50%,30px);opacity:0;pointer-events:none;background:var(--text);color:#141216;padding:12px 20px;border-radius:12px;font-weight:600;font-size:.93rem;z-index:200;transition:.3s;max-width:calc(100vw - 32px)}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+
+/* ---------- Responsive ---------- */
+@media (max-width:1180px){
+  .chatpage{grid-template-columns:300px minmax(0,1fr)}
+  .summary{display:none;position:absolute;right:0;top:0;bottom:0;width:min(340px,100%);z-index:20;box-shadow:-30px 0 60px rgba(0,0,0,.6)}
+  .chatpage.show-sum .summary{display:block}
+  .chead .sumbtn{display:grid}
+}
+@media (max-width:980px){
+  .hero{grid-template-columns:1fr;gap:34px}
+  .pgrid{grid-template-columns:1fr;gap:0}
+  .aside{display:none}
+  .hirebar{display:flex;position:fixed;z-index:70;left:0;right:0;bottom:0;padding:12px 18px calc(12px + env(safe-area-inset-bottom,0px));background:rgba(13,12,16,.92);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-top:1px solid var(--line-2);gap:14px;align-items:center;justify-content:space-between}
+  .hirebar b{font:800 1.4rem var(--f-display)} .hirebar span{display:block;color:var(--muted);font-size:.8rem}
+  .auth{grid-template-columns:1fr}
+  .auth-art{min-height:240px}
+  .auth-art .copy ul{display:none}
+  .how,.why,.split-cta{grid-template-columns:1fr}
+  .how>div{border-right:0;border-bottom:1px solid var(--line);margin:0;padding:24px 0}
+  .how>div:last-child{border:0}
+}
+@media (max-width:760px){
+  .nav-links{display:none}
+  .nav-in{padding:0 16px;gap:10px}
+  .wrap{padding:0 16px}
+  .me-chip span{display:none}
+  .sec{padding-top:56px}
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .stat:nth-child(3){border-left:0;padding-left:0}
+  .stat:nth-child(n+3){border-top:1px solid var(--line)}
+  .shots{grid-template-columns:1fr 1fr}
+  .shot:first-child{grid-column:1/-1;aspect-ratio:16/9}
+  .row2{grid-template-columns:1fr}
+  .auth-form{padding:28px 20px 32px}
+  .cover-cap{display:none}
+  .phead{gap:16px}
+  .avatar{width:96px;height:96px;font-size:2.1rem;border-radius:24px}
+  .chatpage{grid-template-columns:1fr}
+  .chatpage .conv{display:none}
+  .chatpage.has-active .threads{display:none}
+  .chatpage.has-active .conv{display:flex}
+  .chead .back{display:grid}
+  .bub{max-width:86%}
+  .filters .search{max-width:none;margin-left:0;order:-1;flex-basis:100%}
+  .filters select{flex:1}
+  .split-cta>div{padding:26px}
+  .modal-head,.modal-body{padding-left:18px;padding-right:18px}
+  .lineup{gap:5px}
+  .slat.on{flex:6}
+}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+/* ---------- Added: ID viewer, media tags ---------- */
+.idview{display:block;max-width:100%;max-height:68vh;margin:0 auto;border-radius:12px;border:1px solid var(--line-2);background:var(--bg-2);object-fit:contain}
+iframe.idview{width:100%;height:68vh}
+.idfoot{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:18px}
+.idfoot .arow-actions{margin-left:auto}
+.vfy{display:inline-flex;align-items:center;gap:6px;color:var(--ok);border-color:var(--ok);background:rgba(79,214,160,.13)}
+.realtrack{padding:14px 16px;border:1px solid var(--line);border-radius:14px;background:var(--surface)}
+.realtrack audio{width:100%;margin-top:8px}
+.vmodal video{display:block;width:100%;max-height:70vh;background:#000}
+.allhead{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:8px}
+.morewrap{display:flex;justify-content:center;margin-top:28px}
+button.tag{font-family:inherit;cursor:pointer;transition:color .2s,border-color .2s}
+button.tag:hover{color:var(--text);border-color:var(--lamp)}
+.evrows{display:grid;gap:10px;margin:0 0 18px;padding:0;list-style:none}
+.evrows li{display:flex;gap:12px;align-items:flex-start;color:var(--muted)}
+.evrows li b{display:block;color:var(--text);font-weight:600}
+.evrows .ic{color:var(--lamp);margin-top:3px}
+.evdesc{margin:0 0 18px;color:var(--muted)}
+
+/* ---------- Events, bands, availability ---------- */
+.linkbtn{background:none;border:0;padding:0 6px 0 0;color:var(--lamp);text-decoration:underline;cursor:pointer;font:inherit}
+.tag.day.bk{opacity:.55;text-decoration:line-through;color:var(--dim)}
+.mem{display:grid;gap:10px}
+.mrow{display:flex;align-items:center;gap:12px;flex-wrap:wrap;padding:12px 16px;border:1px solid var(--line);border-radius:14px;background:var(--surface)}
+.mrow b{flex:1;min-width:140px}.mrow span{color:var(--lamp);font-weight:600;font-size:.9rem}
+.evlist{display:grid;gap:14px}
+.evcard{display:grid;grid-template-columns:72px 1fr auto;gap:18px;align-items:start;padding:18px 20px;border:1px solid var(--line);border-radius:var(--r-card);background:var(--surface)}
+.evdate{display:grid;place-items:center;text-align:center;border-radius:14px;background:var(--surface-2);padding:10px 0;min-height:72px}
+.evdate b{font:700 1.6rem/1 var(--f-display)}.evdate span{color:var(--lamp);font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em}
+.evbody h3{font-size:1.25rem;font-weight:700;margin-bottom:2px}
+.evmeta{margin:0 0 10px;color:var(--muted);font-size:.92rem}
+.evd{margin:10px 0 0;color:#cfc9d6;max-width:64ch;font-size:.95rem}
+.evact{display:flex;flex-direction:column;gap:8px}
+.apppanel{margin:0 0 26px;padding:18px 20px;border:1px solid var(--line-2);border-radius:var(--r-card);background:var(--bg-2)}
+.apppanel h3{font-size:1.15rem;margin-bottom:12px}
+.apppanel .arow{margin-top:10px}.apev{margin-top:14px}.apev small{color:var(--muted);margin-left:8px}
+.pitch{margin:8px 0 0;color:#cfc9d6;font-size:.9rem}
+.bandrows{display:grid;gap:10px}
+.lrow{display:grid;grid-template-columns:120px 1fr;gap:12px;align-items:center}
+.lrole{font-weight:600;font-size:.92rem}
+.linetotal{margin-top:10px;color:var(--muted);font-size:.9rem}.linetotal b{color:var(--text);font-size:1.05rem}
+.pick{max-height:260px;overflow:auto;display:grid;gap:8px;padding:2px}
+.prow{display:flex;align-items:center;gap:12px;padding:10px 12px;border:1px solid var(--line);border-radius:12px;cursor:pointer;background:var(--surface)}
+.prow:hover{border-color:var(--line-2)}.prow>span{flex:1}.prow b{display:block;font-size:.95rem}.prow small{color:var(--muted)}
+.prow em{font-style:normal;color:var(--lamp);font-size:.82rem;font-weight:600}
+@media (max-width:760px){.evcard{grid-template-columns:56px 1fr}.evact{grid-column:1/-1;flex-direction:row}.lrow{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<header id="nav"></header>
+<main id="app"></main>
+<div id="modal"></div>
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+<script>
+/* =====================================================================
+   MEHFIL — front-end prototype (vanilla JS, no build step)
+   Screens: Home · Artist profile · Booking modal · Chat · Sign up / Sign in
+   Mock artist gallery is always local. Sign-ups, orders and admin
+   approvals persist to Supabase once configured below; until then
+   everything falls back to in-memory demo data automatically.
+   ===================================================================== */
+
+/* ---------- Supabase connection ----------
+   1. Create a free project at supabase.com
+   2. Run schema.sql (provided separately) in its SQL editor
+   3. Paste your Project URL and anon public key below
+   4. This only works when the page is opened outside the Claude
+      artifact preview (locally, or hosted on Vercel/Netlify/etc.) */
+const SUPABASE_URL = 'https://prsgytrgpzfboqlredcp.supabase.co';       // e.g. https://xxxxxxxx.supabase.co
+const SUPABASE_ANON_KEY = 'sb_publishable_hgM-AILQseA2ioGsZ139_Q_I-s_UEPh';
+const DB_ENABLED = /^https:\/\//.test(SUPABASE_URL) && !!SUPABASE_ANON_KEY && !SUPABASE_ANON_KEY.startsWith('YOUR_') && !!window.supabase;
+const sb = DB_ENABLED ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY) : null;
+
+/* ---------- Mock data: 7 Mumbai student artists ---------- */
+const ARTISTS = [
+ { id:'rohan-desai', name:'Rohan Desai', first:'Rohan', talent:'Acoustic Guitarist', sub:'Fingerstyle, indie and Bollywood unplugged', cat:'Guitar',
+   college:"St. Xavier's College", short:"St. Xavier's", area:'Fort', course:'B.A. Psychology, third year',
+   cover:'acoustic', bg:'#1f1108', glow:'#ff8a3d', accent:'#ff9a4d',
+   coverDesc:'A lone acoustic guitar in silhouette, lit by amber haze',
+   rate:4000, rating:4.9, gigs:23, response:'about 1 hr', next:'Fri 25 Sep',
+   genres:['Indie','Bollywood unplugged','Folk','Acoustic pop'],
+   bio:"Rohan has played fingerstyle guitar since Class 7 and now turns Arijit Singh and Prateek Kuhad songs into intimate acoustic sets that fill a room without taking it over. He is a regular at the Malhar open mic and brings his own DI box, so he plugs in anywhere.",
+   bio2:"Best for café evenings, cocktail hours, birthday dinners and small terrace parties.",
+   rep:['Kesariya (unplugged)','Tum Se Hi','Raabta','Kasoor','Ed Sheeran medley','Khwabon Ke Parindey'],
+   tracks:[{t:'Ilahi, fingerstyle cover',d:'3:42'},{t:'Coffee & Rain (original)',d:'4:05'},{t:'Kabira, unplugged',d:'3:18'}],
+   videos:[{t:'Live at a Kala Ghoda café',d:'4:12'},{t:"Malhar open mic, Xavier's",d:'2:48'}],
+   shots:['Rooftop session, Bandra','Soundcheck at Malhar','Café night, Colaba'],
+   reviews:[{by:'Tanya Bhatia',role:'Birthday dinner, Bandra',text:'Rohan read the room perfectly. Soft during dinner, a little livelier for cake. Guests asked for his number.'},{by:'Sameer Kapadia',role:'Café owner, Colaba',text:'Showed up early, set up fast, and stuck to the timings. Booked him again for next month.'}] },
+ { id:'ananya-iyer', name:'Ananya Iyer', first:'Ananya', talent:'Hindustani Classical Vocalist', sub:'Khayal, bhajan and semi-classical', cat:'Vocals',
+   college:'Mithibai College', short:'Mithibai', area:'Vile Parle', course:'B.A. Mass Media, second year',
+   cover:'tanpura', bg:'#240a12', glow:'#d6b78a', accent:'#d6b78a',
+   coverDesc:'A tanpura against deep maroon, brass lamp light on the strings',
+   rate:6000, rating:5.0, gigs:17, response:'about 2 hrs', next:'Sat 26 Sep',
+   genres:['Hindustani classical','Bhajan and ghazal','Semi-classical','Sangeet and mehendi'],
+   bio:"Nine years of training under a guru have given Ananya a voice that quiets a hall. She sings raag-based sets for pheras, pujas, mehendi evenings and cultural programmes, and can lighten up with folk medleys when the crowd is ready to dance.",
+   bio2:"Accompanies herself on the tanpura. A tabla player from her circle is available at extra cost.",
+   rep:['Raag Yaman','Raag Bhairavi','Vaishnav Jan To','Thumri','Ghazal evening set','Mehendi folk medley'],
+   tracks:[{t:'Raag Yaman, vilambit khayal (excerpt)',d:'6:10'},{t:'Bhairavi thumri',d:'4:22'},{t:'Mann Kunto Maula, cover',d:'5:01'}],
+   videos:[{t:'Classical night, Mithibai Kaleidoscope',d:'5:20'},{t:'Riyaaz at home with the tanpura',d:'3:05'}],
+   shots:['Griha pravesh, Juhu','Backstage at Kaleidoscope','Riyaaz, early morning'],
+   reviews:[{by:'Meenal Joshi',role:'Wedding, Dadar',text:'Our grandparents cried during her bhajan. Professional, punctual and very gracious with the family.'},{by:'Rajiv Menon',role:'Corporate Diwali evening, Lower Parel',text:'Exactly the calm, cultured start we wanted. Guests stayed to listen.'}] },
+ { id:'kabir-shaikh', name:'Kabir Shaikh', first:'Kabir', talent:'Drummer and Percussionist', sub:'Full kit, cajon and hand percussion', cat:'Percussion',
+   college:'NMIMS', short:'NMIMS', area:'Vile Parle', course:'B.Tech Computer Engineering, second year',
+   cover:'drums', bg:'#240b09', glow:'#ff4d3d', accent:'#ff6553',
+   coverDesc:'A drum kit under red stage light, cymbals catching the glare',
+   rate:5000, rating:4.8, gigs:31, response:'about 30 min', next:'Fri 25 Sep',
+   genres:['Rock','Funk','Fusion','Cajon acoustic'],
+   bio:"Kabir is the pulse behind NMIMS's band circuit and has played every fest stage on campus. He plays a full kit for bands and switches to cajon for unplugged sets, so one booking covers a loud night and a quiet one.",
+   bio2:"Practice pads and a compact kit are available for venues with limited space.",
+   rep:['Rock covers','Funk grooves','Cajon and guitar duo sets','Garba and dandiya percussion','Live jam accompaniment'],
+   tracks:[{t:'Groove study in 7/8',d:'2:56'},{t:'Cajon and acoustic mashup',d:'3:34'},{t:'Fest night drum solo',d:'2:15'}],
+   videos:[{t:'Mukesh Patel fest, main stage',d:'3:40'},{t:'Cajon session on a Juhu terrace',d:'2:30'}],
+   shots:['Fest main stage','Rehearsal room, Vile Parle','Terrace jam, Juhu'],
+   reviews:[{by:'Neha Sawant',role:'Sangeet, Thane',text:'Kabir kept the whole dance floor moving for two hours and never lost the beat. Zero attitude, total energy.'},{by:'Arjun Bhosle',role:'College fest lead, Powai',text:'Answered messages within minutes and coordinated soundcheck with our crew like a pro.'}] },
+ { id:'meera-nair', name:'Meera Nair', first:'Meera', talent:'Jazz Keyboardist', sub:'Standards, neo-soul and lounge piano', cat:'Keys',
+   college:'HR College of Commerce & Economics', short:'HR College', area:'Churchgate', course:'B.Com, third year',
+   cover:'keys', bg:'#0a1226', glow:'#5b8def', accent:'#6c9bff',
+   coverDesc:'Piano keys in cool blue light, one key glowing',
+   rate:7500, rating:4.9, gigs:14, response:'about 3 hrs', next:'Sun 27 Sep',
+   genres:['Jazz standards','Neo-soul','Lounge piano','Bossa nova'],
+   bio:"Meera holds Trinity Grade 8 in piano and has spent two years in a Colaba jazz jam circle. She plays a smooth, low-key lounge set that suits cocktail evenings, hotel lobbies and gallery openings, and can take song requests on the fly.",
+   bio2:"Brings a 61-key stage piano and needs one power point plus a small PA or house speakers.",
+   rep:['Fly Me to the Moon','Autumn Leaves','The Girl from Ipanema','Neo-soul chill set','Bollywood jazz reimaginings'],
+   tracks:[{t:'Autumn Leaves, trio arrangement',d:'5:14'},{t:'Midnight Marine Drive (original)',d:'4:38'},{t:'Bollywood jazz medley',d:'6:02'}],
+   videos:[{t:'Lounge set at a Lower Parel rooftop',d:'5:45'},{t:'Jam night, Colaba',d:'3:22'}],
+   shots:['Gallery opening, Kala Ghoda','Jam night, Colaba','Practice room, Churchgate'],
+   reviews:[{by:'Kavya Rao',role:'Gallery opening, Fort',text:'Sophisticated and unobtrusive. She matched the mood of the art and the guests kept complimenting the music.'},{by:'Imran Qureshi',role:'Corporate mixer, BKC',text:'Great communicator, arrived with her own gear and gave us a proper setlist in advance.'}] },
+ { id:'aarav-mehta', name:'Aarav Mehta', first:'Aarav', talent:'Indie Singer-Songwriter', sub:'Original songs and pop covers on guitar', cat:'Vocals',
+   college:'Jai Hind College', short:'Jai Hind', area:'Churchgate', course:'B.A. Economics, second year',
+   cover:'mic', bg:'#230819', glow:'#ff4fa3', accent:'#ff5fae',
+   coverDesc:'A vintage microphone ringed by neon pink light',
+   rate:3500, rating:4.7, gigs:19, response:'about 1 hr', next:'Thu 24 Sep',
+   genres:['Indie pop','Singer-songwriter','Pop covers','Open mic favourites'],
+   bio:"Aarav writes songs about local trains, monsoon evenings and mid-semester panic, and pads out his sets with crowd-pleasing covers. He plays guitar and sings, keeps banter easy, and handles requests from a shared list.",
+   bio2:"A great pick for house parties, freshers' events and small venues on a tight budget.",
+   rep:['Own songs (12 originals)','Pop and indie covers','Bollywood acoustic requests','Sing-along closers'],
+   tracks:[{t:'Local Train Lullaby (original)',d:'3:29'},{t:'Monsoon Mixtape (original)',d:'3:51'},{t:'Perfect, live cover',d:'4:07'}],
+   videos:[{t:'Open mic night at a Bandra bar',d:'3:58'},{t:'Rooftop acoustic session',d:'2:40'}],
+   shots:['Open mic, Bandra','Campus quad session','House party, Khar'],
+   reviews:[{by:'Ishita Shah',role:'Housewarming, Andheri',text:'Aarav got everyone singing along by the third song. Easy to work with and very fair on price.'},{by:'Rahul Nambiar',role:'Restobar manager, Khar',text:'Great crowd pull for a weeknight. He even shared the gig on his Instagram.'}] },
+ { id:'zoya-khan', name:'Zoya Khan', first:'Zoya', talent:'Violinist', sub:'Western classical, Bollywood strings and entrances', cat:'Strings',
+   college:'Sophia College for Women', short:'Sophia College', area:'Breach Candy', course:'B.A. English Literature, third year',
+   cover:'violin', bg:'#08191a', glow:'#3fbf8f', accent:'#4fcf9f',
+   coverDesc:'A violin and bow in candlelit shadow, emerald glow behind',
+   rate:5500, rating:4.9, gigs:21, response:'about 2 hrs', next:'Sat 26 Sep',
+   genres:['Western classical','Bollywood strings','Wedding entrance','Cinematic'],
+   bio:"Zoya has played in the Sophia orchestra since her first year and takes private Bollywood string gigs on weekends. Her bridal entrance sets and cocktail-hour classics bring a filmy, elegant feel to any room.",
+   bio2:"Can be booked solo or as a duo with a pianist from her college ensemble.",
+   rep:['Canon in D','Kabhi Kabhi Aditi','Perfect (strings)','Kal Ho Naa Ho theme','Cinematic medley'],
+   tracks:[{t:'Canon in D, solo violin',d:'4:15'},{t:'Bollywood strings medley',d:'5:32'},{t:'Bridal entrance, instrumental',d:'3:08'}],
+   videos:[{t:'Sophia orchestra winter concert',d:'6:02'},{t:'Bridal entrance at a Malabar Hill wedding',d:'2:58'}],
+   shots:['Wedding entrance, Malabar Hill','Orchestra rehearsal','Candlelit dinner, Worli'],
+   reviews:[{by:'Aisha Patel',role:'Wedding, Malabar Hill',text:'The bride walked in to Zoya\'s violin and the whole hall went silent. Absolutely magical.'},{by:'Farhan Ali',role:'Anniversary dinner, Worli',text:'Elegant, quick to adapt to my song requests, and very warm with my parents.'}] },
+ { id:'dev-kulkarni', name:'Dev Kulkarni', first:'Dev', talent:'Blues & Rock Electric Guitarist', sub:'Blues, classic rock and funk rhythm', cat:'Guitar',
+   college:'Wilson College', short:'Wilson College', area:'Girgaon', course:'B.Sc. Physics, third year',
+   cover:'electric', bg:'#150b26', glow:'#a66bff', accent:'#b98aff',
+   coverDesc:'An electric guitar in violet stage light with smoke drifting through',
+   rate:4500, rating:4.8, gigs:26, response:'about 2 hrs', next:'Sat 26 Sep',
+   genres:['Blues','Classic rock','Funk rhythm','Solo shred'],
+   bio:"Dev is the guitarist every Wilson band wants and every jam night waits for. His playing swings between smoky blues and full-tilt classic rock, and he can solo over a backing track or sit in with a live band.",
+   bio2:"Has his own amp, pedalboard and backing tracks, so he arrives ready to play.",
+   rep:['Pink Floyd, Comfortably Numb solo','Eric Clapton, Layla','Red Hot Chili Peppers set','12-bar blues jam','Bollywood rock reworks'],
+   tracks:[{t:'Slow blues in A minor',d:'5:20'},{t:'Funk rhythm workout',d:'3:12'},{t:'Rock medley with backing track',d:'6:45'}],
+   videos:[{t:'Band night at a Girgaon pub',d:'4:30'},{t:'Solo blues set at Wilson fest',d:'3:15'}],
+   shots:['Band night, Girgaon','Wilson fest side stage','Pedalboard, home studio'],
+   reviews:[{by:'Siddharth Kamat',role:'Birthday party, Powai',text:'Dev brought the house down. His solos were unreal and he was chill with the crowd throughout.'},{by:'Pooja Dhamdhere',role:'Pub owner, Matunga',text:'Punctual and professional. Drew a bigger crowd than our usual Saturday act.'}] },
+ { id:'aditya-shenoy', name:'Aditya Shenoy', first:'Aditya', talent:'Tabla Player', sub:'Classical tabla and light percussion for live sets', cat:'Percussion',
+   college:"Bhavan's College", short:"Bhavan's College", area:'Andheri West', course:'B.Sc. IT, second year',
+   cover:'tabla', bg:'#170f06', glow:'#e0a542', accent:'#e8b563',
+   coverDesc:'A tabla pair lit from the side, warm brass tones on the skins',
+   rate:4500, rating:4.8, gigs:16, response:'about 1 hr', next:'Fri 25 Sep',
+   genres:['Hindustani classical','Bhajan accompaniment','Fusion percussion','Garba and dandiya'],
+   bio:"Aditya has trained in tabla for over a decade and now accompanies classical vocalists and plays solo rhythm sets for pujas, satsangs and college fests. He reads a raag's mood quickly and keeps time so steady that singers say he's easy to follow.",
+   bio2:"Also plays dholak and can add light percussion to an acoustic guitar or keyboard set.",
+   rep:['Teentaal and Keherwa cycles','Bhajan and kirtan accompaniment','Dholak for sangeet nights','Fusion jam with guitar or keys'],
+   tracks:[{t:'Teentaal solo, madhyalaya',d:'4:02'},{t:'Dholak groove for sangeet',d:'3:15'},{t:'Fusion jam with guitar',d:'3:48'}],
+   videos:[{t:'Accompanying a bhajan evening, Andheri',d:'4:20'},{t:'Solo tabla at a college fest',d:'2:52'}],
+   shots:['Riyaaz at home, Andheri','Sangeet night, Powai',"Fest green room, Bhavan's"],
+   reviews:[{by:'Shalini Rao',role:'Griha pravesh puja, Andheri',text:"Aditya's tabla gave the whole puja a beautiful rhythm. Calm, respectful and right on time."},{by:'Manav Oswal',role:'Sangeet night, Powai',text:'He synced perfectly with our singer and kept the energy up for the dance segment too.'}] },
+ { id:'yusuf-ansari', name:'Yusuf Ansari', first:'Yusuf', talent:'Bass Guitarist', sub:'Funk, rock and Bollywood band bass lines', cat:'Guitar',
+   college:'Thakur College of Science & Commerce', short:'Thakur College', area:'Kandivali East', course:'B.Com, second year',
+   cover:'electric', bg:'#0a1a14', glow:'#38d9a9', accent:'#4fe0b6',
+   coverDesc:'A bass guitar in teal stage light, low smoke rolling across the floor',
+   rate:4200, rating:4.7, gigs:15, response:'about 2 hrs', next:'Sun 27 Sep',
+   genres:['Funk','Rock','Bollywood band sets','Fusion'],
+   bio:"Yusuf holds the groove for two campus bands and has the rare gift of never rushing a beat. He locks in with any drummer within a song or two, so he slots into an existing band or backs up a solo singer just as easily.",
+   bio2:"Owns a 4-string bass and a compact combo amp; can also run silently through a house PA for smaller venues.",
+   rep:['Funk grooves','Bollywood band medleys','Rock and pop covers','Backing a solo vocalist'],
+   tracks:[{t:'Funk groove study',d:'3:20'},{t:'Bollywood band medley, bass cam',d:'4:10'},{t:'Walking bass over a jazz standard',d:'3:02'}],
+   videos:[{t:'Band night at a Kandivali cafe',d:'3:55'},{t:'Fest soundcheck, Thakur College',d:'2:18'}],
+   shots:['Band rehearsal, Kandivali','Fest soundcheck','Home studio setup'],
+   reviews:[{by:'Alisha Fernandes',role:'College fest, Kandivali',text:'Yusuf held the whole band together. Super chill to work with and never late to rehearsal.'},{by:'Rohan Vaidya',role:'House party, Malad',text:'Great groove and easy to communicate with about the setlist.'}] },
+ { id:'om-rane', name:'Om Rane', first:'Om', talent:'Bansuri (Flute) Player', sub:'Classical bansuri and film instrumental sets', cat:'Wind',
+   college:'St. Francis Institute of Technology', short:'St. Francis IT', area:'Borivali West', course:'B.E. Computer Engineering, third year',
+   cover:'flute', bg:'#0c1a10', glow:'#d9c28f', accent:'#d9c28f',
+   coverDesc:'A bansuri laid across warm gold light, dust motes drifting through',
+   rate:4800, rating:4.9, gigs:12, response:'about 3 hrs', next:'Sat 26 Sep',
+   genres:['Hindustani classical','Film instrumental','Meditative and ambient','Fusion'],
+   bio:"Om picked up the bansuri from his grandfather and has been playing raag-based pieces and film instrumentals ever since. His sets are calm and melodic, ideal for the start of a wedding, a puja or a quiet dinner where guests want music that doesn't demand attention but rewards it.",
+   bio2:"Can play solo or alongside a tanpura or a light keyboard drone.",
+   rep:['Raag Bhairav (morning sets)','Raag Yaman','Film instrumental favourites','Meditative background sets'],
+   tracks:[{t:'Raag Bhairav, alaap',d:'4:40'},{t:'Film instrumental medley',d:'5:05'},{t:'Evening raag, drut',d:'3:33'}],
+   videos:[{t:'Sunrise raag session, Sanjay Gandhi National Park',d:'4:02'},{t:'Wedding welcome set',d:'3:10'}],
+   shots:['Riyaaz at Sanjay Gandhi National Park','Wedding welcome desk, Borivali','Home practice room'],
+   reviews:[{by:'Priyanka Save',role:'Wedding welcome, Borivali',text:"Guests were mesmerised as they walked in. Om's flute set exactly the right tone for the evening."},{by:'Naveen Kamath',role:'Corporate offsite, Malad',text:'Peaceful and professional, and he adjusted his set length without any fuss when we ran late.'}] },
+ { id:'farah-contractor', name:'Farah Contractor', first:'Farah', talent:'Saxophonist', sub:'Jazz, Bollywood and lounge saxophone', cat:'Wind',
+   college:'Patkar-Varde College', short:'Patkar-Varde', area:'Goregaon West', course:'B.M.M., third year',
+   cover:'sax', bg:'#1a0f05', glow:'#d9a45e', accent:'#d9a45e',
+   coverDesc:'A brass saxophone glowing amber against a smoky black backdrop',
+   rate:5800, rating:4.8, gigs:13, response:'about 2 hrs', next:'Fri 25 Sep',
+   genres:['Jazz','Bollywood sax covers','Lounge','Cocktail hour instrumental'],
+   bio:"Farah started on clarinet in school and switched to saxophone in college, where she now leads the wind section of her college band. She plays smooth jazz standards and reworks Bollywood hits into sax lines that feel right for a cocktail hour or a classy dinner.",
+   bio2:"Performs solo over backing tracks or alongside a keyboardist for a fuller sound.",
+   rep:['Jazz standards','Bollywood sax covers','Cocktail hour instrumental set','Duet sets with a keyboardist'],
+   tracks:[{t:'Take Five, sax cover',d:'3:48'},{t:'Bollywood sax medley',d:'4:25'},{t:'Smooth jazz original',d:'3:56'}],
+   videos:[{t:'Cocktail hour set, Goregaon rooftop',d:'4:15'},{t:'College band feature, sax solo',d:'2:30'}],
+   shots:['Rooftop cocktail set, Goregaon','Band rehearsal, Patkar-Varde','Studio recording session'],
+   reviews:[{by:'Vikram Anchan',role:'Anniversary dinner, Goregaon',text:"Farah's saxophone made the whole evening feel like a film. Elegant and very professional."},{by:'Sana Batliwala',role:'Corporate cocktail hour, Malad',text:'She read requests smoothly and kept the volume perfect for conversation.'}] }
+];
+const DEMO_AG={'rohan-desai':[21,'Male'],'ananya-iyer':[20,'Female'],'kabir-shaikh':[22,'Male'],'meera-nair':[21,'Female'],'aarav-mehta':[20,'Male'],'zoya-khan':[22,'Female'],'dev-kulkarni':[23,'Male'],'aditya-shenoy':[21,'Male'],'yusuf-ansari':[22,'Male'],'om-rane':[20,'Male'],'farah-contractor':[21,'Female']};
+ARTISTS.forEach(a=>{const d=DEMO_AG[a.id];if(d){a.age=d[0];a.gender=d[1]}});
+const COLLEGES=["St. Xavier's College","Mithibai College","NMIMS","HR College of Commerce & Economics","Jai Hind College","Sophia College for Women","Wilson College","K.C. College","Bhavan's College","Patkar-Varde College","Thakur College of Science & Commerce","St. Francis Institute of Technology","Other institution"];
+const LOCALITIES=['Bandra West','Andheri West','Jogeshwari','Juhu','Powai','Colaba','Lower Parel','Worli','Dadar','Chembur','Malad','Goregaon West','Vile Parle','Santacruz','Khar','Kandivali East','Thane','Vashi, Navi Mumbai','Borivali West','Matunga'];
+const EVENTS=['Wedding or sangeet','Birthday','Corporate event','Café or restobar','College fest','House party'];
+const TALENTS=['Vocals','Guitar','Bass guitar','Ukulele','Keys or piano','Harmonium','Drums or percussion','Cajon','Tabla','Violin or strings','Sitar','Flute','Saxophone','Trumpet','DJ or producer','Other instrument'];
+const GENDERS=['Female','Male','Non-binary','Prefer not to say'];
+const CATS=['All','Band','Guitar','Vocals','Percussion','Keys','Strings','Wind','DJ'];
+/* Band roles: which artists can fill a seat in a band lineup */
+const ROLES=[
+ {k:'Vocalist',cats:['Vocals']},
+ {k:'Guitarist',cats:['Guitar'],not:/bass/i},
+ {k:'Bassist',cats:['Guitar'],kw:/bass/i},
+ {k:'Drummer',cats:['Percussion'],kw:/drum|cajon/i},
+ {k:'Tabla player',cats:['Percussion'],kw:/tabla/i},
+ {k:'Keyboardist',cats:['Keys']},
+ {k:'Strings player',cats:['Strings']},
+ {k:'Wind player',cats:['Wind']},
+ {k:'DJ',cats:['DJ']}
+];
+const GENRES=['Bollywood','Indie','Classical','Jazz','Rock','Folk','Electronic'];
+
+/* ---------- State ---------- */
+const ADMIN_PASSWORD='1234';
+const state = { user:null, filter:'All', q:'', budget:'any', threads:{}, audio:null, vid:null, joined:null, slatWasOn:null, typingTimers:{},
+ dbArtists:[], localArtists:[], bands:[], invites:[], apps:[], localBooked:{}, dbBooked:{}, evFilter:'All',
+ admin:{
+  authed:false, tab:'students', loaded:false, loading:false,
+  students:[
+   {id:'ps1',name:'Devika Prabhu',college:'K.C. College',talent:'Vocals',email:'devika.prabhu@kccollege.edu.in',status:'pending'},
+   {id:'ps2',name:'Yash Rathod',college:"St. Xavier's College",talent:'Guitar',email:'yash.rathod@xaviers.edu',status:'pending'},
+   {id:'ps3',name:'Riya Pillai',college:'Sophia College for Women',talent:'Vocals',email:'riya.pillai@sophiacollege.ac.in',status:'approved'}
+  ],
+  recruiters:[
+   {id:'pr1',name:'Nikhil Vora',company:'Vora Events & Weddings',email:'nikhil@voraevents.in',status:'pending'},
+   {id:'pr2',name:'Simran Kohli',company:null,email:'simran.kohli@gmail.com',status:'pending'},
+   {id:'pr3',name:'The Bandra Terrace',company:'The Bandra Terrace',email:'bookings@bandraterrace.in',status:'approved'}
+  ],
+  events:[
+   {id:'ev1',organiser:'The Bandra Terrace',budget:12000,lookingFor:['Vocalist','Guitarist'],title:'Diwali Mixer, Bandra Terrace',date:'2026-10-18',venue:'Bandra West',type:'Corporate event',time:'19:00',description:'An evening of live acoustic and vocal sets at the Bandra Terrace for the Diwali season. Student artists on Mehfil will perform between networking and dinner.',featured:true},
+   {id:'ev2',organiser:'Powai Fest Committee',budget:20000,lookingFor:['Full band'],title:'College Fest Battle of Bands, Powai',date:'2026-10-04',venue:'Powai',type:'College fest',time:'16:30',description:'The annual inter-college Battle of Bands in Powai. Student bands and solo acts compete on stage, and hosts are welcome to scout artists for their own events.',featured:true},
+   {id:'ev3',title:'Sunday Jazz Brunch, Colaba',date:'2026-09-28',venue:'Colaba',type:'Cafe or restobar',featured:false,organiser:'Colaba Jazz Cafe',budget:5000,lookingFor:['Keyboardist','Wind player']},
+   {id:'ev4',title:'Sangeet Night, Juhu',date:'2026-11-08',venue:'Juhu',type:'Wedding or sangeet',time:'20:00',organiser:'Nikhil Vora',budget:40000,lookingFor:['Full band','DJ'],description:'A 250-guest sangeet at a Juhu banquet. We want a live band for the first set and a DJ after dinner. Student acts welcome to apply.',featured:false},
+   {id:'ev5',title:'Open Mic and Live Acts, Andheri West',date:'2026-10-11',venue:'Andheri West',type:'Cafe or restobar',time:'18:30',organiser:'Simran Kohli',budget:3000,lookingFor:['Vocalist','Guitarist','Keyboardist'],description:'A cozy Sunday evening for new performers. First-timers are welcome. Short 30-minute slots, paid per act.',featured:false}
+  ],
+  evSeq:6
+ }
+};
+const $ = (s,el=document)=>el.querySelector(s);
+const $$ = (s,el=document)=>[...el.querySelectorAll(s)];
+function isoLocal(d){return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')}
+function dayPlus(n){const d=new Date();d.setDate(d.getDate()+n);return isoLocal(d)}
+function baseArtists(){return ARTISTS.concat(state.localArtists,state.dbArtists)}
+function roleMatch(role,a){if(a.isBand)return false;const t=(a.talent||'')+' '+(a.sub||'');return role.cats.includes(a.cat)&&(!role.kw||role.kw.test(t))&&(!role.not||!role.not.test(t))}
+function roleOf(a){return (ROLES.find(r=>roleMatch(r,a))||{k:'Musician'}).k}
+function bandVisible(b){return b.members.filter(m=>m.accepted!==false).length>=2}
+/* A band behaves like an artist everywhere (card, profile, booking, chat) */
+function bandArtist(b){
+ const ms=b.members.filter(m=>m.accepted!==false), pool=baseArtists();
+ const full=ms.map(m=>({...m,a:pool.find(x=>x.id===m.artistId)}));
+ const rate=Math.round(full.reduce((t,m)=>t+(m.a?m.a.rate:(m.rate||4000)),0)*0.9/500)*500;
+ const r=rng(b.id), pal=ARTIST_PALETTE[Math.floor(r()*ARTIST_PALETTE.length)];
+ const lead=full.find(m=>m.a)?.a, rated=full.filter(m=>m.a);
+ const colleges=[...new Set(full.map(m=>m.a?.college||m.college).filter(Boolean))];
+ const genres=b.genres&&b.genres.length?b.genres:['Live sets'];
+ return {id:b.id,isBand:true,members:ms,name:b.name,first:b.name,talent:'Band: '+ms.map(m=>m.role).join(', '),sub:ms.map(m=>m.role).join(', '),cat:'Band',
+  college:colleges.join(', ')||'Mumbai colleges',short:ms.length+'-piece band',area:'Mumbai',course:'Student band',
+  cover:lead?lead.cover:'electric',bg:pal.bg,glow:pal.glow,accent:pal.accent,coverDesc:`${b.name}, a ${ms.length}-piece student band`,
+  rate:Math.max(rate,4000),rating:rated.length?rated.reduce((t,m)=>t+m.a.rating,0)/rated.length:5,gigs:rated.length?Math.round(rated.reduce((t,m)=>t+m.a.gigs,0)/rated.length):0,
+  response:'about 1 hr',genres,
+  bio:`${b.name} is a student band on Mehfil: ${ms.map(m=>m.name.split(' ')[0]+' on '+m.role.toLowerCase()).join(', ')}.`,
+  bio2:'Book the whole band in one request. Every member is ID verified, and the band can only be booked on days when all its members are free.',
+  rep:genres,links:[],tracks:[],videos:[],shots:[],reviews:[]};
+}
+function allArtists(){const base=(state.dbArtists.length||state.localArtists.length)?ARTISTS.concat(state.localArtists,state.dbArtists):ARTISTS;return base.concat(state.bands.filter(bandVisible).map(bandArtist))}
+/* One booking per artist per day. A band is busy when any of its members is busy. */
+function bookedDates(id){
+ const s=new Set([...(state.localBooked[id]||[]),...(state.dbBooked[id]||[])]);
+ const b=state.bands.find(x=>x.id===id);
+ if(b)b.members.filter(m=>m.accepted!==false&&m.artistId).forEach(m=>[...(state.localBooked[m.artistId]||[]),...(state.dbBooked[m.artistId]||[])].forEach(d=>s.add(d)));
+ return s;
+}
+function isBooked(id,date){return bookedDates(id).has(date)}
+function lockDate(id,date){
+ const add=k=>{const l=state.localBooked[k]=state.localBooked[k]||[];if(!l.includes(date))l.push(date)};
+ add(id); const b=state.bands.find(x=>x.id===id); if(b)b.members.forEach(m=>m.artistId&&add(m.artistId));
+}
+function firstFreeFrom(id,start){const d=new Date(start+'T00:00');for(let i=0;i<180;i++){const v=isoLocal(d);if(!isBooked(id,v))return v;d.setDate(d.getDate()+1)}return start}
+function freeDates(id,from,n){const out=[],d=new Date(from+'T00:00');for(let i=0;i<180&&out.length<n;i++){d.setDate(d.getDate()+1);const v=isoLocal(d);if(!isBooked(id,v))out.push(v)}return out}
+function nextFree(id){return firstFreeFrom(id,dayPlus(1))}
+function hireLabel(a){return a.isBand?'Hire this band':'Hire '+a.first}
+/* Approved sign-ups made in this session (no database) become public artists; anything not approved is removed again */
+function syncLocalArtists(){
+ state.localArtists=state.admin.students.filter(x=>x._local&&x.status==='approved').map(x=>mapDbStudentToArtist({id:x.id,name:x.name,age:x.age,gender:x.gender,college:x.college,talent:x.talent,genres:x.genres,music_links:x.links,audio_track_urls:x.audio,performance_video_urls:x.videos}));
+}
+function refreshPublicArtists(){const pg=route().page;if(pg==='home'||pg==='artists')renderGrid()}
+const byId = id => allArtists().find(a=>a.id===id);
+const fmt = n => '\u20B9'+Number(n).toLocaleString('en-IN');
+const esc = s => String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const initials = n => n.split(' ').map(w=>w[0]).slice(0,2).join('');
+const mmss = s => { s=Math.max(0,Math.round(s)); return Math.floor(s/60)+':'+String(s%60).padStart(2,'0'); };
+const durSec = d => { const [m,s]=d.split(':').map(Number); return m*60+s; };
+const timeStr = d => new Date(d).toLocaleTimeString('en-IN',{hour:'numeric',minute:'2-digit'});
+const dateStr = v => new Date(v+'T00:00').toLocaleDateString('en-IN',{weekday:'short',day:'numeric',month:'short'});
+
+/* ---------- Icons ---------- */
+const ICONS={
+ check:'<path d="M20 6 9 17l-5-5"/>',
+ shield:'<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/>',
+ star:'<polygon fill="currentColor" stroke="none" points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>',
+ play:'<polygon fill="currentColor" stroke="none" points="7 4 20 12 7 20 7 4"/>',
+ pause:'<rect x="6" y="4" width="4" height="16" rx="1" fill="currentColor" stroke="none"/><rect x="14" y="4" width="4" height="16" rx="1" fill="currentColor" stroke="none"/>',
+ pin:'<path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/>',
+ cap:'<path d="M22 10 12 5 2 10l10 5 10-5z"/><path d="M6 12v5c3 2 9 2 12 0v-5"/>',
+ send:'<path d="m22 2-7 20-4-9-9-4 20-7z"/><path d="M22 2 11 13"/>',
+ upload:'<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m17 8-5-5-5 5"/><path d="M12 3v12"/>',
+ x:'<path d="M18 6 6 18M6 6l12 12"/>',
+ back:'<path d="M19 12H5M11 18l-6-6 6-6"/>',
+ clock:'<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',
+ cal:'<rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/>',
+ clip:'<path d="m21.44 11.05-9.19 9.19a6 6 0 0 1-8.49-8.49l8.57-8.57A4 4 0 1 1 18 8.84l-8.59 8.57a2 2 0 0 1-2.83-2.83l8.49-8.48"/>',
+ note:'<path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/>',
+ share:'<path d="M4 12v7a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-7"/><path d="m16 6-4-4-4 4"/><path d="M12 2v14"/>',
+ msg:'<path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>',
+ search:'<circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/>',
+ file:'<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/>',
+ idc:'<rect x="2" y="5" width="20" height="14" rx="2"/><circle cx="8" cy="12" r="2"/><path d="M14 10h4M14 14h4M5 17c.5-2 5.5-2 6 0"/>',
+ img:'<rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.1-3.1a2 2 0 0 0-2.8 0L6 21"/>',
+ lock:'<rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>',
+ tag:'<path d="M20.6 13.4 13.4 20.6a2 2 0 0 1-2.8 0L2 12V2h10l8.6 8.6a2 2 0 0 1 0 2.8z"/><circle cx="7" cy="7" r="1.5"/>',
+ mic:'<rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 10a7 7 0 0 0 14 0M12 17v5"/>',
+ users:'<circle cx="9" cy="8" r="4"/><path d="M2 21c0-4 3-7 7-7s7 3 7 7"/><path d="M17 4a4 4 0 0 1 0 8M22 21c0-3-2-5.5-5-6.5"/>'
+};
+const ic=(n,s=18)=>`<svg class="ic" width="${s}" height="${s}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ICONS[n]}</svg>`;
+const LOGO=`<svg width="30" height="30" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="9" fill="#D18A32"/><g fill="#1a1208"><rect x="5" y="13" width="3.6" height="6" rx="1.8"/><rect x="10.6" y="8" width="3.6" height="16" rx="1.8"/><rect x="16.2" y="5" width="3.6" height="22" rx="1.8"/><rect x="21.8" y="10" width="3.6" height="12" rx="1.8"/></g></svg>`;
+
+/* ---------- Cover art generator (inline SVG, no remote images) ---------- */
+function rng(seed){let s=0;for(const c of seed)s=(s*31+c.charCodeAt(0))>>>0;return()=>{s|=0;s=s+0x6D2B79F5|0;let t=Math.imul(s^s>>>15,1|s);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
+
+/* ---------- Turn an approved DB student into a browsable artist card ---------- */
+const TALENT_COVER={'Vocals':'mic','Guitar':'acoustic','Bass guitar':'electric','Ukulele':'acoustic','Keys or piano':'keys','Harmonium':'keys','Drums or percussion':'drums','Cajon':'drums','Tabla':'tabla','Violin or strings':'violin','Sitar':'tanpura','Flute':'flute','Saxophone':'sax','Trumpet':'sax','DJ or producer':'electric','Other instrument':'electric'};
+const TALENT_CAT={'Vocals':'Vocals','Guitar':'Guitar','Bass guitar':'Guitar','Ukulele':'Guitar','Keys or piano':'Keys','Harmonium':'Keys','Drums or percussion':'Percussion','Cajon':'Percussion','Tabla':'Percussion','Violin or strings':'Strings','Sitar':'Strings','Flute':'Wind','Saxophone':'Wind','Trumpet':'Wind','DJ or producer':'DJ','Other instrument':'Wind'};
+const TALENT_ROLE={'Vocals':'Vocalist','Guitar':'Guitarist','Ukulele':'Guitarist','Bass guitar':'Bassist','Drums or percussion':'Drummer','Cajon':'Drummer','Tabla':'Tabla player','Keys or piano':'Keyboardist','Harmonium':'Keyboardist','Violin or strings':'Strings player','Sitar':'Strings player','Flute':'Wind player','Saxophone':'Wind player','Trumpet':'Wind player','DJ or producer':'DJ'};
+const ARTIST_PALETTE=[
+ {bg:'#1f1108',glow:'#ff8a3d',accent:'#ff9a4d'},{bg:'#240a12',glow:'#d6b78a',accent:'#d6b78a'},
+ {bg:'#240b09',glow:'#ff4d3d',accent:'#ff6553'},{bg:'#0a1226',glow:'#5b8def',accent:'#6c9bff'},
+ {bg:'#230819',glow:'#ff4fa3',accent:'#ff5fae'},{bg:'#08191a',glow:'#3fbf8f',accent:'#4fcf9f'},
+ {bg:'#150b26',glow:'#a66bff',accent:'#b98aff'},{bg:'#170f06',glow:'#e0a542',accent:'#e8b563'}
+];
+function mapDbStudentToArtist(row){
+ const talent=row.talent||'Other instrument', first=(row.name||'Artist').trim().split(' ')[0]||'Artist';
+ const r=rng('stu'+row.id), pal=ARTIST_PALETTE[Math.floor(r()*ARTIST_PALETTE.length)];
+ const genres=Array.isArray(row.genres)&&row.genres.length?row.genres:['Live sets'];
+ const shots=Array.isArray(row.portfolio_photo_urls)?row.portfolio_photo_urls:[];
+ return {
+  id:'stu-'+row.id, name:row.name, first, age:row.age||null, gender:row.gender||null, talent, sub:talent, cat:TALENT_CAT[talent]||'Wind',
+  college:row.college||'Mumbai college', short:row.college||'Mumbai', area:'Mumbai', course:'Verified student artist',
+  cover:TALENT_COVER[talent]||'electric', bg:pal.bg, glow:pal.glow, accent:pal.accent,
+  coverDesc:`${row.name}, ${talent.toLowerCase()}`,
+  rate:row.rate&&+row.rate>0?+row.rate:4000, rating:5, gigs:0, response:'about a day', next:'On request',
+  genres, bio:`${first} is a verified student musician on Mehfil, playing ${talent.toLowerCase()} sets around Mumbai.`,
+  bio2:'This profile was created through student sign-up and approved by the Mehfil team after a college ID check.',
+  rep:genres, links:Array.isArray(row.music_links)?row.music_links:[], tracks:(Array.isArray(row.audio_track_urls)?row.audio_track_urls:[]).map((u,i)=>({t:'Track '+(i+1),d:'',url:u})), videos:(Array.isArray(row.performance_video_urls)?row.performance_video_urls:[]).map((u,i)=>({t:'Performance '+(i+1),d:'',url:u})), shots:shots.map((_,i)=>`Portfolio photo ${i+1}`), reviews:[]
+ };
+}
+async function loadPublicArtists(){
+ if(!DB_ENABLED)return;
+ const {data,error}=await sb.from('students').select('*').eq('status','approved').order('created_at',{ascending:false});
+ if(error){console.error('public artists load error',error);return}
+ const next=(data||[]).map(mapDbStudentToArtist);
+ const changed=JSON.stringify(next.map(a=>a.id))!==JSON.stringify(state.dbArtists.map(a=>a.id));
+ state.dbArtists=next;
+ if(changed)refreshPublicArtists();
+}
+const strings=(n,y1,y2,w1,w2,col)=>Array.from({length:n},(_,i)=>{const k=n===1?0:(i/(n-1)-.5)*2;return `<line x1="${(k*w1).toFixed(1)}" y1="${y1}" x2="${(k*w2).toFixed(1)}" y2="${y2}" stroke="${col}" stroke-opacity=".5" stroke-width="1"/>`}).join('');
+const frets=(x,y,n,gap,g)=>Array.from({length:n},(_,i)=>`<line x1="${-x}" x2="${x}" y1="${y+i*gap}" y2="${y+i*gap}" stroke="${g}" stroke-opacity=".28"/>`).join('');
+function drum(cx,cy,rx,h,g,u){const ry=rx*.3;const lugs=[-.6,-.2,.2,.6].map(k=>`<rect x="${cx+k*rx-2}" y="${cy+ry*.9}" width="4" height="${h-6}" rx="2" fill="${g}" opacity=".22"/>`).join('');return `<path d="M${cx-rx},${cy} v${h} a${rx},${ry} 0 0 0 ${2*rx},0 v${-h}Z" fill="url(#bd${u})" stroke="${g}" stroke-opacity=".55"/>${lugs}<ellipse cx="${cx}" cy="${cy}" rx="${rx}" ry="${ry}" fill="#0a0a0c" stroke="${g}" stroke-opacity=".85" stroke-width="2"/><ellipse cx="${cx}" cy="${cy}" rx="${rx*.8}" ry="${ry*.8}" fill="none" stroke="#333" stroke-opacity=".7"/>`}
+const INSTR={
+ acoustic:(u,g)=>`<g transform="translate(640,376) rotate(-15) scale(.8)">
+  <rect x="-13" y="-400" width="26" height="300" fill="#0c0a09" stroke="${g}" stroke-opacity=".25"/>${frets(13,-380,12,24,g)}
+  <path d="M-20,-400 L20,-400 L24,-470 L-24,-470Z" fill="#0c0a09" stroke="${g}" stroke-opacity=".3"/>
+  ${[0,1,2].map(i=>`<rect x="-34" y="${-462+i*20}" width="9" height="10" rx="2" fill="${g}" opacity=".55"/><rect x="25" y="${-462+i*20}" width="9" height="10" rx="2" fill="${g}" opacity=".55"/>`).join('')}
+  <path d="M-70,-120 C-95,-120 -100,-70 -78,-35 C-60,-5 -95,10 -105,50 C-120,110 -70,160 0,160 C70,160 120,110 105,50 C95,10 60,-5 78,-35 C100,-70 95,-120 70,-120 C40,-132 -40,-132 -70,-120Z" fill="url(#bd${u})" stroke="${g}" stroke-opacity=".75" stroke-width="2"/>
+  <ellipse cx="-50" cy="0" rx="46" ry="110" fill="${g}" opacity=".1" filter="url(#bl${u})"/>
+  <circle cx="0" cy="55" r="46" fill="none" stroke="#2b2119" stroke-width="6"/><circle cx="0" cy="55" r="37" fill="#000" stroke="${g}" stroke-opacity=".55" stroke-width="2"/>
+  <rect x="-36" y="108" width="72" height="9" rx="3" fill="#050403" stroke="${g}" stroke-opacity=".45"/>
+  ${strings(6,-400,112,8,14,'#e9d9b8')}</g>`,
+ electric:(u,g)=>`<g transform="translate(632,372) rotate(-20) scale(.78)">
+  <rect x="-13" y="-400" width="26" height="360" fill="#0c0a0c" stroke="${g}" stroke-opacity=".3"/>${frets(13,-380,14,24,g)}
+  <path d="M-19,-400 L19,-400 L26,-470 L-12,-470Z" fill="#0c0a0c" stroke="${g}" stroke-opacity=".35"/>
+  ${[0,1,2,3,4,5].map(i=>`<rect x="${i<3?-24:14}" y="${-462+(i%3)*18}" width="9" height="9" rx="2" fill="${g}" opacity=".6" transform="translate(${i<3?0:-1},0)"/>`).join('')}
+  <path d="M-72,-30 C-118,-36 -128,42 -92,84 C-116,116 -84,176 -22,156 C2,182 56,176 66,132 C108,122 116,58 84,30 C96,-4 74,-36 32,-22 C10,-46 -42,-46 -72,-30Z" fill="url(#bd${u})" stroke="${g}" stroke-opacity=".8" stroke-width="2"/>
+  <ellipse cx="-30" cy="20" rx="50" ry="90" fill="${g}" opacity=".13" filter="url(#bl${u})"/>
+  <path d="M-52,-14 C-80,-8 -84,40 -58,70 C-40,95 0,118 30,100 C60,84 70,44 52,20 C40,4 10,-14 -14,-20 C-30,-24 -42,-18 -52,-14Z" fill="#100c10" stroke="${g}" stroke-opacity=".25"/>
+  ${[0,34,68].map(y=>`<rect x="-32" y="${y-4}" width="64" height="12" rx="3" fill="#050405" stroke="${g}" stroke-opacity=".5" transform="rotate(-6 0 ${y})"/>`).join('')}
+  <circle cx="52" cy="112" r="9" fill="#050405" stroke="${g}" stroke-opacity=".6"/><circle cx="34" cy="132" r="9" fill="#050405" stroke="${g}" stroke-opacity=".6"/>
+  <rect x="-40" y="104" width="70" height="8" rx="3" fill="#0a090a" stroke="${g}" stroke-opacity=".5"/>
+  ${strings(6,-400,108,8,16,'#dcd4e6')}</g>`,
+ tanpura:(u,g)=>`<g transform="translate(620,342) rotate(-6) scale(.74)">
+  <rect x="-20" y="-440" width="40" height="450" fill="#0d0908" stroke="${g}" stroke-opacity=".3"/>
+  <rect x="-25" y="-330" width="50" height="10" fill="${g}" opacity=".4"/><rect x="-25" y="-300" width="50" height="5" fill="${g}" opacity=".25"/>
+  ${[[-38,-425],[-38,-385],[38,-425],[38,-385]].map(([x,y])=>`<line x1="${x<0?-20:20}" y1="${y}" x2="${x}" y2="${y}" stroke="${g}" stroke-opacity=".5" stroke-width="3"/><circle cx="${x}" cy="${y}" r="12" fill="#17100d" stroke="${g}" stroke-opacity=".7" stroke-width="2"/>`).join('')}
+  <ellipse cx="0" cy="112" rx="132" ry="120" fill="url(#bd${u})" stroke="${g}" stroke-opacity=".75" stroke-width="2"/>
+  <ellipse cx="-50" cy="60" rx="46" ry="70" fill="${g}" opacity=".12" filter="url(#bl${u})"/>
+  <ellipse cx="0" cy="112" rx="112" ry="100" fill="none" stroke="${g}" stroke-opacity=".28" stroke-dasharray="2 9" stroke-width="3"/>
+  <ellipse cx="0" cy="120" rx="92" ry="82" fill="#090504" stroke="${g}" stroke-opacity=".4"/>
+  <rect x="-52" y="176" width="104" height="10" rx="4" fill="${g}" opacity=".8"/>
+  ${strings(4,-430,180,9,48,'#f2e3bb')}</g>`,
+ drums:(u,g)=>`<g transform="translate(600,272)">
+  <line x1="-250" y1="-108" x2="-232" y2="230" stroke="#1a1a1c" stroke-width="5"/><line x1="272" y1="-84" x2="262" y2="230" stroke="#1a1a1c" stroke-width="5"/>
+  <line x1="-215" y1="134" x2="-215" y2="230" stroke="#1a1a1c" stroke-width="5"/>
+  <g transform="rotate(-9 -250 -112)"><ellipse cx="-250" cy="-112" rx="118" ry="15" fill="${g}" opacity=".85"/><ellipse cx="-250" cy="-114" rx="118" ry="13" fill="none" stroke="#fff" stroke-opacity=".45"/><ellipse cx="-250" cy="-112" rx="20" ry="4" fill="#120c08"/></g>
+  <g transform="rotate(7 272 -88)"><ellipse cx="272" cy="-88" rx="128" ry="16" fill="${g}" opacity=".7"/><ellipse cx="272" cy="-90" rx="128" ry="14" fill="none" stroke="#fff" stroke-opacity=".4"/><ellipse cx="272" cy="-88" rx="22" ry="4" fill="#120c08"/></g>
+  <circle cx="0" cy="104" r="132" fill="url(#bd${u})" stroke="${g}" stroke-opacity=".8" stroke-width="3"/>
+  ${Array.from({length:10},(_,i)=>`<rect x="-3" y="-30" width="6" height="14" rx="2" fill="${g}" opacity=".5" transform="rotate(${i*36} 0 104)"/>`).join('')}
+  <circle cx="0" cy="104" r="106" fill="#08080a" stroke="#2c2c30" stroke-width="2"/><circle cx="0" cy="104" r="76" fill="none" stroke="${g}" stroke-opacity=".3" stroke-width="2"/><circle cx="34" cy="128" r="24" fill="none" stroke="#2c2c30" stroke-width="2"/>
+  ${drum(-92,-46,70,58,g,u)}${drum(92,-46,70,58,g,u)}${drum(-218,92,74,44,g,u)}${drum(230,108,80,96,g,u)}</g>`,
+ keys:(u,g)=>{const W=46,n=15,x0=-(n*W)/2;let w='',b='';for(let i=0;i<n;i++){const hot=i===6;w+=`<rect x="${x0+i*W+1}" y="${hot?-34:-40}" width="${W-3}" height="${hot?196:200}" rx="5" fill="${hot?g:'url(#kw'+u+')'}" ${hot?'opacity=".9"':''}/>`}[0,1,3,4,5,7,8,10,11,12].forEach(i=>{b+=`<rect x="${x0+(i+1)*W-15}" y="-40" width="29" height="122" rx="4" fill="#060607" stroke="${g}" stroke-opacity=".25"/>`});
+  return `<g transform="translate(600,318) rotate(-5)"><linearGradient id="kw${u}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#c9c1d4"/><stop offset=".6" stop-color="#3b3742"/><stop offset="1" stop-color="#121116"/></linearGradient>
+  <rect x="${x0-16}" y="-160" width="${n*W+32}" height="126" rx="12" fill="url(#bd${u})" stroke="${g}" stroke-opacity=".4"/><rect x="${x0+20}" y="-104" width="${n*W-40}" height="3" rx="1.5" fill="${g}" opacity=".7"/>
+  ${[0,1,2,3].map(i=>`<circle cx="${x0+40+i*26}" cy="-70" r="7" fill="#060607" stroke="${g}" stroke-opacity=".5"/>`).join('')}${w}${b}</g>`},
+ mic:(u,g)=>`<g transform="translate(600,266)">
+  <circle cx="0" cy="-36" r="176" fill="none" stroke="${g}" stroke-width="12" opacity=".4" filter="url(#bl${u})"/><circle cx="0" cy="-36" r="176" fill="none" stroke="${g}" stroke-width="2.5" opacity=".95"/>
+  <pattern id="gr${u}" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="8" height="8" fill="#0b0b0d"/><rect width="2" height="8" fill="${g}" opacity=".4"/></pattern>
+  <rect x="-6" y="150" width="12" height="150" fill="#0b0b0d" stroke="${g}" stroke-opacity=".3"/>
+  <path d="M-42,12 L42,12 L28,160 L-28,160Z" fill="url(#bd${u})" stroke="${g}" stroke-opacity=".55"/>
+  <rect x="-68" y="-8" width="136" height="22" rx="9" fill="#0b0b0d" stroke="${g}" stroke-opacity=".65"/>
+  <circle cx="0" cy="-76" r="66" fill="url(#gr${u})" stroke="${g}" stroke-opacity=".8" stroke-width="2.5"/><ellipse cx="-22" cy="-100" rx="22" ry="30" fill="#fff" opacity=".07"/></g>`,
+ violin:(u,g)=>`<g transform="translate(640,336) rotate(24)">
+  <path d="M-9,-112 L9,-112 L13,-300 L-13,-300Z" fill="#0a0806" stroke="${g}" stroke-opacity=".35"/>
+  <rect x="-16" y="-344" width="32" height="46" rx="8" fill="#150e09" stroke="${g}" stroke-opacity=".45"/><circle cx="0" cy="-352" r="14" fill="#150e09" stroke="${g}" stroke-opacity=".55" stroke-width="2"/>
+  <rect x="-30" y="-330" width="14" height="6" rx="3" fill="${g}" opacity=".6"/><rect x="16" y="-316" width="14" height="6" rx="3" fill="${g}" opacity=".6"/>
+  <path d="M-55,-110 C-90,-110 -95,-60 -65,-40 C-50,-30 -50,-20 -65,-8 C-105,20 -100,110 -40,115 C-15,118 15,118 40,115 C100,110 105,20 65,-8 C50,-20 50,-30 65,-40 C95,-60 90,-110 55,-110 C30,-118 -30,-118 -55,-110Z" fill="url(#bd${u})" stroke="${g}" stroke-opacity=".8" stroke-width="2"/>
+  <ellipse cx="-38" cy="-10" rx="30" ry="80" fill="${g}" opacity=".14" filter="url(#bl${u})"/>
+  <path d="M-38,4 C-48,-8 -30,-20 -40,-34" fill="none" stroke="#000" stroke-width="5" stroke-linecap="round"/><path d="M38,4 C48,-8 30,-20 40,-34" fill="none" stroke="#000" stroke-width="5" stroke-linecap="round"/>
+  <path d="M-24,26 h48 l-4,8 h-40z" fill="#120b07" stroke="${g}" stroke-opacity=".5"/><path d="M-12,64 Q0,110 12,64Z" fill="#050403" stroke="${g}" stroke-opacity=".4"/><ellipse cx="46" cy="78" rx="20" ry="13" fill="#0a0705" stroke="${g}" stroke-opacity=".35"/>
+  ${strings(4,-330,70,5,8,'#eadcb9')}
+  <line x1="-300" y1="44" x2="290" y2="52" stroke="#0e0c0a" stroke-width="7"/><line x1="-300" y1="40" x2="290" y2="48" stroke="#e6d9b4" stroke-opacity=".5" stroke-width="2"/><rect x="-312" y="38" width="20" height="14" rx="3" fill="${g}" opacity=".7"/></g>`,
+ tabla:(u,g)=>`<g transform="translate(608,344)">
+  <ellipse cx="-30" cy="70" rx="240" ry="56" fill="${g}" opacity=".14" filter="url(#bl${u})"/>
+  ${drum(-130,-30,92,116,g,u)}${drum(120,0,64,150,g,u)}
+  <circle cx="-130" cy="-30" r="26" fill="#141009" stroke="${g}" stroke-opacity=".55" stroke-width="2"/>
+  <circle cx="120" cy="0" r="18" fill="#141009" stroke="${g}" stroke-opacity=".55" stroke-width="2"/></g>`,
+ flute:(u,g)=>`<g transform="translate(600,270) rotate(-8)">
+  <ellipse cx="0" cy="0" rx="220" ry="70" fill="${g}" opacity=".12" filter="url(#bl${u})"/>
+  <rect x="-360" y="-17" width="720" height="34" rx="17" fill="url(#bd${u})" stroke="${g}" stroke-opacity=".7" stroke-width="2"/>
+  <ellipse cx="-360" cy="0" rx="13" ry="19" fill="#0a0806" stroke="${g}" stroke-opacity=".5"/><ellipse cx="352" cy="0" rx="9" ry="16" fill="#0a0806" stroke="${g}" stroke-opacity=".5"/>
+  ${[-260,-190,-120,10,80,150].map(x=>`<circle cx="${x}" cy="0" r="7" fill="#050403" stroke="${g}" stroke-opacity=".6"/>`).join('')}
+  <rect x="-322" y="-17" width="26" height="34" fill="${g}" opacity=".35"/></g>`,
+ sax:(u,g)=>{const body="M-30,-250 C20,-250 46,-215 44,-175 L40,10 C38,66 -6,96 -46,90 C-96,82 -112,40 -88,6 C-66,-24 -18,-14 -12,18 C-6,46 -40,50 -46,26";
+  return `<g transform="translate(626,300) scale(.9)">
+   <ellipse cx="-60" cy="30" rx="150" ry="140" fill="${g}" opacity=".14" filter="url(#bl${u})"/>
+   <path d="${body}" fill="none" stroke="url(#bd${u})" stroke-width="30" stroke-linecap="round"/>
+   <path d="${body}" fill="none" stroke="${g}" stroke-opacity=".55" stroke-width="2"/>
+   ${[[-4,-230],[6,-190],[14,-150],[24,-110],[30,-70],[24,-20],[2,30],[-40,66],[-70,50]].map(([x,y])=>`<circle cx="${x}" cy="${y}" r="8" fill="#0b0908" stroke="${g}" stroke-opacity=".65"/>`).join('')}
+   <rect x="-8" y="-296" width="14" height="50" rx="6" fill="#0b0908" stroke="${g}" stroke-opacity=".5" transform="rotate(18 -1 -271)"/>
+   <ellipse cx="-1" cy="-300" rx="10" ry="6" fill="#0b0908" stroke="${g}" stroke-opacity=".55" transform="rotate(18 -1 -300)"/></g>`;}
+};
+let UID=0;
+function art(a){
+ const u=UID++, g=a.glow, r=rng(a.id);
+ const bokeh=Array.from({length:16},()=>{const x=r()*1200|0,y=r()*380|0,s=6+r()*26|0,o=(.05+r()*.16).toFixed(2);return `<circle cx="${x}" cy="${y}" r="${s}" fill="${g}" opacity="${o}" filter="url(#bl${u})"/>`}).join('');
+ return `<svg class="art" viewBox="0 0 1200 500" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false"><defs>
+  <linearGradient id="bg${u}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#070709"/><stop offset="1" stop-color="${a.bg}"/></linearGradient>
+  <radialGradient id="gl${u}" cx=".5" cy=".55" r=".55"><stop offset="0" stop-color="${g}" stop-opacity=".6"/><stop offset=".55" stop-color="${g}" stop-opacity=".12"/><stop offset="1" stop-color="${g}" stop-opacity="0"/></radialGradient>
+  <linearGradient id="bm${u}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${g}" stop-opacity=".6"/><stop offset="1" stop-color="${g}" stop-opacity="0"/></linearGradient>
+  <linearGradient id="bd${u}" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2d211b"/><stop offset=".55" stop-color="#0e0b0a"/><stop offset="1" stop-color="#030303"/></linearGradient>
+  <linearGradient id="fl${u}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".85"/></linearGradient>
+  <radialGradient id="vg${u}" cx=".5" cy=".5" r=".75"><stop offset=".55" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".75"/></radialGradient>
+  <filter id="bl${u}" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="12"/></filter></defs>
+  <rect width="1200" height="500" fill="url(#bg${u})"/>
+  <polygon points="470,-10 600,-10 780,520 330,520" fill="url(#bm${u})" opacity=".34"/><polygon points="170,-10 225,-10 430,520 140,520" fill="url(#bm${u})" opacity=".16"/><polygon points="985,-10 1040,-10 1100,520 830,520" fill="url(#bm${u})" opacity=".16"/>
+  <rect width="1200" height="500" fill="url(#gl${u})"/>${bokeh}${INSTR[a.cover](u,g)}
+  <rect y="290" width="1200" height="210" fill="url(#fl${u})"/><rect width="1200" height="500" fill="url(#vg${u})"/></svg>`;
+}
+const avatar=(a,cls='')=>`<span class="avatar ${cls}" style="--accent:${a.accent}" aria-hidden="true">${initials(a.name)}</span>`;
+
+/* ---------- Seed conversation: "Are you confirmed for Friday?" ---------- */
+(function seed(){
+ const k=byId('kabir-shaikh'), now=Date.now(), fri=nextFriday();
+ state.threads[k.id]={id:k.id,unread:0,typing:false,
+  booking:{event:'Birthday',date:fri,time:'20:00',duration:'2 hours',venue:'Bandra West',guests:60,budget:6000,ownSound:true,spec:'Cajon and percussion set for a rooftop birthday. Mostly upbeat covers between 8 and 10 PM.',status:'discussing'},
+  msgs:[
+   {from:'booking',t:now-1000*60*60*26},
+   {from:'them',text:"Hey! Thanks for the request. A rooftop birthday sounds like a great time. Let me check my calendar.",t:now-1000*60*60*25},
+   {from:'me',text:'Sure, take your time. Guests start arriving around 7:30.',t:now-1000*60*60*24},
+   {from:'them',text:"Checked. I'm free that evening and the budget works for me.",t:now-1000*60*60*3},
+   {from:'me',text:'Are you confirmed for Friday?',t:now-1000*60*38},
+   {from:'them',text:"Yes, Friday works. Do you have a sound setup on the terrace, or should I bring a small PA?",t:now-1000*60*31}
+  ]};
+})();
+
+/* Demo bands, and a few days other hosts have already booked */
+state.bands=[
+ {id:'b-marine',name:'The Marine Drive Project',genres:['Indie','Bollywood','Rock'],founder:'Dev Kulkarni',members:[
+  {name:'Dev Kulkarni',role:'Guitarist',artistId:'dev-kulkarni'},{name:'Yusuf Ansari',role:'Bassist',artistId:'yusuf-ansari'},
+  {name:'Kabir Shaikh',role:'Drummer',artistId:'kabir-shaikh'},{name:'Aarav Mehta',role:'Vocalist',artistId:'aarav-mehta'}]},
+ {id:'b-velvet',name:'Velvet Lounge Trio',genres:['Jazz','Lounge','Bollywood'],founder:'Meera Nair',members:[
+  {name:'Meera Nair',role:'Keyboardist',artistId:'meera-nair'},{name:'Farah Contractor',role:'Wind player',artistId:'farah-contractor'},
+  {name:'Zoya Khan',role:'Strings player',artistId:'zoya-khan'}]}
+];
+state.localBooked={'rohan-desai':[dayPlus(3),dayPlus(4)],'meera-nair':[dayPlus(2)],'dev-kulkarni':[dayPlus(6)],'ananya-iyer':[dayPlus(3)]};
+
+/* ---------- Views ---------- */
+function navHTML(){
+ const u=state.user, unread=Object.values(state.threads).reduce((n,t)=>n+t.unread,0);
+ return `<div class="nav-in"><a class="brand" href="#/" aria-label="Mehfil home">${LOGO}<span>Mehfil</span></a>
+ <nav class="nav-links" aria-label="Main"><a href="#/" data-act="scroll" data-target="discover">Discover</a><a href="#/" data-act="scroll" data-target="how">How it works</a><a href="#/bands">Bands</a><a href="#/events">Events</a><a href="#/chat">Messages${unread?`<b class="dot-badge">${unread}</b>`:''}</a></nav>
+ <div class="nav-right">${u?`<span class="me-chip"><i>${esc((u.name[0]||'M').toUpperCase())}</i><span>${esc(u.name.split(' ')[0])}</span></span><button class="btn ghost sm" data-act="signout">Sign out</button>`:`<a class="btn ghost sm" href="#/login">Sign in</a><a class="btn sm" href="#/join/recruiter">Join Mehfil</a>`}</div></div>`;
+}
+
+function cardHTML(a){
+ return `<article class="card" style="--accent:${a.accent}" data-act="open" data-id="${a.id}">
+  <div class="art-box grain">${art(a)}</div>
+  <div class="top"><span class="pill ok">${ic('shield',13)}${a.isBand?'Band':'ID verified'}</span><span class="pill">from ${fmt(a.rate)}</span></div>
+  <div class="body"><h3><a href="#/artist/${a.id}">${esc(a.name)}</a></h3><p class="talent">${esc(a.talent)}</p>
+   <div class="meta"><span>${ic('cap',14)}${esc(a.short)}</span><span>${ic('star',13)}${a.rating.toFixed(1)} (${a.gigs} gigs)</span></div>
+   <div class="actions"><a class="btn ghost sm" href="#/artist/${a.id}">View profile</a><button class="btn sm" data-act="hire" data-id="${a.id}">${hireLabel(a)}</button></div></div></article>`;
+}
+function filtered(){
+ const q=state.q.trim().toLowerCase();
+ return allArtists().filter(a=>{
+  if(state.filter!=='All'&&a.cat!==state.filter)return false;
+  if(q&&!(a.name+' '+a.talent+' '+a.college+' '+a.genres.join(' ')).toLowerCase().includes(q))return false;
+  if(state.budget==='low'&&a.rate>4000)return false;
+  if(state.budget==='mid'&&(a.rate<=4000||a.rate>5500))return false;
+  if(state.budget==='high'&&a.rate<=5500)return false;
+  return true;
+ });
+}
+const HOME_ARTIST_LIMIT=6;
+function renderGrid(){
+ const all=filtered(), g=$('#grid'); if(!g)return;
+ const limited=route().page!=='artists';
+ const mock=new Set(ARTISTS.map(a=>a.id)), ordered=limited?all.filter(a=>!mock.has(a.id)&&!a.isBand).concat(all.filter(a=>mock.has(a.id)),all.filter(a=>a.isBand)):all;
+ const list=limited?ordered.slice(0,HOME_ARTIST_LIMIT):all;
+ g.innerHTML=list.length?list.map(cardHTML).join(''):`<div class="empty"><h3 style="font-size:1.3rem;margin-bottom:6px;color:var(--text)">No artists match yet</h3>Try a different instrument or clear the budget filter.</div>`;
+ const c=$('#count'); if(c)c.textContent=limited&&all.length>list.length?`Showing ${list.length} of ${all.length} artists`:`${list.length} artist${list.length===1?'':'s'} available`;
+ $$('.chip[data-act=filter]').forEach(b=>b.classList.toggle('on',b.dataset.v===state.filter));
+}
+function homeView(){
+ const cats=CATS;
+ const colleges=[...new Set(allArtists().filter(a=>!a.isBand).map(a=>a.college))];
+ const mq=[...colleges,...colleges].map(c=>`<span>${esc(c)}</span>`).join('');
+ return `
+ <section class="wrap hero">
+  <div><h1>The best live music in Mumbai is still in college.</h1>
+   <p class="lead">Hire ID-verified student musicians for weddings, birthdays and pop-ups. Fair prices, real talent and no green-room drama.</p>
+   <div class="hero-cta"><button class="btn lg" data-act="scroll" data-target="discover">Find an artist</button><a class="btn ghost lg" href="#/join/student">I'm a student musician</a></div>
+   <div class="trust"><span>${ic('shield',18)}Every artist checked against a college ID</span><span>${ic('tag',18)}Sets from ${fmt(3500)}</span></div></div>
+  <div class="lineup" role="list" aria-label="Featured artists">${ARTISTS.map((a,i)=>`
+   <a class="slat grain${i===0?' on':''}" role="listitem" href="#/artist/${a.id}" data-act="slat" data-id="${a.id}" aria-label="${esc(a.name)}, ${esc(a.talent)}">${art(a)}
+    <span class="vname">${esc(a.first)}</span>
+    <span class="info"><span class="acc" style="background:${a.accent}"></span><h3>${esc(a.name)}</h3><p>${esc(a.talent)} from ${esc(a.short)}</p></span></a>`).join('')}</div>
+ </section>
+ <div class="marquee" aria-label="Colleges our artists study at"><div class="marquee-track">${mq}</div></div>
+ ${featuredBlock()}
+
+ <section class="wrap sec" id="discover">
+  <div class="sec-head"><div><h2 class="title">Artists ready to play</h2><p class="lead" id="count" style="margin:10px 0 0"></p></div></div>
+  <div class="filters"><div class="chips" role="group" aria-label="Filter by instrument">${cats.map(c=>`<button class="chip${c===state.filter?' on':''}" data-act="filter" data-v="${c}">${c}</button>`).join('')}</div>
+   <select class="input" id="budget" aria-label="Filter by rate"><option value="any">Any rate</option><option value="low">Up to ${fmt(4000)}</option><option value="mid">${fmt(4000)} to ${fmt(5500)}</option><option value="high">Above ${fmt(5500)}</option></select>
+   <label class="search"><span class="sr">Search artists</span>${ic('search',17)}<input class="input" id="q" type="search" placeholder="Search name, college or genre" value="${esc(state.q)}"></label></div>
+  <div class="grid" id="grid"></div>
+  <div class="morewrap"><a class="btn ghost lg" href="#/artists">View all artists</a></div>
+ </section>
+
+ <section class="wrap sec" id="how">
+  <h2 class="title" style="margin-bottom:30px">From first look to confirmed gig</h2>
+  <div class="how">
+   <div><b>1</b><h3>Browse verified artists</h3><p>Watch performance videos, hear tracks and check rates before you say a word.</p></div>
+   <div><b>2</b><h3>Send a booking request</h3><p>Share your date, venue, budget and what you need. Takes about a minute.</p></div>
+   <div><b>3</b><h3>Chat and confirm</h3><p>Sort out songs, timings and sound setup directly in the app, then lock it in.</p></div>
+  </div>
+ </section>
+
+ <section class="wrap sec"><div class="why">
+  <div><h2 class="title">Built for hosts who want talent, not tantrums</h2><p class="lead" style="margin-top:16px">Professional acts often come with a long rider and a longer list of demands. Student artists come with energy, flexibility and rates that fit a real event budget.</p></div>
+  <ul>
+   <li><span class="ib">${ic('idc',22)}</span><div><h4>College ID checked</h4><p>Students sign up with an institutional email and upload their college ID before their profile goes live.</p></div></li>
+   <li><span class="ib">${ic('tag',22)}</span><div><h4>Upfront rates</h4><p>Each profile shows a starting rate per set, and you set your own budget in every request.</p></div></li>
+   <li><span class="ib">${ic('msg',22)}</span><div><h4>One place to coordinate</h4><p>Ask "are you confirmed for Friday?" and settle the setlist without juggling phone numbers.</p></div></li>
+   <li><span class="ib">${ic('pin',22)}</span><div><h4>Local to Mumbai</h4><p>Artists from Fort to Vile Parle who already know the venues and the traffic.</p></div></li>
+  </ul></div></section>
+
+ <section class="wrap sec"><div class="split-cta">
+  <div><h3>Need a full band?</h3><p>Hire a ready-made student band, or pick a singer, guitarist, drummer and more for your event.</p><a class="btn" href="#/bands">Hire a band</a></div>
+  <div><h3>Have a band idea?</h3><p>Send a request to other student artists and form your own band.</p><a class="btn dark" href="#/bands">Form a band</a></div>
+ </div></section>
+
+ <section class="wrap sec"><div class="split-cta">
+  <div><h3>Hosting something?</h3><p>Create a free recruiter account and send your first booking request today.</p><a class="btn" href="#/join/recruiter">Create recruiter account</a><button class="btn ghost" data-act="post-event">Post an event for artists</button></div>
+  <div><h3>Play an instrument?</h3><p>Verify your college ID, upload your best clips and start getting paid to perform.</p><a class="btn dark" href="#/join/student">Create artist profile</a></div>
+ </div></section>`;
+}
+function artistsView(){
+ const cats=CATS;
+ return `<section class="wrap sec" id="discover" style="padding-top:44px">
+  <div class="allhead"><a class="icon-btn" href="#/" aria-label="Back to home">${ic('back',20)}</a></div>
+  <div class="sec-head"><div><h2 class="title">All artists</h2><p class="lead" id="count" style="margin:10px 0 0"></p></div></div>
+  <div class="filters"><div class="chips" role="group" aria-label="Filter by instrument">${cats.map(c=>`<button class="chip${c===state.filter?' on':''}" data-act="filter" data-v="${c}">${c}</button>`).join('')}</div>
+   <select class="input" id="budget" aria-label="Filter by rate"><option value="any">Any rate</option><option value="low">Up to ${fmt(4000)}</option><option value="mid">${fmt(4000)} to ${fmt(5500)}</option><option value="high">Above ${fmt(5500)}</option></select>
+   <label class="search"><span class="sr">Search artists</span>${ic('search',17)}<input class="input" id="q" type="search" placeholder="Search name, college or genre" value="${esc(state.q)}"></label></div>
+  <div class="grid" id="grid"></div>
+ </section>`;
+}
+function footHTML(){return `<footer class="foot"><div class="wrap"><span style="display:flex;align-items:center;gap:10px">${LOGO}Mehfil</span><span style="display:flex;gap:18px;align-items:center">Made in Mumbai<a href="#/events" style="color:var(--dim)">Events</a><a href="#/bands" style="color:var(--dim)">Bands</a><a href="#/admin" style="color:var(--dim)">Admin</a></span></div></footer>`}
+
+function profileView(id){
+ const a=byId(id); if(!a) return `<div class="wrap sec"><h2 class="title">Artist not found</h2><p class="lead">That profile doesn't exist. <a href="#/" style="color:var(--lamp)">Back to all artists</a></p></div>`;
+ const R=rng(a.id+'p');
+ const vz=['transform:scale(1.35);transform-origin:50% 60%','transform:scale(1.7);transform-origin:30% 70%'];
+ const sz=['transform:scale(2.1);transform-origin:35% 62%','transform:scale(2.6);transform-origin:68% 30%','transform:scale(1.7);transform-origin:50% 82%'];
+ return `<div style="--accent:${a.accent}">
+ <section class="cover grain">${art(a)}
+  <div class="cover-actions"><div class="wrap"><a class="icon-btn" href="#/" aria-label="Back to all artists">${ic('back',20)}</a><button class="icon-btn" data-act="share" aria-label="Share profile">${ic('share',18)}</button></div></div>
+  <span class="cover-cap">${esc(a.coverDesc)}</span></section>
+ <div class="wrap pgrid">
+  <div>
+   <div class="phead">${avatar(a)}<div><h1>${esc(a.name)} <span class="vbadge">${ic('shield',14)}${a.isBand?'Members ID verified':'ID verified'}</span></h1><p class="talent">${esc(a.talent)}</p></div></div>
+   <div class="facts"><span class="tag">${ic('cap',15)}${esc(a.college)}</span><span class="tag">${ic('pin',15)}${esc(a.area)}, Mumbai</span><span class="tag">${esc(a.course)}</span>${a.age?`<span class="tag">Age ${esc(a.age)}</span>`:''}${a.gender?`<span class="tag">${esc(a.gender)}</span>`:''}</div>${a.isBand?membersBlock(a):''}
+   <div class="stats"><div class="stat"><b>${a.rating.toFixed(1)}</b><span>Rating</span></div><div class="stat"><b>${a.gigs}</b><span>Gigs played</span></div><div class="stat"><b>${esc(a.response.replace('about ',''))}</b><span>Typical reply</span></div><div class="stat"><b>${dateStr(nextFree(a.id))}</b><span>Next free date</span></div></div>
+
+   <div class="blk"><h2>About ${esc(a.first)}</h2><p>${esc(a.bio)}</p><p>${esc(a.bio2)}</p>
+    <div class="tags" style="margin-top:14px">${a.genres.map(g=>`<span class="tag">${esc(g)}</span>`).join('')}</div></div>
+
+   <div class="blk"><h2>Performances <small>${a.videos.length} videos</small></h2>
+    ${a.videos.length?`<div class="vids">${a.videos.map((v,i)=>`<button class="vid" data-act="video" data-id="${a.id}" data-i="${i}" aria-label="Play ${esc(v.t)}">${art(a).replace('<svg class="art"',`<svg class="art" style="${vz[i%2]}"`)}<span class="pc">${ic('play',22)}</span><span class="cap"><span>${esc(v.t)}</span><span>${v.d}</span></span></button>`).join('')}</div>`:`<p class="hint">${esc(a.first)} hasn't added performance videos yet.</p>`}</div>
+
+   ${(a.links||[]).length?`<div class="blk"><h2>Links</h2><div class="tags">${a.links.map(u=>`<a class="tag" href="${esc(u)}" target="_blank" rel="noopener">${esc(u.replace(/^https?:\/\/(www\.)?/,'').slice(0,40))}</a>`).join('')}</div></div>`:''}
+
+   <div class="blk"><h2>Tracks <small>${a.tracks.length} recordings</small></h2>
+    ${a.tracks.length?`<div class="tracks">${a.tracks.map((t,i)=>{if(t.url)return `<div class="realtrack"><div class="ttitle">${esc(t.t)}</div><audio controls preload="none" src="${esc(t.url)}"></audio></div>`;const rr=rng(a.id+i),bars=Array.from({length:56},(_,k)=>{const h=18+Math.round((Math.sin(k/4+i)*.5+.5)*40+rr()*42);return `<i style="height:${Math.min(h,100)}%"></i>`}).join('');
+     return `<div class="track" data-id="${a.id}" data-i="${i}" data-d="${t.d}"><button class="pbtn" data-act="play" data-id="${a.id}" data-i="${i}" aria-label="Play ${esc(t.t)}">${ic('play',18)}</button><div><div class="ttitle">${esc(t.t)}</div><div class="wave" aria-hidden="true">${bars}</div></div><span class="tdur"><span class="tcur"></span>${t.d}</span></div>`}).join('')}</div>`:`<p class="hint">No recordings uploaded yet \u2014 message ${esc(a.first)} to ask for samples.</p>`}</div>
+
+   <div class="blk"><h2>Availability <small>next 14 days</small></h2>${availHTML(a)}</div>
+
+   <div class="blk"><h2>Can play</h2><div class="tags">${a.rep.map(r=>`<span class="tag">${esc(r)}</span>`).join('')}</div></div>
+
+   <div class="blk"><h2>Portfolio</h2>
+    ${a.shots.length?`<div class="shots">${a.shots.map((s,i)=>`<figure class="shot grain" style="margin:0">${art(a).replace('<svg class="art"',`<svg class="art" style="${sz[i%sz.length]}"`)}<small>${esc(s)}</small></figure>`).join('')}</div>`:`<p class="hint">No portfolio photos uploaded yet.</p>`}</div>
+
+   <div class="blk"><h2>What hosts say</h2>${a.reviews.length?`<div class="reviews">${a.reviews.map(r=>`<div class="review"><p>${esc(r.text)}</p><small><b style="color:var(--text)">${esc(r.by)}</b>, ${esc(r.role)}</small></div>`).join('')}</div>`:`<p class="hint">No reviews yet \u2014 ${esc(a.first)} is new to Mehfil.</p>`}</div>
+  </div>
+
+  <aside class="aside" aria-label="Book ${esc(a.first)}"><div class="book">
+   <div class="price"><b>${fmt(a.rate)}</b><span>per 60-minute set</span></div>
+   <ul><li>${ic('cal',18)}Next free on ${dateStr(nextFree(a.id))}</li><li>${ic('clock',18)}Replies ${esc(a.response)}</li><li>${ic('shield',18)}${a.isBand?'All members ID verified':'College ID verified'}</li><li>${ic('msg',18)}Chat opens as soon as you send a request</li></ul>
+   <button class="btn lg block" data-act="hire" data-id="${a.id}">${hireLabel(a)}</button>
+   <p class="fine">Nothing is charged when you send a request.</p></div></aside>
+ </div>
+ <div class="hirebar"><div><b>${fmt(a.rate)}</b><span>per 60-minute set</span></div><button class="btn lg" data-act="hire" data-id="${a.id}">${hireLabel(a)}</button></div></div>`;
+}
+
+function membersBlock(a){
+ return `<div class="blk" style="margin-top:30px"><h2>Members <small>${a.members.length} musicians</small></h2><div class="mem">${a.members.map(m=>`<div class="mrow"><b>${esc(m.name)}</b><span>${esc(m.role)}</span>${m.artistId&&byId(m.artistId)?`<a class="tag" href="#/artist/${esc(m.artistId)}">View profile</a>`:''}</div>`).join('')}</div></div>`;
+}
+function availHTML(a){
+ const days=Array.from({length:14},(_,i)=>dayPlus(i+1));
+ return `<div class="tags">${days.map(d=>{const bk=isBooked(a.id,d);return `<span class="tag day${bk?' bk':''}">${dateStr(d)}${bk?' \u00b7 Booked':''}</span>`}).join('')}</div><p class="hint" style="margin-top:12px">One booking per day. Once someone confirms a date, it shows as booked for everyone.</p>`;
+}
+function bookedHint(a){
+ const list=[...bookedDates(a.id)].filter(d=>d>=dayPlus(1)).sort().slice(0,4);
+ return list.length?`Already booked: ${list.map(dateStr).join(', ')}`:'';
+}
+
+/* ---------- Booking modal ---------- */
+function nextFriday(){const d=new Date();d.setDate(d.getDate()+((5-d.getDay()+7)%7||7));return d.toISOString().slice(0,10)}
+function tomorrow(){const d=new Date();d.setDate(d.getDate()+1);return d.toISOString().slice(0,10)}
+function openBooking(id){
+ const a=byId(id), old=state.threads[id]?.booking;
+ $('#modal').innerHTML=`<div class="modal-back" data-act="backdrop"><div class="modal" role="dialog" aria-modal="true" aria-labelledby="bk-t" style="--accent:${a.accent}">
+  <div class="modal-head">${avatar(a,'sm')}<div><h3 id="bk-t">Hire ${esc(a.name)}</h3><p>${esc(a.talent)}, ${esc(a.short)}</p></div><button class="icon-btn" data-act="close" aria-label="Close">${ic('x',18)}</button></div>
+  <form class="modal-body" data-form="booking" data-id="${a.id}" novalidate>
+   ${state.user?'':`<p class="guest">You're booking as a guest. <a href="#/join/recruiter" data-act="close">Create a recruiter account</a> to save your requests.</p>`}
+   <div class="field"><span class="lbl">Type of event <em>*</em></span><div class="chips" role="radiogroup" aria-label="Type of event">${EVENTS.map((e,i)=>`<label class="chip${(old?.event?old.event===e:i===1)?' on':''}"><input class="sr" type="radio" name="event" value="${e}"${(old?.event?old.event===e:i===1)?' checked':''}>${e}</label>`).join('')}</div></div>
+   <div class="row2"><label class="field"><span class="lbl">Date <em>*</em></span><input class="input" type="date" name="date" min="${tomorrow()}" value="${firstFreeFrom(a.id,(old?.date&&old.date>=tomorrow())?old.date:nextFriday())}" required><div class="err-msg" data-for="date"></div><div class="hint">${bookedHint(a)}</div></label>
+    <label class="field"><span class="lbl">Start time</span><input class="input" type="time" name="time" value="${old?.time||'20:00'}"></label></div>
+   <div class="row2"><label class="field"><span class="lbl">Venue or area <em>*</em></span><input class="input" list="loc" name="venue" placeholder="e.g. Bandra West" value="${esc(old?.venue||'')}" required><datalist id="loc">${LOCALITIES.map(l=>`<option value="${l}">`).join('')}</datalist><div class="err-msg" data-for="venue"></div></label>
+    <label class="field"><span class="lbl">Performance length</span><select class="input" name="duration"><option>1 hour</option><option selected>2 hours</option><option>3 hours</option><option>Full evening</option></select></label></div>
+   <div class="field"><span class="lbl">Your budget</span><div class="budget-val"><b id="bv">${fmt(old?.budget||Math.max(a.rate,5000))}</b><span style="color:var(--muted);font-size:.86rem">${esc(a.first)}'s usual rate is ${fmt(a.rate)} per set</span></div>
+    <input type="range" name="budget" min="2000" max="${a.isBand?80000:30000}" step="500" value="${old?.budget||Math.max(a.rate,5000)}" aria-label="Budget in rupees"><div class="budget-note" id="bn"></div></div>
+   <label class="field"><span class="lbl">Event details and what you need <em>*</em></span><textarea class="input" name="spec" placeholder="Tell ${esc(a.first)} about the vibe, expected guests, songs you'd love, and anything about the space or timings." required></textarea><div class="err-msg" data-for="spec"></div></label>
+   <label class="check"><input type="checkbox" name="ownSound"><span>I'll arrange the sound system and mics. Leave this off if ${esc(a.first)} should bring gear.</span></label>
+   <button class="btn lg block" type="submit">Send booking request</button>
+   <p class="hint" style="text-align:center;margin-top:12px">Nothing is charged. You'll chat with ${esc(a.first)} next to settle the details.</p>
+  </form></div></div>`;
+ document.body.classList.add('lock'); updateBudgetNote(a); $('.modal input[name=date]').focus();
+}
+function updateBudgetNote(a){
+ const s=$('.modal input[name=budget]'); if(!s)return; const v=+s.value;
+ $('#bv').textContent=fmt(v);
+ $('#bn').textContent= v<a.rate*0.8 ? `That's below ${a.first}'s usual rate. You can still send it and negotiate in chat.` : v<a.rate ? `Just under ${a.first}'s usual rate, which is often fine for shorter sets.` : v>=a.rate*1.4 ? `Generous. Great for longer sets, travel and extra gear.` : `In line with ${a.first}'s usual rate.`;
+}
+function closeModal(){stopVid();$('#modal').innerHTML='';document.body.classList.remove('lock')}
+function checkBookingDate(form){
+ const a=byId(form.dataset.id), v=form.elements.date.value, box=form.querySelector('[data-for=date]'); if(!box)return true;
+ const booked=!!v&&isBooked(a.id,v);
+ box.closest('.field')?.classList.toggle('has-err',booked);
+ box.innerHTML=booked?`${esc(a.first)} is already booked on ${dateStr(v)}. One booking per day. Free on: ${freeDates(a.id,v,3).map(d=>`<button type="button" class="linkbtn" data-act="pick-date" data-date="${d}">${dateStr(d)}</button>`).join(' ')}`:'';
+ return !booked;
+}
+function createBooking(a,booking){
+ const th=state.threads[a.id]||(state.threads[a.id]={id:a.id,unread:0,typing:false,msgs:[]});
+ th.booking=booking; th.msgs.push({from:'booking',t:Date.now()});
+ if(DB_ENABLED)dbInsertBooking({artist_id:a.id,recruiter_name:state.user?.name||null,recruiter_email:null,event_type:booking.event,event_date:booking.date,event_time:booking.time,duration:booking.duration,venue:booking.venue,budget:booking.budget,own_sound:booking.ownSound,spec:booking.spec,status:'requested'}).then(dbId=>{if(dbId){booking.dbId=dbId;if(booking.status==='confirmed')dbUpdateBookingStatus(dbId,'confirmed')}});
+ return th;
+}
+/* The artist replies once and confirms straight away when the day is free. No follow-up questions. */
+function respondToRequest(id,delay){
+ artistSays(id,()=>{
+  const th=state.threads[id],b=th.booking;
+  return isBooked(id,b.date)&&b.status!=='confirmed'
+   ?`Thanks for thinking of me! I'm already booked on ${dateStr(b.date)} and I only take one booking a day, so I can't do that date.`
+   :`Thanks for the request! I'm free on ${dateStr(b.date)}, so it's confirmed. See you at ${b.venue}.`;
+ },delay||900,()=>confirmBooking(id,{silent:true}));
+}
+function submitBooking(form){
+ const a=byId(form.dataset.id), f=new FormData(form), data=Object.fromEntries(f), errs={};
+ if(data.date&&isBooked(a.id,data.date)){checkBookingDate(form);form.elements.date.focus();return}
+ if(!data.date)errs.date='Pick the event date.'; if(!(data.venue||'').trim())errs.venue='Add the venue or area.'; if((data.spec||'').trim().length<10)errs.spec='Describe what you need in at least a sentence.';
+ $$('.err-msg',form).forEach(e=>{e.textContent=errs[e.dataset.for]||'';e.closest('.field')?.classList.toggle('has-err',!!errs[e.dataset.for])});
+ if(Object.keys(errs).length){form.querySelector('.has-err .input')?.focus();return}
+ const booking={event:data.event,date:data.date,time:data.time,duration:data.duration,venue:data.venue.trim(),guests:null,budget:+data.budget,ownSound:!!data.ownSound,spec:data.spec.trim(),status:'requested'};
+ createBooking(a,booking);
+ closeModal(); location.hash='#/chat/'+a.id; toast('Request sent to '+a.first);
+ setTimeout(()=>respondToRequest(a.id,900),300);
+}
+
+/* ---------- Chat ---------- */
+const REPLIES=[
+ [/confirm|available|free on|works for you|can you make it/,(a)=>`Yes, I'm free and locking it in on my side. Can you share the exact venue and load-in time?`],
+ [/budget|price|rate|rupee|₹|amount|discount|negoti|pay/,(a)=>`The budget works for me. If we can add a little for travel I'm happy to bring all my own gear too.`],
+ [/song|setlist|playlist|request|repertoire|play/,(a)=>`Happy to build the set around you. I can do ${a.rep.slice(0,3).join(', ')} and more. Anything you'd like me to avoid?`],
+ [/sound|mic|pa\b|speaker|equipment|gear|amp/,(a)=>`I can bring my own gear if needed. I just need one power point and about 30 minutes for soundcheck.`],
+ [/venue|location|address|where|map/,(a)=>`Got it, thanks. I'll plan my travel accordingly and share my ETA on the day.`],
+ [/thank|great|perfect|awesome|cool|ok|nice|sure/,(a)=>`Awesome, looking forward to it!`]
+];
+/* Recognise a day + time the recruiter mentions (e.g. "tomorrow show time 9 o'clock",
+   "are you free Friday at 8pm") so the reply confirms exactly what was typed instead
+   of a generic line. */
+const WEEKDAYS=['sunday','monday','tuesday','wednesday','thursday','friday','saturday'];
+function parseDayMention(low){
+ if(/\bday after tomorrow\b/.test(low))return {label:'the day after tomorrow',days:2};
+ if(/\btomorrow\b/.test(low))return {label:'tomorrow',days:1};
+ if(/\btonight\b/.test(low))return {label:'tonight',days:0};
+ if(/\btoday\b/.test(low))return {label:'today',days:0};
+ for(let i=0;i<7;i++){if(new RegExp('\\b'+WEEKDAYS[i]+'\\b').test(low)){
+  const now=new Date(),diff=(i-now.getDay()+7)%7||7;
+  return {label:WEEKDAYS[i][0].toUpperCase()+WEEKDAYS[i].slice(1),days:diff};
+ }}
+ return null;
+}
+function parseTimeMention(low){
+ let h=null,mm=0,mer=null;
+ let m=low.match(/\b(\d{1,2})(?::(\d{2}))?\s*(am|pm|a\.m\.|p\.m\.)\b/);
+ if(m){h=+m[1];mm=+(m[2]||0);mer=m[3][0];}
+ else{m=low.match(/\b(\d{1,2})(?::(\d{2}))?\s*(?:o\W?clock)\b/);if(m){h=+m[1];mm=+(m[2]||0)}}
+ if(h==null||h>23)return null;
+ if(!mer){
+  if(/\bmorning\b/.test(low))mer='a';
+  else if(/\bafternoon|evening|night\b/.test(low))mer='p';
+  else mer='p'; // gigs skew evening: a bare hour like "9" defaults to 9 PM unless am/pm or "morning" is said
+ }
+ if(mer==='p'&&h<12)h+=12; if(mer==='a'&&h===12)h=0;
+ return {h,mm};
+}
+function fmtTime(t){const h12=t.h%12||12,ap=t.h<12?'AM':'PM';return `${h12}${t.mm?':'+String(t.mm).padStart(2,'0'):':00'} ${ap}`}
+function smartSchedReply(a,text){
+ const low=text.toLowerCase();
+ const day=parseDayMention(low), time=parseTimeMention(low);
+ if(!day&&!time)return null;
+ const asksAvailability=/confirm|free|available|can you make it|works for you|show time|showtime|\bat\b|\bon\b/.test(low)||day||time;
+ if(!asksAvailability)return null;
+ if(day&&time)return `Yes, I'm free ${day.label} at ${fmtTime(time)} \u2014 I'll block that out on my side. Want me to arrive 30 minutes early for a quick soundcheck?`;
+ if(day)return `Yes, I'm free ${day.label}. What time should I plan to arrive?`;
+ return `${fmtTime(time)} works well for me. Just confirm the date and I'll lock it in.`;
+}
+function artistSays(id,text,delay=1400,cb){
+ const th=state.threads[id]; if(!th)return;
+ th.typing=true; refreshChat(id);
+ clearTimeout(state.typingTimers[id]);
+ state.typingTimers[id]=setTimeout(()=>{
+  th.typing=false; th.msgs.push({from:'them',text:typeof text==='function'?text():text,t:Date.now()});
+  const viewing=route().page==='chat'&&route().arg===id&&document.visibilityState!=='hidden';
+  if(!viewing)th.unread++;
+  refreshChat(id); $('#nav').innerHTML=navHTML(); cb&&cb();
+ },delay);
+}
+function sendMsg(id,text){
+ text=text.trim(); if(!text)return; const th=state.threads[id], a=byId(id), b=th.booking;
+ th.msgs.push({from:'me',text,t:Date.now()}); refreshChat(id);
+ const low=text.toLowerCase();
+ /* Once confirmed the artist just acknowledges. No more questions. */
+ if(b.status==='confirmed'){artistSays(id,`Noted! It's all locked in for ${dateStr(b.date)}. See you there.`,800);return}
+ const dm=parseDayMention(low), tm=parseTimeMention(low);
+ const wantsConfirm=/confirm|lock it|book it|go ahead|are you (free|available)|can you make it|works for you|\bdeal\b/.test(low);
+ if(dm||tm||wantsConfirm){
+  if(dm){
+   const nd=dayPlus(dm.days);
+   if(nd!==b.date){
+    if(isBooked(id,nd)){artistSays(id,`I'm already booked on ${dateStr(nd)} and I only take one booking a day. Please pick another date.`,800);return}
+    b.date=nd; if(b.status==='cancelled')b.status='discussing';
+    th.msgs.push({from:'sys',text:`Date changed to ${dateStr(nd)}`,t:Date.now()});
+   }
+  }
+  if(tm)b.time=String(tm.h).padStart(2,'0')+':'+String(tm.mm).padStart(2,'0');
+  setTimeout(()=>confirmBooking(id),700); return;
+ }
+ if(b.status==='cancelled'){artistSays(id,`I'm booked on ${dateStr(b.date)}. Send a new request or tell me another date and I'll confirm it.`,800);return}
+ const hit=REPLIES.find(([re])=>re.test(low));
+ artistSays(id,hit?hit[1](a):`Sounds good to me.`,1000+Math.min(text.length*15,1000));
+}
+function confirmBooking(id,opts={}){
+ const th=state.threads[id],a=byId(id); if(!th)return; const b=th.booking;
+ if(b.status==='confirmed'){if(!opts.silent)artistSays(id,`You're already confirmed for ${dateStr(b.date)}. See you there!`,600);return}
+ if(isBooked(id,b.date)){
+  b.status='cancelled';
+  th.msgs.push({from:'sys',text:`${a.name} is already booked on ${dateStr(b.date)}`,t:Date.now()});
+  refreshChat(id);
+  if(DB_ENABLED&&b.dbId)dbUpdateBookingStatus(b.dbId,'cancelled');
+  if(!opts.silent)artistSays(id,`Sorry, I'm already booked on ${dateStr(b.date)}. I only take one booking a day. Send a new request for another date.`,700);
+  return;
+ }
+ b.status='confirmed'; lockDate(id,b.date);
+ th.msgs.push({from:'sys',text:`Booking confirmed with ${a.name} for ${dateStr(b.date)}`,t:Date.now()});
+ refreshChat(id); toast('Booking confirmed');
+ if(DB_ENABLED&&b.dbId)dbUpdateBookingStatus(b.dbId,'confirmed');
+ if(!opts.silent)artistSays(id,`Confirmed! See you on ${dateStr(b.date)}${b.time?' at '+fmtEvTime(b.time):''}.`,700);
+}
+function statusIdx(s){return s==='confirmed'?2:s==='discussing'?1:0}
+function msgHTML(m,a,th){
+ if(m.from==='sys')return `<div class="sys">${esc(m.text)}</div>`;
+ if(m.from==='booking'){const b=th.booking;return `<div class="bk-msg"><h4>Booking request <span class="pill">${esc(b.event)}</span></h4><dl><dt>Date</dt><dd>${dateStr(b.date)}, ${esc(b.time)}</dd><dt>Length</dt><dd>${esc(b.duration)}</dd><dt>Venue</dt><dd>${esc(b.venue)}</dd><dt>Budget</dt><dd>${fmt(b.budget)}</dd><dt>Sound</dt><dd>${b.ownSound?'Host arranges':'Artist brings gear'}</dd></dl><p>${esc(b.spec)}</p></div>`}
+ return `<div class="bub ${m.from}">${esc(m.text)}<small>${timeStr(m.t)}</small></div>`;
+}
+function threadListHTML(active){
+ const ids=Object.keys(state.threads).sort((x,y)=>state.threads[y].msgs.at(-1).t-state.threads[x].msgs.at(-1).t);
+ return ids.map(id=>{const a=byId(id),th=state.threads[id],last=th.msgs.filter(m=>m.from!=='sys').at(-1);
+  const prev=last?.from==='booking'?'Booking request sent':(last?.from==='me'?'You: ':'')+(last?.text||'');
+  return `<a class="titem${id===active?' on':''}" href="#/chat/${id}" style="--accent:${a.accent}">${avatar(a,'xs')}<div class="tt"><b>${esc(a.name)}<small>${timeStr(last.t)}</small></b><p>${esc(prev)}</p></div>${th.unread?'<span class="udot" aria-label="Unread"></span>':''}</a>`}).join('');
+}
+function summaryHTML(id){
+ const th=state.threads[id],a=byId(id),b=th.booking,si=statusIdx(b.status),steps=['Request sent','In discussion','Confirmed'];
+ return `<h3>Booking details</h3><dl><div><dt>Event</dt><dd>${esc(b.event)}</dd></div><div><dt>When</dt><dd>${dateStr(b.date)}, ${esc(b.time)} (${esc(b.duration)})</dd></div><div><dt>Where</dt><dd>${esc(b.venue)}</dd></div><div><dt>Your budget</dt><dd class="big">${fmt(b.budget)}</dd></div></dl>
+ <ol class="steps">${steps.map((s,i)=>`<li class="${i<si?'done':i===si?(si===2?'done':'now'):''}"><i></i>${s}</li>`).join('')}</ol>
+ ${b.status==='confirmed'?`<button class="btn ghost block" disabled>${ic('check',18)}Confirmed</button>`:b.status==='cancelled'?`<button class="btn ghost block" disabled>Date unavailable</button><p class="hint" style="margin-top:8px">${esc(a.first)} is booked that day. Send a new request for another date.</p>`:`<button class="btn block" data-act="confirm" data-id="${id}">Confirm booking</button><p class="hint" style="margin-top:8px">${esc(a.first)} confirms as soon as they are free. One booking per day.</p>`}
+ <p class="safe">${ic('lock',16)}<span>Keep chats on Mehfil so both sides have a record of what was agreed. In-app payments are coming soon.</span></p>`;
+}
+const QUICK=['Are you confirmed for Friday?','Can you share your setlist?','Is the budget okay for you?','Do you need a sound system?'];
+function chatView(id){
+ const ids=Object.keys(state.threads);
+ if(id&&!state.threads[id]){id=null}
+ const list=`<aside class="threads" aria-label="Conversations"><h2>Messages</h2><div class="tlist" id="tlist">${ids.length?threadListHTML(id):`<p class="hint" style="padding:0 22px">No conversations yet.</p>`}</div></aside>`;
+ if(!id){
+  return `<div class="chatpage${''}">${list}<section class="conv" style="grid-column:2/-1"><div class="chat-empty"><div><h3>${ids.length?'Pick a conversation':'No messages yet'}</h3><p>${ids.length?'Choose a thread on the left to keep coordinating.':'Send a booking request to an artist and your chat will open here.'}</p><a class="btn" href="#/">Find an artist</a></div></div></section></div>`;
+ }
+ const a=byId(id),th=state.threads[id]; th.unread=0;
+ return `<div class="chatpage has-active" id="chatpage">${list}
+  <section class="conv"><div class="chead" style="--accent:${a.accent}"><a class="icon-btn back" href="#/chat" aria-label="Back to messages">${ic('back',18)}</a>${avatar(a,'xs')}<div class="who"><b>${esc(a.name)}</b><small class="live">${esc(a.talent)}, usually replies ${esc(a.response)}</small></div><div class="right"><a class="btn ghost sm" href="#/artist/${a.id}">Profile</a><button class="icon-btn sumbtn" data-act="toggle-summary" aria-label="Booking details">${ic('file',18)}</button></div></div>
+   <div class="msgs" id="msgs" aria-live="polite"></div>
+   <div class="quick" role="group" aria-label="Quick replies">${QUICK.map(q=>`<button class="chip" data-act="quick" data-id="${id}" data-text="${esc(q)}">${esc(q)}</button>`).join('')}</div>
+   <form class="composer" data-form="chat" data-id="${id}"><button type="button" class="icon-btn" data-act="attach" aria-label="Attach a file">${ic('clip',18)}</button><input class="input" name="m" placeholder="Message ${esc(a.first)}" autocomplete="off" aria-label="Message"><button class="send" type="submit" aria-label="Send message">${ic('send',18)}</button></form></section>
+  <aside class="summary" id="summary" aria-label="Booking details"></aside></div>`;
+}
+function refreshChat(id){
+ const r=route(); if(r.page!=='chat')return;
+ const tl=$('#tlist'); if(tl)tl.innerHTML=threadListHTML(r.arg);
+ if(r.arg!==id)return;
+ const th=state.threads[id],a=byId(id),box=$('#msgs'); if(!box)return;
+ const near=box.scrollHeight-box.scrollTop-box.clientHeight<140||box.dataset.init!=='1';
+ box.innerHTML=th.msgs.map(m=>msgHTML(m,a,th)).join('')+(th.typing?`<div class="typing" aria-label="${esc(a.first)} is typing"><i></i><i></i><i></i></div>`:'');
+ $('#summary').innerHTML=summaryHTML(id); box.dataset.init='1';
+ if(near)box.scrollTop=box.scrollHeight;
+ th.unread=0;
+}
+
+/* ---------- Auth ---------- */
+const EMAIL_OK=/^[^\s@]+@[^\s@]+\.(edu|ac\.in|edu\.in|ac\.[a-z]{2}|edu\.[a-z]{2})$/i;
+function dropHTML(name,icon,title,sub,accept,multiple,required){
+ return `<div class="field" data-field="${name}"><span class="lbl">${title} ${required?'<em>*</em>':'<small>optional</small>'}</span><label class="drop" data-drop="${name}"><input type="file" name="${name}" accept="${accept}"${multiple?' multiple':''}><span class="di">${ic(icon,22)}</span><span><b class="dn">Choose a file or drop it here</b><small>${sub}</small></span></label><div class="err-msg" data-for="${name}"></div></div>`;
+}
+function ageGenderHTML(min,max){
+ return `<div class="row2"><label class="field"><span class="lbl">Age <em>*</em></span><input class="input" type="number" name="age" min="${min}" max="${max}" inputmode="numeric" placeholder="e.g. 21"><div class="err-msg" data-for="age"></div></label>
+   <label class="field"><span class="lbl">Gender <em>*</em></span><select class="input" name="gender"><option value="">Select</option>${GENDERS.map(g=>`<option>${g}</option>`).join('')}</select><div class="err-msg" data-for="gender"></div></label></div>`;
+}
+function authView(role){
+ role=role==='student'?'student':'recruiter';
+ const j=state.joined;
+ const side=(role==='student'?ARTISTS[4]:ARTISTS[1]);
+ const left=`<div class="auth-art grain">${art(side)}<div class="copy"><h2>${role==='student'?'Your next gig is one message away.':'Your event deserves a live performance.'}</h2><ul>${(role==='student'?['Verified profile with your videos and tracks','Set your own rate and keep your calendar','Meet hosts who value student talent']:['Browse ID-verified college artists','Share your budget and event details in one form','Chat directly to confirm the date']).map(x=>`<li>${ic('check',16)}${x}</li>`).join('')}</ul></div></div>`;
+ if(j&&j.role===role){
+  const vfd=role==='student'&&state.admin.students.some(x=>x.email===j.email&&x.status==='approved');
+  return `<div class="wrap"><div class="auth">${left}<div class="auth-form done-box"><div class="okc">${ic('check',28)}</div>${role==='student'&&vfd?`<h1>You're ID verified, ${esc(j.name.split(' ')[0])}.</h1><p class="sub">Your college ID has been approved and your profile is live for recruiters.</p>
+   <ol class="steps"><li class="done"><i></i>Application submitted</li><li class="done"><i></i>College email and ID verified</li><li class="done"><i></i>Profile goes live for recruiters</li></ol>`:role==='student'?`<h1>Thanks, ${esc(j.name.split(' ')[0])}. We're checking your ID.</h1><p class="sub">Most profiles are verified within 24 hours. We'll email ${esc(j.email)} as soon as yours is live.</p>
+   <ol class="steps"><li class="done"><i></i>Application submitted</li><li class="now"><i></i>College email and ID under review</li><li><i></i>Profile goes live for recruiters</li></ol>`:`<h1>Welcome to Mehfil, ${esc(j.name.split(' ')[0])}.</h1><p class="sub">Your recruiter account is ready. Find an artist and send your first request.</p>`}
+   <a class="btn lg" href="#/" data-act="dismiss-joined">Browse artists</a></div></div></div>`;
+ }
+ const student=role==='student';
+ return `<div class="wrap"><div class="auth">${left}<div class="auth-form">
+  <h1>Create your account</h1><p class="sub">${student?'Verify that you study in Mumbai and start getting booked.':'Tell us a little about you and start booking.'}</p>
+  <div class="seg" role="tablist"><a class="${!student?'on':''}" href="#/join/recruiter">I'm hiring</a><a class="${student?'on':''}" href="#/join/student">I'm a student musician</a></div>
+  <form data-form="${role}" novalidate>
+  ${student?`
+   <label class="field"><span class="lbl">Full name <em>*</em></span><input class="input" name="name" autocomplete="name" placeholder="e.g. Rohan Desai"><div class="err-msg" data-for="name"></div></label>
+   ${ageGenderHTML(16,40)}
+   <div class="row2"><label class="field"><span class="lbl">College <em>*</em></span><select class="input" name="college"><option value="">Select your college</option>${COLLEGES.map(c=>`<option>${esc(c)}</option>`).join('')}</select><div class="err-msg" data-for="college"></div></label>
+   <label class="field"><span class="lbl">What do you perform? <em>*</em></span><select class="input" name="talent"><option value="">Select one</option>${TALENTS.map(c=>`<option>${c}</option>`).join('')}</select><div class="err-msg" data-for="talent"></div></label></div>
+   <label class="field"><span class="lbl">College email <em>*</em></span><input class="input" type="email" name="email" autocomplete="email" placeholder="you@xaviers.edu"><div class="hint" id="emailhint">Use your institutional address ending in .edu or .ac.in. Gmail and Yahoo addresses can't be verified.</div><div class="err-msg" data-for="email"></div></label>
+   <div class="row2"><label class="field"><span class="lbl">Mobile number <em>*</em></span><input class="input" type="tel" name="phone" autocomplete="tel" placeholder="98xxxxxx00"><div class="err-msg" data-for="phone"></div></label>
+   <label class="field"><span class="lbl">Password <em>*</em></span><input class="input" type="password" name="password" autocomplete="new-password" placeholder="At least 8 characters"><div class="err-msg" data-for="password"></div></label></div>
+   <div class="field"><span class="lbl">Genres you play <small>pick any</small></span><div class="chips">${GENRES.map(g=>`<label class="chip"><input class="sr" type="checkbox" name="genre" value="${g}">${g}</label>`).join('')}</div></div>
+   ${dropHTML('idcard','idc','College ID card','Clear photo of the front, with your name and photo visible','image/*,.pdf',false,true)}
+   ${dropHTML('cv','file','CV or resume','PDF or Word, up to 5 MB','.pdf,.doc,.docx',false,false)}
+   ${dropHTML('photos','img','Portfolio photos','Up to 6 photos of you performing','image/*',true,false)}
+   ${dropHTML('videos','play','Performance videos','One or more clips of you performing','video/*',true,false)}
+   ${dropHTML('audio','note','Music or audio tracks','MP3, WAV or M4A. Add as many as you like','audio/*',true,false)}
+   <label class="field"><span class="lbl">Music or performance links <small>optional</small></span><textarea class="input" name="links" style="min-height:84px" placeholder="YouTube, Instagram, Spotify or SoundCloud links. One per line"></textarea></label>
+   <label class="check"><input type="checkbox" name="consent"><span>I confirm these details are true and agree to Mehfil verifying my college ID.</span></label><div class="err-msg" data-for="consent" style="margin:-8px 0 12px"></div>
+   <button class="btn lg block" type="submit">Submit for verification</button>`
+  :`
+   <div class="seg small" role="radiogroup" aria-label="Account type"><label class="on"><input type="radio" name="kind" value="individual" checked>Individual</label><label><input type="radio" name="kind" value="company">Company or agency</label></div>
+   <label class="field"><span class="lbl">Full name <em>*</em></span><input class="input" name="name" autocomplete="name" placeholder="e.g. Tanya Bhatia"><div class="err-msg" data-for="name"></div></label>
+   <label class="field" id="companyField" hidden><span class="lbl">Company name <em>*</em></span><input class="input" name="company" placeholder="e.g. Sutradhar Events"><div class="err-msg" data-for="company"></div></label>
+   ${ageGenderHTML(18,90)}
+   <div class="row2"><label class="field"><span class="lbl">Email <em>*</em></span><input class="input" type="email" name="email" autocomplete="email" placeholder="you@example.com"><div class="err-msg" data-for="email"></div></label>
+   <label class="field"><span class="lbl">Mobile number <em>*</em></span><input class="input" type="tel" name="phone" autocomplete="tel" placeholder="98xxxxxx00"><div class="err-msg" data-for="phone"></div></label></div>
+   <div class="row2"><label class="field"><span class="lbl">City</span><select class="input" name="city"><option>Mumbai</option><option>Thane</option><option>Navi Mumbai</option><option>Pune</option></select></label>
+   <label class="field"><span class="lbl">Password <em>*</em></span><input class="input" type="password" name="password" autocomplete="new-password" placeholder="At least 8 characters"><div class="err-msg" data-for="password"></div></label></div>
+   <div class="field"><span class="lbl">What do you usually host? <small>pick any</small></span><div class="chips">${EVENTS.map(g=>`<label class="chip"><input class="sr" type="checkbox" name="hosts" value="${g}">${g}</label>`).join('')}</div></div>
+   <button class="btn lg block" type="submit">Create recruiter account</button>`}
+  </form>
+  <div class="sw"><span>Already have an account? <a href="#/login">Sign in</a></span></div>
+ </div></div></div>`;
+}
+function loginView(){
+ return `<div class="wrap"><div class="auth"><div class="auth-art grain">${art(ARTISTS[5])}<div class="copy"><h2>Welcome back to the mehfil.</h2></div></div>
+ <div class="auth-form"><h1>Sign in</h1><p class="sub">Pick up your conversations and bookings.</p>
+ <form data-form="login" novalidate><div class="chips" style="margin-bottom:16px" role="radiogroup" aria-label="Sign in as"><label class="chip on"><input class="sr" type="radio" name="as" value="recruiter" checked>I'm hiring</label><label class="chip"><input class="sr" type="radio" name="as" value="student">I'm a student artist</label></div>
+ <label class="field"><span class="lbl">Email</span><input class="input" type="email" name="email" autocomplete="email"><div class="err-msg" data-for="email"></div></label>
+ <label class="field"><span class="lbl">Password</span><input class="input" type="password" name="password" autocomplete="current-password"><div class="err-msg" data-for="password"></div></label>
+ <button class="btn lg block" type="submit">Sign in</button></form>
+ <div class="sw"><span>New here? <a href="#/join/recruiter">Create an account</a></span></div></div></div></div>`;
+}
+function validateForm(form,kind){
+ const f=Object.fromEntries(new FormData(form)), e={}, files=n=>form.querySelector(`input[name=${n}]`)?.files?.length||0;
+ const phone=(f.phone||'').replace(/[\s+-]/g,'').replace(/^91/,'');
+ if(kind!=='login'&&(f.name||'').trim().length<2)e.name='Enter your full name.';
+ if(kind==='student'||kind==='recruiter'){const lo=kind==='student'?16:18,hi=kind==='student'?40:90,ag=+f.age;if(!f.age||!Number.isInteger(ag)||ag<lo||ag>hi)e.age=`Enter an age between ${lo} and ${hi}.`;if(!f.gender)e.gender='Select one.'}
+ if(kind==='student'){
+  if(!f.college)e.college='Select your college.'; if(!f.talent)e.talent='Tell us what you perform.';
+  if(!EMAIL_OK.test((f.email||'').trim()))e.email='Use your college email ending in .edu or .ac.in.';
+  if(!/^[6-9]\d{9}$/.test(phone))e.phone='Enter a 10-digit mobile number.';
+  if(!files('idcard'))e.idcard='Upload a photo of your college ID card.';
+  if(!f.consent)e.consent='Please confirm before submitting.';
+ }
+ if(kind==='recruiter'){
+  if(f.kind==='company'&&!(f.company||'').trim())e.company='Enter your company name.';
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test((f.email||'').trim()))e.email='Enter a valid email address.';
+  if(!/^[6-9]\d{9}$/.test(phone))e.phone='Enter a 10-digit mobile number.';
+ }
+ if(kind==='login'&&!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test((f.email||'').trim()))e.email='Enter a valid email address.';
+ if(kind==='login'?!(f.password||'').length:(f.password||'').length<8)e.password=kind==='login'?'Enter your password.':'Use at least 8 characters.';
+ $$('.err-msg',form).forEach(m=>{const v=e[m.dataset.for];m.textContent=v||'';m.closest('.field')?.classList.toggle('has-err',!!v)});
+ const first=Object.keys(e)[0]; if(first)(form.querySelector(`[name=${first}]`)||form.querySelector(`[data-for=${first}]`))?.scrollIntoView({block:'center',behavior:'smooth'});
+ return {ok:!first,f};
+}
+
+/* ---------- Audio + video (simulated playback for the prototype) ---------- */
+function stopAudio(){if(state.audio){clearInterval(state.audio.timer);state.audio=null}}
+function playTrack(aid,i){
+ const au=state.audio, a=byId(aid), d=durSec(a.tracks[i].d);
+ if(au&&au.aid===aid&&au.i===i){au.on=!au.on; if(au.on)startAudioTimer(d); else clearInterval(au.timer); trackUI(); return}
+ stopAudio(); state.audio={aid,i,p:0,on:true,timer:null}; startAudioTimer(d); trackUI();
+}
+function startAudioTimer(d){const au=state.audio;clearInterval(au.timer);au.timer=setInterval(()=>{au.p+=(0.25*10)/d;if(au.p>=1){au.p=0;au.on=false;clearInterval(au.timer)}trackUI()},250)}
+function trackUI(){
+ $$('.track').forEach(el=>{const au=state.audio,me=au&&au.i===+el.dataset.i&&au.aid===el.dataset.id;
+  el.classList.toggle('playing',!!me);const bars=$$('.wave i',el),n=me?Math.floor(au.p*bars.length):0;bars.forEach((b,k)=>b.classList.toggle('on',k<n));
+  el.querySelector('.pbtn').innerHTML=ic(me&&au.on?'pause':'play',18);el.querySelector('.tcur').textContent=me?mmss(au.p*durSec(el.dataset.d)):''});
+}
+function openVideo(aid,i){
+ stopAudio(); trackUI(); const a=byId(aid),v=a.videos[i];
+ if(v.url){
+  $('#modal').innerHTML=`<div class="modal-back" data-act="backdrop"><div class="modal vmodal" role="dialog" aria-modal="true" aria-label="${esc(v.t)}" style="--accent:${a.accent}"><button class="icon-btn" data-act="close" aria-label="Close video">${ic('x',18)}</button><video controls autoplay playsinline src="${esc(v.url)}"></video><div class="vinfo"><h3>${esc(v.t)}</h3><p>${esc(a.name)}, ${esc(a.short)}</p></div></div></div>`;
+  document.body.classList.add('lock'); return;
+ }
+ $('#modal').innerHTML=`<div class="modal-back" data-act="backdrop"><div class="modal vmodal" role="dialog" aria-modal="true" aria-label="${esc(v.t)}" style="--accent:${a.accent}">
+  <button class="icon-btn" data-act="close" aria-label="Close video">${ic('x',18)}</button>
+  <div class="vstage grain" id="vstage">${art(a)}<button class="bigplay" data-act="vid-toggle" aria-label="Play or pause">${ic('play',30)}</button><div class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div></div>
+  <div class="vbar"><button class="pbtn" id="vpb" data-act="vid-toggle" aria-label="Play or pause">${ic('play',18)}</button><div class="prog"><i id="vprog"></i></div><span class="vtime" id="vtime">0:00 / ${v.d}</span></div>
+  <div class="vinfo"><h3>${esc(v.t)}</h3><p>${esc(a.name)}, ${esc(a.short)}</p><small>Demo playback. Real uploads will stream here.</small></div></div></div>`;
+ document.body.classList.add('lock'); state.vid={d:durSec(v.d),p:0,on:false,timer:null}; vidToggle();
+}
+function vidToggle(){
+ const v=state.vid; if(!v)return; v.on=!v.on; clearInterval(v.timer);
+ if(v.on)v.timer=setInterval(()=>{v.p+=(0.25*10)/v.d;if(v.p>=1){v.p=0;v.on=false;clearInterval(v.timer)}vidUI()},250);
+ vidUI();
+}
+function vidUI(){
+ const v=state.vid; if(!v||!$('#vstage'))return;
+ $('#vstage').classList.toggle('playing-v',v.on); $('#vprog').style.width=(v.p*100)+'%';
+ $('#vtime').textContent=`${mmss(v.p*v.d)} / ${mmss(v.d)}`; $('#vpb').innerHTML=ic(v.on?'pause':'play',18);
+}
+function stopVid(){if(state.vid){clearInterval(state.vid.timer);state.vid=null}}
+
+/* ---------- Admin dashboard ---------- */
+function statusPill(status){
+ const c={pending:'#d6b78a',approved:'#4fd6a0',rejected:'#ff7b80',confirmed:'#4fd6a0',discussing:'#d6b78a',requested:'#a9a4b3',cancelled:'#ff7b80',accepted:'#4fd6a0',declined:'#ff7b80'}[status]||'#a9a4b3';
+ const l={pending:'Pending',approved:'Approved',rejected:'Rejected',confirmed:'Confirmed',discussing:'In discussion',requested:'Requested',cancelled:'Cancelled',accepted:'Accepted',declined:'Declined'}[status]||status;
+ return `<span class="stpill" style="color:${c};border-color:${c};background:${c}22">${l}</span>`;
+}
+function fmtEvTime(t){
+ t=String(t||'').trim(); const m=/^(\d{1,2}):(\d{2})(?::\d{2})?$/.exec(t); if(!m)return t;
+ const h=+m[1]; return `${h%12||12}:${m[2]} ${h<12?'AM':'PM'}`;
+}
+function orgName(e){return e.organiser||'Mehfil team'}
+function featuredBlock(){
+ const f=state.admin.events.filter(e=>e.featured);
+ return `<section class="wrap sec" style="padding-top:44px"><div class="sec-head" style="margin-bottom:16px"><div><h2 class="title" style="font-size:1.5rem">Featured events</h2><p class="lead" style="margin:8px 0 0;font-size:1rem">Hosts post these gigs because they need performers. Student artists: open an event and apply to the organiser to get hired.</p></div><div style="display:flex;gap:10px;flex-wrap:wrap"><a class="btn ghost sm" href="#/events">All opportunities</a><button class="btn sm" data-act="post-event">Post an event</button></div></div>${f.length?`<div class="tags" style="gap:12px">${f.map(e=>`<button type="button" class="tag" data-act="event-open" data-id="${esc(e.id)}" style="padding:10px 16px;font-size:.92rem" aria-haspopup="dialog">${esc(e.title)} \u00b7 ${dateStr(e.date)}</button>`).join('')}</div>`:''}</section>`;
+}
+function openEventModal(id){
+ const e=state.admin.events.find(x=>String(x.id)===String(id)); if(!e)return;
+ const row=(icon,label,val)=>`<li>${ic(icon,18)}<div><b>${label}</b>${val}</div></li>`, looking=e.lookingFor||[];
+ $('#modal').innerHTML=`<div class="modal-back" data-act="backdrop"><div class="modal" role="dialog" aria-modal="true" aria-label="${esc(e.title)}">
+  <div class="modal-head"><div><h3>${esc(e.title)}</h3><p>${esc(e.type||'Event')}</p></div><button class="icon-btn" data-act="close" aria-label="Close">${ic('x',18)}</button></div>
+  <div class="modal-body"><ul class="evrows">
+   ${row('cal','Date',e.date?esc(new Date(e.date+'T00:00').toLocaleDateString('en-IN',{weekday:'long',day:'numeric',month:'long',year:'numeric'})):'To be announced')}
+   ${row('clock','Time',e.time?esc(fmtEvTime(e.time)):'To be announced')}
+   ${row('pin','Location',esc(e.venue||'Mumbai'))}
+   ${row('users','Organiser',esc(orgName(e)))}
+   ${e.budget?row('tag','Budget offered',fmt(e.budget)):''}
+   ${looking.length?row('mic','Looking for',looking.map(esc).join(', ')):''}
+  </ul>
+  ${e.description?`<p class="evdesc">${esc(e.description)}</p>`:''}
+  <p class="hint" style="margin:0 0 4px">This is an event posted by the organiser. Student artists apply with a short pitch and the organiser decides who to hire.</p>
+  <div class="idfoot">${e.featured?`<span class="stpill" style="color:var(--lamp);border-color:var(--lamp);background:var(--lamp-soft)">Featured on Mehfil</span>`:''}<div class="arow-actions"><button class="btn sm" type="button" data-act="event-apply" data-id="${esc(e.id)}">Apply to perform</button><button class="btn ghost sm" type="button" data-act="close">Close</button></div></div>
+  </div></div></div>`;
+ document.body.classList.add('lock');
+}
+function gateModal(title,msg,kind){
+ $('#modal').innerHTML=`<div class="modal-back" data-act="backdrop"><div class="modal" role="dialog" aria-modal="true" aria-label="${esc(title)}">
+  <div class="modal-head"><div><h3>${esc(title)}</h3></div><button class="icon-btn" data-act="close" aria-label="Close">${ic('x',18)}</button></div>
+  <div class="modal-body"><p class="lead" style="margin:0 0 20px;font-size:1rem">${esc(msg)}</p>
+   <div style="display:flex;gap:10px;flex-wrap:wrap"><a class="btn" href="#/join/${kind}" data-act="close">${kind==='student'?'Create artist profile':'Create host account'}</a><a class="btn ghost" href="#/login" data-act="close">Sign in</a></div></div></div></div>`;
+ document.body.classList.add('lock');
+}
+function evCard(e){
+ const d=e.date?new Date(e.date+'T00:00'):null, u=state.user;
+ const mine=u&&u.role==='recruiter'&&e.organiser===u.name, applied=u&&state.apps.some(a=>a.eventId===String(e.id)&&a.by===u.name);
+ return `<article class="evcard"><div class="evdate">${d?`<b>${d.getDate()}</b><span>${d.toLocaleDateString('en-IN',{month:'short'})}</span>`:'<b>TBA</b>'}</div>
+  <div class="evbody"><h3>${esc(e.title)}</h3><p class="evmeta">${esc(e.venue||'Mumbai')} \u00b7 ${esc(e.type||'Event')}${e.time?' \u00b7 '+esc(fmtEvTime(e.time)):''}</p>
+   <div class="tags">${(e.lookingFor||[]).map(r=>`<span class="tag">${esc(r)}</span>`).join('')}${e.budget?`<span class="tag">Budget ${fmt(e.budget)}</span>`:''}<span class="tag">By ${esc(orgName(e))}</span></div>
+   ${e.description?`<p class="evd">${esc(e.description)}</p>`:''}</div>
+  <div class="evact">${mine?`<span class="stpill" style="color:var(--lamp);border-color:var(--lamp);background:var(--lamp-soft)">Your event</span>`:`<button class="btn sm" data-act="event-apply" data-id="${esc(e.id)}"${applied?' disabled':''}>${applied?'Applied':'Apply to perform'}</button>`}<button class="btn ghost sm" data-act="event-open" data-id="${esc(e.id)}">Details</button></div></article>`;
+}
+function myAppsPanel(){
+ const u=state.user; if(!u)return '';
+ if(u.role==='student'){
+  const mine=state.apps.filter(a=>a.by===u.name); if(!mine.length)return '';
+  return `<div class="apppanel"><h3>Your applications</h3>${mine.map(a=>`<div class="arow"><div class="ai"><b>${esc(a.eventTitle)}</b><small>${esc(a.as)} \u00b7 ${esc(a.role)}${a.rate?' \u00b7 asking '+fmt(a.rate):''}</small></div>${statusPill(a.status)}</div>`).join('')}</div>`;
+ }
+ if(u.role==='recruiter'){
+  const evs=state.admin.events.filter(e=>e.organiser===u.name); if(!evs.length)return '';
+  return `<div class="apppanel"><h3>Your events and applicants</h3>${evs.map(e=>{const aps=state.apps.filter(a=>a.eventId===String(e.id));
+   return `<div class="apev"><b>${esc(e.title)}</b> <small>${dateStr(e.date)} \u00b7 ${aps.length} applicant${aps.length===1?'':'s'}</small>${aps.map(a=>`<div class="arow"><div class="ai"><b>${esc(a.by)}</b><small>${esc(a.as)} \u00b7 ${esc(a.role)}${a.rate?' \u00b7 asking '+fmt(a.rate):''}</small><p class="pitch">${esc(a.pitch)}</p></div>${a.status==='pending'?`<div class="arow-actions"><button class="btn sm" data-act="app-accept" data-id="${a.id}">Accept</button><button class="btn ghost sm" data-act="app-decline" data-id="${a.id}">Decline</button></div>`:statusPill(a.status)}</div>`).join('')}</div>`}).join('')}</div>`;
+ }
+ return '';
+}
+function eventsView(){
+ const today=dayPlus(0), f=state.evFilter||'All', chips=['All',...ROLES.map(r=>r.k),'Full band'];
+ const list=state.admin.events.filter(e=>(!e.date||e.date>=today)&&(f==='All'||(e.lookingFor||[]).includes(f))).sort((a,b)=>String(a.date).localeCompare(String(b.date)));
+ return `<section class="wrap sec" style="padding-top:44px">
+  <div class="allhead"><a class="icon-btn" href="#/" aria-label="Back to home">${ic('back',20)}</a></div>
+  <div class="sec-head"><div><h2 class="title">Gigs and opportunities</h2><p class="lead" style="margin:10px 0 0">Events posted by hosts who need performers. New to gigging? Pick an event and apply straight to the organiser with a short pitch.</p></div><button class="btn" data-act="post-event">Post an event</button></div>
+  ${myAppsPanel()}
+  <div class="filters"><div class="chips" role="group" aria-label="Filter by what hosts need">${chips.map(c=>`<button class="chip${c===f?' on':''}" data-act="ev-filter" data-v="${esc(c)}">${esc(c)}</button>`).join('')}</div></div>
+  <div class="evlist">${list.length?list.map(evCard).join(''):`<div class="empty">No events match yet. Hosts can add one with "Post an event".</div>`}</div></section>`;
+}
+function openApply(id){
+ const e=state.admin.events.find(x=>String(x.id)===String(id)); if(!e)return; const u=state.user;
+ if(!u||u.role!=='student'){gateModal('Apply to perform',u&&u.role==='recruiter'?'You are signed in as a host. Only student artists can apply to events.':`Create a free student artist profile or sign in to apply to ${e.title}.`,'student');return}
+ if(state.apps.some(a=>a.eventId===String(e.id)&&a.by===u.name)){toast('You have already applied to this event');return}
+ const myBands=state.bands.filter(b=>b.members.some(m=>m.name===u.name&&m.accepted!==false)&&bandVisible(b));
+ $('#modal').innerHTML=`<div class="modal-back" data-act="backdrop"><div class="modal" role="dialog" aria-modal="true" aria-label="Apply to ${esc(e.title)}">
+  <div class="modal-head"><div><h3>Apply to perform</h3><p>${esc(e.title)} \u00b7 ${esc(orgName(e))}</p></div><button class="icon-btn" data-act="close" aria-label="Close">${ic('x',18)}</button></div>
+  <form class="modal-body" data-form="apply" data-id="${esc(e.id)}" novalidate>
+   <div class="row2"><label class="field"><span class="lbl">Applying as</span><select class="input" name="as"><option>Solo artist</option>${myBands.map(b=>`<option>${esc(b.name)} (band)</option>`).join('')}</select></label>
+   <label class="field"><span class="lbl">You play</span><select class="input" name="role">${TALENTS.map(t=>`<option${t===u.talent?' selected':''}>${t}</option>`).join('')}</select></label></div>
+   <label class="field"><span class="lbl">Your fee <small>optional, in rupees</small></span><input class="input" type="number" name="rate" min="0" step="500" placeholder="e.g. 4000"></label>
+   <label class="field"><span class="lbl">Message to the organiser <em>*</em></span><textarea class="input" name="pitch" placeholder="Introduce yourself, what you play, and why you fit this event."></textarea><div class="err-msg" data-for="pitch"></div></label>
+   <button class="btn lg block" type="submit">Send application</button></form></div></div>`;
+ document.body.classList.add('lock');
+}
+function submitApply(form){
+ const e=state.admin.events.find(x=>String(x.id)===String(form.dataset.id)), u=state.user, f=Object.fromEntries(new FormData(form));
+ if((f.pitch||'').trim().length<10){const m=form.querySelector('[data-for=pitch]');m.textContent='Write at least a sentence.';m.closest('.field').classList.add('has-err');return}
+ state.apps.push({id:'ap'+Date.now(),eventId:String(e.id),eventTitle:e.title,by:u.name,as:f.as,role:f.role,rate:+f.rate||0,pitch:f.pitch.trim(),status:'pending'});
+ closeModal(); toast('Application sent to '+orgName(e));
+ if(route().page==='events')render(); else location.hash='#/events';
+}
+function openPostEvent(){
+ const u=state.user;
+ if(!u||u.role!=='recruiter'){gateModal('Post an event',u&&u.role==='student'?'You are signed in as a student artist. Only hosts can post events. Sign in with a host account to post one.':'Create a free host account or sign in to post an event and find performers.','recruiter');return}
+ $('#modal').innerHTML=`<div class="modal-back" data-act="backdrop"><div class="modal" role="dialog" aria-modal="true" aria-label="Post an event">
+  <div class="modal-head"><div><h3>Post an event</h3><p>Student artists will see it and apply to you</p></div><button class="icon-btn" data-act="close" aria-label="Close">${ic('x',18)}</button></div>
+  <form class="modal-body" data-form="postevent" novalidate>
+   <label class="field"><span class="lbl">Event title <em>*</em></span><input class="input" name="title" placeholder="e.g. Sangeet night, Juhu"><div class="err-msg" data-for="title"></div></label>
+   <div class="row2"><label class="field"><span class="lbl">Date <em>*</em></span><input class="input" type="date" name="date" min="${tomorrow()}"><div class="err-msg" data-for="date"></div></label>
+   <label class="field"><span class="lbl">Start time</span><input class="input" type="time" name="time" value="19:00"></label></div>
+   <div class="row2"><label class="field"><span class="lbl">Venue or area <em>*</em></span><input class="input" list="loc3" name="venue" placeholder="e.g. Bandra West"><datalist id="loc3">${LOCALITIES.map(l=>`<option value="${l}">`).join('')}</datalist><div class="err-msg" data-for="venue"></div></label>
+   <label class="field"><span class="lbl">Type of event</span><select class="input" name="type">${EVENTS.map(x=>`<option>${x}</option>`).join('')}</select></label></div>
+   <label class="field"><span class="lbl">Budget you can offer <small>optional, in rupees</small></span><input class="input" type="number" name="budget" min="0" step="500" placeholder="e.g. 8000"></label>
+   <div class="field"><span class="lbl">Who are you looking for? <small>pick any</small></span><div class="chips">${[...ROLES.map(r=>r.k),'Full band'].map(r=>`<label class="chip"><input class="sr" type="checkbox" name="looking" value="${r}">${r}</label>`).join('')}</div></div>
+   <label class="field"><span class="lbl">Details</span><textarea class="input" name="description" placeholder="Vibe, number of guests, set length, whether beginners are welcome."></textarea></label>
+   <button class="btn lg block" type="submit">Post event</button></form></div></div>`;
+ document.body.classList.add('lock');
+}
+function submitPostEvent(form){
+ const f=new FormData(form), u=state.user, errs={}, title=(f.get('title')||'').trim(), date=f.get('date'), venue=(f.get('venue')||'').trim();
+ if(title.length<3)errs.title='Add an event title.'; if(!date)errs.date='Pick a date.'; if(!venue)errs.venue='Add the venue or area.';
+ $$('.err-msg',form).forEach(m=>{m.textContent=errs[m.dataset.for]||'';m.closest('.field')?.classList.toggle('has-err',!!errs[m.dataset.for])});
+ if(Object.keys(errs).length)return;
+ const ev={title,date,venue,type:f.get('type')||EVENTS[0],featured:false,organiser:u.name,lookingFor:f.getAll('looking')};
+ const t=(f.get('time')||'').trim(), d=(f.get('description')||'').trim(), b=+f.get('budget');
+ if(t)ev.time=t; if(d)ev.description=d; if(b)ev.budget=b;
+ state.admin.events.unshift({id:'ev'+(state.admin.evSeq++),...ev});
+ if(DB_ENABLED)dbAddEvent(ev).then(()=>loadPublicEvents(true));
+ closeModal(); toast('Event posted. Student artists can apply now.');
+ if(route().page==='events')render(); else location.hash='#/events';
+}
+
+/* ---------- Bands ---------- */
+function seedIncoming(){
+ const u=state.user; if(!u||u.role!=='student'||state.invites.some(i=>i.id==='in-marine'))return;
+ state.invites.push({id:'in-marine',dir:'in',bandId:'b-marine',bandName:'The Marine Drive Project',from:'Dev Kulkarni',role:TALENT_ROLE[u.talent]||'Musician',msg:'We need one more for our Diwali gigs.',status:'pending'});
+}
+function reqPanel(){
+ const u=state.user; if(!u||u.role!=='student')return '';
+ const inc=state.invites.filter(i=>i.dir==='in'), out=state.invites.filter(i=>i.dir==='out');
+ if(!inc.length&&!out.length)return '';
+ return `<div class="apppanel"><h3>Your band requests</h3>${inc.map(i=>`<div class="arow"><div class="ai"><b>${esc(i.bandName)} wants you as ${esc(i.role)}</b><small>From ${esc(i.from)}${i.msg?' \u00b7 '+esc(i.msg):''}</small></div>${i.status==='pending'?`<div class="arow-actions"><button class="btn sm" data-act="inv-accept" data-id="${i.id}">Accept</button><button class="btn ghost sm" data-act="inv-decline" data-id="${i.id}">Decline</button></div>`:statusPill(i.status)}</div>`).join('')}${out.map(i=>`<div class="arow"><div class="ai"><b>${esc(i.bandName)}: request to ${esc(i.toName)}</b><small>As ${esc(i.role)}</small></div>${statusPill(i.status)}</div>`).join('')}</div>`;
+}
+function bandsView(){
+ const list=state.bands.filter(bandVisible).map(bandArtist);
+ return `<section class="wrap sec" style="padding-top:44px">
+  <div class="allhead"><a class="icon-btn" href="#/" aria-label="Back to home">${ic('back',20)}</a></div>
+  <div class="sec-head"><div><h2 class="title">Bands</h2><p class="lead" style="margin:10px 0 0">Hire a ready-made student band, or put together your own lineup of singer, guitarist, drummer and more for your event.</p></div>
+   <div style="display:flex;gap:10px;flex-wrap:wrap"><button class="btn" data-act="build-band">Build a band for my event</button><button class="btn ghost" data-act="form-band">Form your band</button></div></div>
+  ${reqPanel()}
+  <h3 class="title" style="font-size:1.4rem;margin:8px 0 16px">Ready-made bands</h3>
+  <div class="grid">${list.length?list.map(cardHTML).join(''):`<div class="empty">No bands yet. Student artists can form one by sending requests to other artists.</div>`}</div></section>`;
+}
+function lineupOptions(role,date){
+ return baseArtists().filter(a=>roleMatch(role,a)&&!isBooked(a.id,date)).sort((x,y)=>y.rating-x.rating||x.rate-y.rate);
+}
+function renderLineup(form){
+ const date=form.elements.date.value, roles=[...form.querySelectorAll('input[name=role]:checked')].map(x=>x.value);
+ const prev={}; $$('select[data-role]',form).forEach(x=>prev[x.dataset.role]=x.value);
+ const used=new Set(); let total=0;
+ const rows=roles.map(rk=>{
+  const role=ROLES.find(r=>r.k===rk), opts=lineupOptions(role,date);
+  const pick=opts.find(a=>a.id===prev[rk]&&!used.has(a.id))||opts.find(a=>!used.has(a.id));
+  if(pick){used.add(pick.id);total+=pick.rate}
+  return `<div class="lrow"><span class="lrole">${esc(rk)}</span>${pick?`<select class="input" data-role="${esc(rk)}">${opts.map(a=>`<option value="${a.id}"${a.id===pick.id?' selected':''}>${esc(a.name)} \u00b7 ${fmt(a.rate)}</option>`).join('')}</select>`:`<span class="hint bad" style="margin:0">Nobody free for this role on that day</span>`}</div>`;
+ }).join('');
+ $('#lineup',form).innerHTML=rows||'<p class="hint">Pick at least one role above.</p>';
+ $('#lineTotal',form).textContent=fmt(total);
+}
+function openBuildBand(){
+ $('#modal').innerHTML=`<div class="modal-back" data-act="backdrop"><div class="modal" role="dialog" aria-modal="true" aria-label="Build a band">
+  <div class="modal-head"><div><h3>Build a band for your event</h3><p>Pick the roles. We match free artists for your date</p></div><button class="icon-btn" data-act="close" aria-label="Close">${ic('x',18)}</button></div>
+  <form class="modal-body" data-form="buildband" novalidate>
+   <div class="row2"><label class="field"><span class="lbl">Date <em>*</em></span><input class="input" type="date" name="date" min="${tomorrow()}" value="${nextFriday()}"><div class="err-msg" data-for="date"></div></label>
+   <label class="field"><span class="lbl">Start time</span><input class="input" type="time" name="time" value="20:00"></label></div>
+   <div class="row2"><label class="field"><span class="lbl">Venue or area <em>*</em></span><input class="input" list="loc4" name="venue" placeholder="e.g. Bandra West"><datalist id="loc4">${LOCALITIES.map(l=>`<option value="${l}">`).join('')}</datalist><div class="err-msg" data-for="venue"></div></label>
+   <label class="field"><span class="lbl">Type of event</span><select class="input" name="event">${EVENTS.map(x=>`<option>${x}</option>`).join('')}</select></label></div>
+   <div class="field"><span class="lbl">Who is in your band? <em>*</em></span><div class="chips">${ROLES.map((r,i)=>`<label class="chip${i<4&&r.k!=='Bassist'&&r.k!=='Tabla player'?' on':''}"><input class="sr" type="checkbox" name="role" value="${r.k}"${i<4&&r.k!=='Bassist'&&r.k!=='Tabla player'?' checked':''}>${r.k}</label>`).join('')}</div></div>
+   <div class="field"><span class="lbl">Lineup <small>best-rated free artist for each role. Change anyone</small></span><div id="lineup" class="bandrows"></div><div class="linetotal">Total for all artists: <b id="lineTotal">\u20b90</b></div><div class="err-msg" data-for="lineup"></div></div>
+   <label class="field"><span class="lbl">Event details <em>*</em></span><textarea class="input" name="spec" placeholder="Vibe, guests, set length, songs you want."></textarea><div class="err-msg" data-for="spec"></div></label>
+   <button class="btn lg block" type="submit">Send requests to the band</button>
+   <p class="hint" style="text-align:center;margin-top:12px">Each artist replies and confirms on their own. Nothing is charged.</p>
+  </form></div></div>`;
+ document.body.classList.add('lock'); renderLineup($('.modal form'));
+}
+function submitBuildBand(form){
+ const f=Object.fromEntries(new FormData(form)), errs={};
+ const picks=[...form.querySelectorAll('select[data-role]')].map(x=>({role:x.dataset.role,id:x.value})).filter(p=>p.id);
+ const roles=form.querySelectorAll('input[name=role]:checked').length;
+ if(!f.date)errs.date='Pick the event date.'; if(!(f.venue||'').trim())errs.venue='Add the venue or area.'; if((f.spec||'').trim().length<10)errs.spec='Describe the event in at least a sentence.';
+ if(!picks.length)errs.lineup='Pick at least one role with someone free.'; else if(picks.length<roles)errs.lineup='Nobody is free for one of the roles on that day. Untick it or change the date.';
+ $$('.err-msg',form).forEach(m=>{m.textContent=errs[m.dataset.for]||'';m.closest('.field')?.classList.toggle('has-err',!!errs[m.dataset.for])});
+ if(Object.keys(errs).length)return;
+ const lineup=picks.map(p=>`${p.role}: ${byId(p.id).name}`).join(', ');
+ picks.forEach((p,k)=>{
+  const a=byId(p.id);
+  createBooking(a,{event:f.event,date:f.date,time:f.time,duration:'2 hours',venue:f.venue.trim(),guests:null,budget:a.rate,ownSound:false,spec:`Band booking for ${picks.length} musicians. Lineup: ${lineup}. You would play as ${p.role}. ${f.spec.trim()}`,status:'requested'});
+  setTimeout(()=>respondToRequest(a.id,900+k*500),300);
+ });
+ closeModal(); location.hash='#/chat/'+picks[0].id; toast(`Requests sent to ${picks.length} artists`);
+}
+function openFormBand(){
+ const u=state.user;
+ if(!u||u.role!=='student'){gateModal('Form your band',u&&u.role==='recruiter'?'You are signed in as a host. Only student artists can form a band.':'Create a student artist profile or sign in to form a band and invite other artists.','student');return}
+ const cands=baseArtists().filter(a=>a.id!==u.artistId&&a.name!==u.name);
+ $('#modal').innerHTML=`<div class="modal-back" data-act="backdrop"><div class="modal" role="dialog" aria-modal="true" aria-label="Form a band">
+  <div class="modal-head"><div><h3>Form your band</h3><p>Send a request to the artists you want</p></div><button class="icon-btn" data-act="close" aria-label="Close">${ic('x',18)}</button></div>
+  <form class="modal-body" data-form="formband" novalidate>
+   <label class="field"><span class="lbl">Band name <em>*</em></span><input class="input" name="bname" placeholder="e.g. The Bandra Sessions"><div class="err-msg" data-for="bname"></div></label>
+   <div class="field"><span class="lbl">Genres <small>pick any</small></span><div class="chips">${GENRES.map(g=>`<label class="chip"><input class="sr" type="checkbox" name="genre" value="${g}">${g}</label>`).join('')}</div></div>
+   <div class="field"><span class="lbl">Invite artists <em>*</em></span><div class="pick">${cands.map(a=>`<label class="prow"><input type="checkbox" name="invite" value="${a.id}"><span><b>${esc(a.name)}</b><small>${esc(a.talent)} \u00b7 ${esc(a.short)}</small></span><em>${esc(roleOf(a))}</em></label>`).join('')}</div><div class="err-msg" data-for="invite"></div></div>
+   <label class="field"><span class="lbl">Message <small>optional</small></span><textarea class="input" name="msg" placeholder="Tell them about the band and your first gig."></textarea></label>
+   <button class="btn lg block" type="submit">Send band requests</button></form></div></div>`;
+ document.body.classList.add('lock');
+}
+function submitFormBand(form){
+ const u=state.user, f=new FormData(form), errs={}, name=(f.get('bname')||'').trim(), ids=f.getAll('invite');
+ if(name.length<2)errs.bname='Give your band a name.'; if(!ids.length)errs.invite='Pick at least one artist to invite.';
+ $$('.err-msg',form).forEach(m=>{m.textContent=errs[m.dataset.for]||'';m.closest('.field')?.classList.toggle('has-err',!!errs[m.dataset.for])});
+ if(Object.keys(errs).length)return;
+ const band={id:'b-'+Date.now(),name,genres:f.getAll('genre'),founder:u.name,members:[{name:u.name,role:TALENT_ROLE[u.talent]||'Musician',artistId:u.artistId||null,rate:4000,accepted:true}]};
+ state.bands.push(band);
+ ids.forEach((aid,k)=>{
+  const a=byId(aid), inv={id:'out'+Date.now()+k,dir:'out',bandId:band.id,bandName:name,toName:a.name,toId:a.id,role:roleOf(a),msg:(f.get('msg')||'').trim(),status:'pending'};
+  state.invites.push(inv);
+  /* Demo: invited artists reply after a few seconds */
+  setTimeout(()=>{if(inv.status!=='pending')return;inv.status='accepted';band.members.push({name:a.name,role:inv.role,artistId:a.id,accepted:true});toast(`${a.name} joined ${name}`);if(route().page==='bands')render()},2500+k*1500);
+ });
+ closeModal(); toast(`Requests sent to ${ids.length} artist${ids.length===1?'':'s'}`);
+ if(route().page==='bands')render(); else location.hash='#/bands';
+}
+function adminGate(){
+ return `<div class="wrap sec" style="padding-top:70px;display:flex;justify-content:center"><div class="book" style="max-width:380px;width:100%">
+  <h3 style="font-size:1.4rem;margin-bottom:4px">Admin sign-in</h3><p class="hint" style="margin-bottom:18px">Staff access only. Enter the admin password to continue.</p>
+  <form data-form="adminlogin" novalidate><label class="field"><span class="lbl">Password</span><input class="input" type="password" name="password" autocomplete="off"><div class="err-msg" data-for="password"></div></label>
+  <button class="btn lg block" type="submit">Enter dashboard</button></form></div></div>`;
+}
+function adminPeople(kind){
+ const list=state.admin[kind], stu=kind==='students';
+ if(!list.length)return `<div class="empty">No ${kind} yet.</div>`;
+ return `<div class="admin-list">${list.map(p=>`<div class="arow"><div class="ai"><b>${esc(p.name)}</b><small>${stu?esc(p.college)+' \u00b7 '+esc(p.talent):esc(p.company||'Individual host')}</small>
+   <div class="arow-detail">
+    <a class="tag" href="mailto:${esc(p.email)}">${ic('msg',13)}${esc(p.email)}</a>
+    ${p.phone?`<span class="tag">${ic('clock',13)}${esc(p.phone)}</span>`:''}
+    ${p.age||p.gender?`<span class="tag">${[p.age?'Age '+esc(p.age):'',p.gender?esc(p.gender):''].filter(Boolean).join(' \u00b7 ')}</span>`:''}
+    ${stu?(p.id_card_url?`<button class="tag" type="button" data-act="admin-view-id" data-id="${p.id}">${ic('idc',13)}View ID</button>`:`<span class="tag" style="opacity:.55">${ic('idc',13)}College ID not on file</span>`):''}
+    ${stu&&p.cv_url?`<button class="tag" type="button" data-act="admin-open-cv" data-id="${p.id}">${ic('file',13)}CV</button>`:''}
+    ${stu&&(p.videos||[]).length?`<span class="tag">${(p.videos||[]).length} video${p.videos.length===1?'':'s'}</span>`:''}
+    ${stu&&(p.audio||[]).length?`<span class="tag">${p.audio.length} track${p.audio.length===1?'':'s'}</span>`:''}
+    ${stu?(p.links||[]).map(u=>`<a class="tag" href="${esc(u)}" target="_blank" rel="noopener">${esc(u.replace(/^https?:\/\/(www\.)?/,'').slice(0,28))}</a>`).join(''):''}
+   </div></div>${stu?(p.status==='approved'?`<span class="stpill vfy">${ic('shield',12)}ID verified</span>`:statusPill(p.status)):''}
+  ${stu?`<div class="arow-actions">${p.status!=='approved'?`<button class="btn sm" data-act="admin-approve" data-kind="${kind}" data-id="${p.id}">Approve</button>`:''}${p.status!=='rejected'?`<button class="btn ghost sm" data-act="admin-reject" data-kind="${kind}" data-id="${p.id}">Reject</button>`:''}</div>`:''}</div>`).join('')}</div>`;
+}
+/* ID cards live in a storage bucket. If the bucket is private the stored public URL returns 403,
+   so try a signed URL first, then a direct download, and only then the raw URL. */
+async function resolveStorageUrl(url){
+ if(!DB_ENABLED||!url||/^blob:|^data:/.test(url))return url;
+ const m=url.match(/\/storage\/v1\/object\/(?:public|sign|authenticated)\/([^/]+)\/([^?#]+)/); if(!m)return url;
+ const bucket=m[1], path=decodeURIComponent(m[2]);
+ try{const {data,error}=await sb.storage.from(bucket).createSignedUrl(path,3600);if(!error&&data?.signedUrl)return data.signedUrl}catch(e){console.error(e)}
+ try{const {data,error}=await sb.storage.from(bucket).download(path);if(!error&&data)return URL.createObjectURL(data)}catch(e){console.error(e)}
+ return url;
+}
+function openIdViewer(id){
+ const p=state.admin.students.find(x=>x.id===id); if(!p)return;
+ const raw=p.id_card_url||'';
+ $('#modal').innerHTML=`<div class="modal-back" data-act="backdrop"><div class="modal" role="dialog" aria-modal="true" aria-label="College ID of ${esc(p.name)}">
+  <div class="modal-head"><div><h3>${esc(p.name)}</h3><p>${esc(p.college)} \u00b7 ${esc(p.talent)}${p.age?' \u00b7 Age '+esc(p.age):''}${p.gender?' \u00b7 '+esc(p.gender):''}</p></div><button class="icon-btn" data-act="close" aria-label="Close">${ic('x',18)}</button></div>
+  <div class="modal-body"><div id="idbox">${raw?'<p class="hint">Loading ID\u2026</p>':'<p class="hint">No college ID on file.</p>'}</div>
+   <div class="idfoot">${p.status==='approved'?`<span class="stpill vfy">${ic('shield',12)}ID verified</span>`:statusPill(p.status)}<a class="tag" id="idopen" hidden target="_blank" rel="noopener">Open in new tab</a>
+    <div class="arow-actions">${p.status!=='approved'?`<button class="btn sm" data-act="admin-approve" data-kind="students" data-id="${p.id}">Approve</button>`:''}${p.status!=='rejected'&&p.status!=='approved'?`<button class="btn ghost sm" data-act="admin-reject" data-kind="students" data-id="${p.id}">Reject</button>`:''}</div></div>
+  </div></div></div>`;
+ document.body.classList.add('lock');
+ if(!raw)return;
+ resolveStorageUrl(raw).then(url=>{
+  const box=$('#idbox'); if(!box)return;
+  const pdf=/\.pdf(\?|#|$)/i.test(raw)||/\.pdf(\?|#|$)/i.test(url)||p.id_card_type==='application/pdf';
+  const op=$('#idopen'); if(op){op.href=url;op.hidden=false}
+  const fail=()=>{box.innerHTML=`<p class="hint bad">The ID could not be displayed. It may be a format browsers cannot preview (such as HEIC from an iPhone), or the storage bucket is blocking access. Use "Open in new tab" to download it. See migration.sql for the bucket policy.</p>`};
+  box.innerHTML='';
+  if(pdf){const fr=document.createElement('iframe');fr.className='idview';fr.title='Uploaded college ID';box.append(fr);fr.src=url}
+  else{const im=new Image();im.className='idview';im.alt='College ID uploaded by '+p.name;im.onerror=fail;im.src=url;box.append(im)}
+ });
+}
+function adminEvents(){
+ const evs=state.admin.events;
+ return `<div class="admin-list">${evs.map(e=>`<div class="arow"><div class="ai"><b>${esc(e.title)}</b><small>${esc(e.venue)} \u00b7 ${dateStr(e.date)} \u00b7 ${esc(e.type)} \u00b7 by ${esc(orgName(e))}</small></div>
+  ${e.featured?`<span class="stpill" style="color:var(--lamp);border-color:var(--lamp);background:var(--lamp-soft)">Featured</span>`:`<span class="stpill" style="color:var(--dim);border-color:var(--line-2);background:transparent">Draft</span>`}
+  <div class="arow-actions"><button class="btn ghost sm" data-act="admin-feature" data-id="${e.id}">${e.featured?'Unfeature':'Feature'}</button><button class="icon-btn" data-act="admin-del-event" data-id="${e.id}" aria-label="Delete event">${ic('x',16)}</button></div></div>`).join('')||'<div class="empty">No events yet.</div>'}</div>
+  <form class="admin-add" data-form="addevent"><span class="lbl" style="display:block;margin-bottom:14px;font-weight:700">Add an event</span>
+   <div class="row2"><label class="field"><span class="lbl">Event title</span><input class="input" name="title" placeholder="e.g. Diwali mixer, Bandra"></label>
+   <label class="field"><span class="lbl">Date</span><input class="input" type="date" name="date" min="${tomorrow()}"></label></div>
+   <div class="row2"><label class="field"><span class="lbl">Venue</span><input class="input" list="loc2" name="venue" placeholder="e.g. Bandra West"><datalist id="loc2">${LOCALITIES.map(l=>`<option value="${l}">`).join('')}</datalist></label>
+   <label class="field"><span class="lbl">Type</span><select class="input" name="type">${EVENTS.map(e=>`<option>${e}</option>`).join('')}</select></label></div>
+   <div class="row2"><label class="field"><span class="lbl">Time <small>optional</small></span><input class="input" type="time" name="time"></label>
+   <label class="field"><span class="lbl">Details <small>optional</small></span><input class="input" name="description" placeholder="A line about the event"></label></div>
+   <button class="btn block" type="submit">Add event</button></form>`;
+}
+function adminView(){
+ if(!state.admin.authed)return adminGate();
+ if(DB_ENABLED&&!state.admin.loaded){
+  if(!state.admin.loading){state.admin.loading=true;dbLoadAdmin()}
+  return `<div class="wrap sec" style="padding-top:70px"><p class="lead">Loading dashboard from the database\u2026</p></div>`;
+ }
+ const a=state.admin, tab=a.tab||'students', tabs=[['students','Students'],['recruiters','Recruiters'],['events','Events']];
+ return `<div class="wrap sec admin-shell">
+  <div class="sec-head"><div><h2 class="title">Admin dashboard</h2><p class="lead" style="margin-top:8px">Review sign-ups and curate featured events. Bookings are handled directly between students and recruiters in chat.</p></div>
+   <button class="btn ghost sm" data-act="admin-signout">Sign out</button></div>
+  <div class="admin-tabs" role="tablist">${tabs.map(([k,l])=>`<button class="chip${tab===k?' on':''}" data-act="admin-tab" data-v="${k}">${l}${k==='students'?` (${a[k].filter(x=>x.status==='pending').length})`:''}</button>`).join('')}</div>
+  <div class="admin-panel">${tab==='students'?adminPeople('students'):tab==='recruiters'?adminPeople('recruiters'):adminEvents()}</div></div>`;
+}
+function setPersonStatus(kind,id,status){
+ if(DB_ENABLED){
+  const p0=state.admin[kind].find(x=>x.id===id); if(p0)p0.status=status;
+  dbUpdateStatus(kind,id,status).then(async()=>{await loadPublicArtists();syncLocalArtists();state.admin.loaded=false;dbLoadAdmin()});
+  syncLocalArtists(); if(kind==='students'){render()}
+  toast(`${kind==='students'?'Student':'Recruiter'} ${status}`);return}
+ const p=state.admin[kind].find(x=>x.id===id);if(!p)return;p.status=status;if(kind==='students')syncLocalArtists();render();toast(`${kind==='students'?'Student':'Recruiter'} ${status}`)
+}
+function toggleFeature(id){
+ const e=state.admin.events.find(x=>x.id===id);if(!e)return;
+ if(DB_ENABLED){dbToggleFeature(id,!e.featured).then(()=>{state.admin.loaded=false;dbLoadAdmin()});return}
+ e.featured=!e.featured;render()
+}
+/* ---------- Database helpers (Supabase) ---------- */
+async function uploadFile(bucket,file,prefix){
+ if(!file)return null;
+ const path=`${prefix}/${Date.now()}_${file.name.replace(/[^a-z0-9.\-_]/gi,'_')}`;
+ const {error}=await sb.storage.from(bucket).upload(path,file);
+ if(error){console.error('upload error',error);uploadFile.err=error.message;return null}
+ return sb.storage.from(bucket).getPublicUrl(path).data.publicUrl;
+}
+function parseLinks(txt){return String(txt||'').split(/[\n,]+/).map(x=>x.trim()).filter(Boolean).map(x=>/^https?:\/\//i.test(x)?x:'https://'+x)}
+function mapDbEvent(e){return {id:e.id,title:e.title,date:e.date,venue:e.venue,type:e.type,time:e.time,description:e.description,featured:e.featured,organiser:e.organiser,budget:e.budget,lookingFor:e.looking_for||[]}}
+function localStudent(f,form){
+ const idf=form.querySelector('input[name=idcard]')?.files[0], urls=n=>[...(form.querySelector(`input[name=${n}]`)?.files||[])].map(x=>URL.createObjectURL(x));
+ return {_local:true,age:+f.age,gender:f.gender,genres:[...form.querySelectorAll('input[name=genre]:checked')].map(c=>c.value),id:'ps'+Date.now(),name:f.name.trim(),college:f.college,talent:f.talent,email:f.email.trim(),phone:f.phone,
+  id_card_url:idf?URL.createObjectURL(idf):null,id_card_type:idf?idf.type:'',videos:urls('videos'),audio:urls('audio'),links:parseLinks(f.links),status:'pending'};
+}
+async function dbSubmitStudent(f,form){
+ dbSubmitStudent.warn='';
+ const idFile=form.querySelector('input[name=idcard]')?.files[0];
+ const cvFile=form.querySelector('input[name=cv]')?.files[0];
+ const photoFiles=[...(form.querySelector('input[name=photos]')?.files||[])];
+ const genres=[...form.querySelectorAll('input[name=genre]:checked')].map(c=>c.value);
+ const id_card_url=await uploadFile('id-cards',idFile,'idcards');
+ if(idFile&&!id_card_url)dbSubmitStudent.warn='Saved, but the college ID upload failed ('+(uploadFile.err||'storage error')+'). Check the id-cards bucket policy.';
+ const cv_url=cvFile?await uploadFile('cvs',cvFile,'cvs'):null;
+ const portfolio_photo_urls=(await Promise.all(photoFiles.map(p=>uploadFile('portfolio-photos',p,'photos')))).filter(Boolean);
+ const base={name:f.name.trim(),college:f.college,talent:f.talent,email:f.email.trim(),phone:f.phone,genres,id_card_url,cv_url,portfolio_photo_urls,status:'pending'};
+ const vidFiles=[...(form.querySelector('input[name=videos]')?.files||[])], audFiles=[...(form.querySelector('input[name=audio]')?.files||[])], links=parseLinks(f.links);
+ const performance_video_urls=(await Promise.all(vidFiles.map(v=>uploadFile('portfolio-photos',v,'videos')))).filter(Boolean);
+ const audio_track_urls=(await Promise.all(audFiles.map(a=>uploadFile('portfolio-photos',a,'audio')))).filter(Boolean);
+ const media=(performance_video_urls.length||audio_track_urls.length||links.length)?{performance_video_urls,audio_track_urls,music_links:links}:{};
+ const demo={age:+f.age,gender:f.gender};
+ /* Try the richest row first, then drop optional columns the table may not have yet */
+ const attempts=[{...base,...demo,...media},{...base,...media},{...base,...demo},base];
+ let error=null;
+ for(let k=0;k<attempts.length;k++){
+  ({error}=await sb.from('students').insert(attempts[k]));
+  if(!error){if(k>0&&!dbSubmitStudent.warn)dbSubmitStudent.warn='Saved, but some columns (age, gender or media) are missing in the database. Run migration.sql.';break}
+  console.error('student insert attempt '+k+' failed',error);
+ }
+ if(error){toast('Could not reach the database, saved locally instead');return false}
+ return true;
+}
+async function dbSubmitRecruiter(f,form){
+ const hosts=[...form.querySelectorAll('input[name=hosts]:checked')].map(c=>c.value);
+ const row={name:f.name.trim(),kind:f.kind||'individual',company:f.kind==='company'?(f.company||'').trim():null,email:f.email.trim(),phone:f.phone,city:f.city,hosts,status:'pending'};
+ let {error}=await sb.from('recruiters').insert({...row,age:+f.age,gender:f.gender});
+ if(error){console.error('recruiter insert with age/gender failed, retrying without',error);({error}=await sb.from('recruiters').insert(row))}
+ if(error){console.error('recruiter insert error',error);toast('Could not reach the database, saved locally instead');return false}
+ return true;
+}
+async function dbLoadAdmin(){
+ const [{data:students,error:e1},{data:recruiters,error:e2},{data:events,error:e3}]=await Promise.all([
+  sb.from('students').select('*').order('created_at',{ascending:false}),
+  sb.from('recruiters').select('*').order('created_at',{ascending:false}),
+  sb.from('events').select('*').order('date',{ascending:true})
+ ]);
+ if(e1||e2||e3)console.error('admin load error',e1,e2,e3);
+ if(students)state.admin.students=students.map(s=>({id:s.id,name:s.name,college:s.college,talent:s.talent,email:s.email,phone:s.phone,age:s.age,gender:s.gender,id_card_url:s.id_card_url,cv_url:s.cv_url,videos:s.performance_video_urls||[],audio:s.audio_track_urls||[],links:s.music_links||[],status:s.status}));
+ if(recruiters)state.admin.recruiters=recruiters.map(r=>({id:r.id,name:r.name,company:r.company,email:r.email,phone:r.phone,age:r.age,gender:r.gender,status:r.status}));
+ if(events)state.admin.events=events.map(mapDbEvent);
+ state.admin.loaded=true;state.admin.loading=false;render();
+ loadPublicArtists();
+}
+async function dbUpdateStatus(table,id,status){const {error}=await sb.from(table).update({status}).eq('id',id);if(error)console.error(error)}
+async function dbAddEvent(ev){
+ const {time,description,organiser,lookingFor,budget,...base}=ev;
+ const attempts=[{...base,time,description,organiser,looking_for:lookingFor,budget},{...base,time,description},base];
+ let error=null;
+ for(const row of attempts){({error}=await sb.from('events').insert(row));if(!error)return;console.error('event insert failed, retrying with fewer columns',error)}
+}
+async function loadPublicEvents(force){
+ if(!DB_ENABLED)return;
+ const {data,error}=await sb.from('events').select('*').order('date',{ascending:true});
+ if(error||!data||!data.length)return;
+ const next=data.map(mapDbEvent);
+ if(!force&&JSON.stringify(next)===JSON.stringify(state.admin.events))return;
+ state.admin.events=next;
+ if(['home','events'].includes(route().page)&&!$('#modal').innerHTML)render();
+}
+/* Confirmed bookings from every host, so a taken day shows as booked for everybody */
+async function loadBookedDates(){
+ if(!DB_ENABLED)return;
+ const {data,error}=await sb.from('bookings').select('artist_id,event_date').eq('status','confirmed');
+ if(error||!data)return;
+ const m={}; data.forEach(r=>{(m[r.artist_id]=m[r.artist_id]||[]).push(String(r.event_date).slice(0,10))});
+ state.dbBooked=m;
+}
+async function dbToggleFeature(id,val){const {error}=await sb.from('events').update({featured:val}).eq('id',id);if(error)console.error(error)}
+async function dbDeleteEvent(id){const {error}=await sb.from('events').delete().eq('id',id);if(error)console.error(error)}
+async function dbInsertBooking(row){const {data,error}=await sb.from('bookings').insert(row).select().single();if(error){console.error('booking insert error',error);return null}return data?.id||null}
+async function dbUpdateBookingStatus(id,status){if(!id)return;const {error}=await sb.from('bookings').update({status}).eq('id',id);if(error)console.error(error)}
+
+/* ---------- Router ---------- */
+function route(){const h=location.hash.replace(/^#\/?/,'').split('?')[0].split('/');return {page:h[0]||'home',arg:h[1]}}
+let lastKey='';
+function render(){
+ stopAudio(); const r=route(), key=r.page+'/'+(r.arg||'');
+ $('#nav').innerHTML=navHTML();
+ let html='',foot=true;
+ switch(r.page){
+  case 'artist': html=profileView(r.arg); break;
+  case 'chat': html=chatView(r.arg); foot=false; break;
+  case 'admin': html=adminView(); foot=false; break;
+  case 'artists': html=artistsView(); break;
+  case 'events': html=eventsView(); break;
+  case 'bands': html=bandsView(); break;
+  case 'join': html=authView(r.arg); break;
+  case 'login': html=loginView(); break;
+  default: html=homeView();
+ }
+ $('#app').innerHTML=html+(foot?footHTML():'');
+ if($('#grid')){renderGrid();const bg=$('#budget');if(bg)bg.value=state.budget}
+ if(r.page==='chat'&&r.arg&&state.threads[r.arg])refreshChat(r.arg);
+ if(key!==lastKey)window.scrollTo(0,0); lastKey=key;
+ const t={artist:byId(r.arg)?.name+' | Mehfil',chat:'Messages | Mehfil',admin:'Admin | Mehfil',join:'Join | Mehfil',login:'Sign in | Mehfil',artists:'All artists | Mehfil',events:'Events | Mehfil',bands:'Bands | Mehfil'}[r.page];
+ document.title=t||"Mehfil | Hire Mumbai's college musicians";
+}
+function goScroll(id){
+ const go=()=>document.getElementById(id)?.scrollIntoView({behavior:'smooth',block:'start'});
+ if(route().page!=='home'&&route().page){location.hash='#/';setTimeout(go,80)}else go();
+}
+function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('show');clearTimeout(toast.t);toast.t=setTimeout(()=>t.classList.remove('show'),2800)}
+function setSlat(el){$$('.slat').forEach(s=>s.classList.toggle('on',s===el))}
+
+/* ---------- Events ---------- */
+document.addEventListener('click',e=>{
+ const el=e.target.closest('[data-act]'); if(!el)return; const act=el.dataset.act,id=el.dataset.id;
+ switch(act){
+  case 'open': location.hash='#/artist/'+id; break;
+  case 'hire': e.preventDefault(); openBooking(id); break;
+  case 'filter': state.filter=el.dataset.v; renderGrid(); break;
+  case 'scroll': e.preventDefault(); goScroll(el.dataset.target); break;
+  case 'slat': if(state.slatWasOn===false&&e.pointerType==='touch'){e.preventDefault();setSlat(el)} break;
+  case 'backdrop': if(e.target===el)closeModal(); break;
+  case 'close': closeModal(); break;
+  case 'play': playTrack(id,+el.dataset.i); break;
+  case 'video': openVideo(id,+el.dataset.i); break;
+  case 'vid-toggle': vidToggle(); break;
+  case 'share': (navigator.clipboard?.writeText(location.href)||Promise.reject()).then(()=>toast('Profile link copied')).catch(()=>toast('Copy the link from your address bar')); break;
+  case 'signout': state.user=null; $('#nav').innerHTML=navHTML(); toast('Signed out'); break;
+  case 'quick': sendMsg(id,el.dataset.text); break;
+  case 'confirm': confirmBooking(id); break;
+  case 'toggle-summary': $('#chatpage')?.classList.toggle('show-sum'); break;
+  case 'attach': toast('File sharing is coming soon'); break;
+  case 'dismiss-joined': state.joined=null; break;
+  case 'admin-tab': state.admin.tab=el.dataset.v; render(); break;
+  case 'admin-view-id': openIdViewer(id); break;
+  case 'event-open': openEventModal(id); break;
+  case 'event-apply': closeModal(); openApply(id); break;
+  case 'post-event': openPostEvent(); break;
+  case 'ev-filter': state.evFilter=el.dataset.v; render(); break;
+  case 'build-band': openBuildBand(); break;
+  case 'form-band': openFormBand(); break;
+  case 'pick-date': {const fm=el.closest('form');fm.elements.date.value=el.dataset.date;checkBookingDate(fm);break}
+  case 'app-accept': case 'app-decline': {const ap=state.apps.find(x=>x.id===id);if(ap){ap.status=act==='app-accept'?'accepted':'declined';toast(act==='app-accept'?'Applicant accepted':'Applicant declined');render()}break}
+  case 'inv-accept': case 'inv-decline': {
+   const inv=state.invites.find(x=>x.id===id); if(!inv)break;
+   inv.status=act==='inv-accept'?'accepted':'declined';
+   if(inv.status==='accepted'){const b=state.bands.find(x=>x.id===inv.bandId),u=state.user;if(b&&!b.members.some(m=>m.name===u.name))b.members.push({name:u.name,role:inv.role,artistId:u.artistId||null,rate:4000,accepted:true});toast('You joined '+inv.bandName)}
+   render();break}
+  case 'admin-open-cv': {const p=state.admin.students.find(x=>x.id===id);if(p?.cv_url){const w=window.open('','_blank');resolveStorageUrl(p.cv_url).then(u=>{if(w)w.location=u;else location.href=u})}break}
+  case 'admin-approve': if(el.closest('#modal'))closeModal(); setPersonStatus(el.dataset.kind,id,'approved'); break;
+  case 'admin-reject': if(el.closest('#modal'))closeModal(); setPersonStatus(el.dataset.kind,id,'rejected'); break;
+  case 'admin-feature': toggleFeature(id); break;
+  case 'admin-del-event':
+   if(DB_ENABLED){dbDeleteEvent(id).then(()=>{state.admin.loaded=false;dbLoadAdmin()})}
+   else{state.admin.events=state.admin.events.filter(e=>e.id!==id);render()}
+   toast('Event removed'); break;
+  case 'admin-signout': state.admin.authed=false; state.admin.loaded=false; render(); break;
+ }
+});
+document.addEventListener('pointerdown',e=>{const s=e.target.closest('.slat');state.slatWasOn=s?s.classList.contains('on'):null});
+document.addEventListener('mouseover',e=>{const s=e.target.closest('.slat');if(s&&!s.classList.contains('on'))setSlat(s)});
+document.addEventListener('focusin',e=>{const s=e.target.closest?.('.slat');if(s&&!s.classList.contains('on'))setSlat(s)});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&$('#modal').innerHTML)closeModal()});
+document.addEventListener('input',e=>{
+ const t=e.target;
+ if(t.id==='q'){state.q=t.value;renderGrid()}
+ if(t.name==='budget'&&t.closest('form[data-form=booking]')){updateBudgetNote(byId(t.closest('form').dataset.id))}
+ if(t.name==='email'&&t.closest('[data-form=student]')){
+  const h=$('#emailhint'),v=t.value.trim();
+  if(!v){h.className='hint';h.textContent='Use your institutional address ending in .edu or .ac.in. Gmail and Yahoo addresses can\u2019t be verified.'}
+  else if(EMAIL_OK.test(v)){h.className='hint ok';h.textContent='Looks like an institutional address.'}
+  else{h.className='hint bad';h.textContent='This needs to end in .edu or .ac.in.'}
+ }
+ t.closest?.('.field')?.classList.remove('has-err');
+});
+document.addEventListener('change',e=>{
+ const t=e.target;
+ if(t.name==='date'&&t.closest('form[data-form=booking]'))checkBookingDate(t.closest('form'));
+ if(t.closest?.('form[data-form=buildband]')&&(t.name==='role'||t.name==='date'||t.matches('select[data-role]')))renderLineup(t.closest('form'));
+ if(t.id==='budget'){state.budget=t.value;renderGrid()}
+ if(t.type==='file'){
+  const box=t.closest('.drop'),n=t.files.length,dn=box.querySelector('.dn');
+  box.classList.toggle('has',n>0);
+  dn.textContent=n===0?'Choose a file or drop it here':n===1?t.files[0].name:t.name==='videos'?`${n} videos selected`:t.name==='audio'?`${n} tracks selected`:`${Math.min(n,6)} photos selected`;
+  if(n>0)t.closest('.field').classList.remove('has-err');
+ }
+ if(t.type==='radio'&&t.closest('.chips')){$$('input[name='+t.name+']',t.closest('form')).forEach(r=>r.closest('.chip').classList.toggle('on',r.checked))}
+ if(t.type==='checkbox'&&t.closest('.chip'))t.closest('.chip').classList.toggle('on',t.checked);
+ if(t.name==='kind'){$$('.seg label',t.closest('form')).forEach(l=>l.classList.toggle('on',l.contains(t)&&t.checked));$('#companyField').hidden=t.value!=='company'}
+});
+document.addEventListener('submit',async e=>{
+ e.preventDefault(); const form=e.target, kind=form.dataset.form;
+ if(kind==='booking')return submitBooking(form);
+ if(kind==='apply')return submitApply(form);
+ if(kind==='postevent')return submitPostEvent(form);
+ if(kind==='buildband')return submitBuildBand(form);
+ if(kind==='formband')return submitFormBand(form);
+ if(kind==='chat'){const inp=form.elements.m;sendMsg(form.dataset.id,inp.value);inp.value='';return}
+ if(kind==='adminlogin'){
+  const pwd=form.password.value, box=form.querySelector('.field');
+  if(pwd!==ADMIN_PASSWORD){form.querySelector('[data-for=password]').textContent='Incorrect password.';box.classList.add('has-err');form.password.focus();return}
+  state.admin.authed=true; render(); toast('Welcome back, admin'); return;
+ }
+ if(kind==='addevent'){
+  const f=new FormData(form), title=(f.get('title')||'').trim();
+  if(!title){toast('Add a title first');return}
+  const ev={title,date:f.get('date')||tomorrow(),venue:(f.get('venue')||'Mumbai').trim(),type:f.get('type')||EVENTS[0],featured:false};
+  const evTime=(f.get('time')||'').trim(), evDesc=(f.get('description')||'').trim();
+  if(evTime)ev.time=evTime; if(evDesc)ev.description=evDesc;
+  if(DB_ENABLED){await dbAddEvent(ev);state.admin.loaded=false;dbLoadAdmin()}
+  else{state.admin.events.unshift({id:'ev'+(state.admin.evSeq++),...ev});render()}
+  toast('Event added'); return;
+ }
+ const {ok,f}=validateForm(form,kind); if(!ok)return;
+ if(kind==='login'){
+  const n=f.email.split('@')[0].replace(/[._]/g,' ').replace(/\b\w/g,c=>c.toUpperCase()), role=f.as==='student'?'student':'recruiter';
+  state.user={role,name:n,email:f.email.trim(),talent:'',artistId:null};
+  if(role==='student')seedIncoming();
+  location.hash='#/';toast('Signed in as '+n);return;
+ }
+ let artistId=null;
+ if(kind==='student'){
+  let ls=null;
+  if(DB_ENABLED){const ok2=await dbSubmitStudent(f,form);if(ok2)toast(dbSubmitStudent.warn||'Application saved to the database');else{ls=localStudent(f,form)}}
+  else ls=localStudent(f,form);
+  if(ls){state.admin.students.unshift(ls);artistId='stu-'+ls.id}
+ }
+ if(kind==='recruiter'){
+  const local={id:'pr'+Date.now(),name:f.name.trim(),company:f.kind==='company'?(f.company||'').trim():null,email:f.email.trim(),phone:f.phone,age:+f.age,gender:f.gender,status:'pending'};
+  if(DB_ENABLED){const ok2=await dbSubmitRecruiter(f,form);if(ok2)toast('Recruiter application saved to the database');else state.admin.recruiters.unshift(local)}
+  else state.admin.recruiters.unshift(local);
+ }
+ state.user={role:kind,name:f.name.trim(),email:f.email.trim(),age:+f.age,gender:f.gender,talent:f.talent||'',artistId};
+ if(kind==='student')seedIncoming();
+ state.joined={role:kind,name:f.name.trim(),email:f.email.trim()}; render(); window.scrollTo(0,0);
+});
+window.addEventListener('hashchange',()=>{closeModal();render()});
+document.addEventListener('visibilitychange',()=>{const r=route();if(r.page==='chat'&&r.arg&&state.threads[r.arg]){state.threads[r.arg].unread=0;$('#nav').innerHTML=navHTML()}});
+
+render();
+if(DB_ENABLED){
+ loadPublicArtists(); loadPublicEvents(); loadBookedDates();
+ setInterval(()=>{if(document.hidden)return;loadBookedDates();loadPublicEvents();if(['home','artists'].includes(route().page))loadPublicArtists()},10000);
+ document.addEventListener('visibilitychange',()=>{if(!document.hidden)loadPublicArtists()});
+ window.addEventListener('focus',loadPublicArtists);
+}
+</script>
+</body>
+</html>
